@@ -1,0 +1,114 @@
+\documentclass[11pt]{report} %size of font and type of layout
+\usepackage[twoside,a4paper,margin=1in]{geometry} %change margin size for binding later?
+\usepackage[T1]{fontenc}
+\usepackage[bitstream-charter]{mathdesign} % another font option
+
+%\usepackage{kpfonts}%  for math    
+%\usepackage{libertine}%  serif and sans serif default writing
+%\usepackage[scaled=0.85]{beramono}%% mono for typewriter font
+
+%\usepackage{pgfplots}
+%\usepackage{tikz}
+\usepackage{xfrac}
+\usepackage[super]{nth} %allow 1st, 2nd by typing \nth{1}, \nth{2}
+\usepackage[toc,title,titletoc,page]{appendix} %for using appendices
+\usepackage{graphicx} %have images
+\usepackage{chngcntr} %be able to make figures go 1, 2, 3 instead of 1.1, 1.2, 1.3, etc
+\usepackage{subcaption} %have subfigures
+%\usepackage{wrapfig} %be able to wrap text around figures
+%\usepackage{amsmath} %a way to typeset maths
+%\usepackage{amssymb} %able to type maths symbols
+\usepackage{textcomp} %so we can use \textdegree to get degree symbol
+\usepackage[parfill]{parskip} %remove paragraph indentation
+\usepackage{setspace} %be able to set line spacing
+\usepackage{tocloft} %more control over table of contents, list of figures, etc
+\usepackage{ltxtable} %get tabularx split over pages
+\usepackage[english]{babel} %english-specific charaters and language rules
+\usepackage{url} %type urls
+\usepackage{parskip} %space between paragraphs
+\usepackage[UKenglish]{isodate} %change date format
+%\usepackage[hang,flushmargin]{footmisc} %no indents in footers
+%\usepackage{verbatimbox} %able to use addvbuffer to change spaces before and after tables
+\usepackage{pdfpages} %insert PDF pages
+%\usepackage{titletoc} %create a small table of contents at the start of each section
+\usepackage{microtype} %improves spacing between words and letters
+\let\ordinal\relax
+\usepackage[nodayofweek]{datetime} %use \today to get the date
+\usepackage[inline]{enumitem} %have inline lists
+\usepackage{fancyhdr}		%for getting customized headers
+%\usepackage{lastpage}		%enable getting the total of the pages
+%\usepackage{floatrow} %use for indicating figures' sources
+%\usepackage{showframe} %show margins on page
+\usepackage[hidelinks]{hyperref} %hyperlinks in pdf
+\usepackage{cleveref} %automatic referencing
+\usepackage{bookmark}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg,.eps} %can just give images' names
+\usepackage{epstopdf} %allows for encapsulated postscript vector images, better quality and scalable
+\usepackage[none]{hyphenat}		%kills all word breaks that were in annoying places
+\usepackage{lipsum}
+
+%--------------------------heading spacings----------------------------%
+\usepackage{titlesec} %be able to change title settings
+	\titleformat{\chapter}{\normalfont\huge\bfseries}{\thechapter.}{1em}{} %have number before chapter title
+	\titlespacing{\chapter}{0pc}{0pc}{0pc} %have nice spacing after chapter title {indent} {before} {after}
+	\titlespacing{\section}{0pc}{1pc}{0pc} %have nice spacing after section title {indent} {before} {after}
+	\titlespacing{\subsection}{1pc}{1pc}{0pc} %have nice spacing after subsection title {indent} {before} {after}
+	\titlespacing{\subsubsection}{0pc}{0pc}{-1pc} %have nice spacing after subsection title {indent} {before} {after}
+	\titlelabel{\thetitle.\quad} %full stop after the number in the heading title
+\usepackage{etoolbox} %remove page break before chapter heading
+	\makeatletter
+	%\patchcmd{\chapter}{\thispagestyle{plain}}{}{}{} %allows the header/footer on chapter pages
+	\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+	\makeatletter
+	%\newcommand{\updatechaptermark}{%
+	\appto\ps@fancy{%
+		\patchcmd{\chaptermark}% <cmd>
+		{\@chapapp\ }{}% <search><replace>
+		{}{}% <success><failure>
+	}%}
+	\makeatother
+%----------------------------figures & lof (list of figures)-----------------------------%
+\renewcommand{\cftfigfont}{Figure } %list of figures includes "Figure"
+\newcommand*{\noaddvspace}{\renewcommand*{\addvspace}[1]{}}\addtocontents{lof}{\protect\noaddvspace} %equal line spacing in the list of figures
+\setlength{\cftfigindent}{0pt} %remove indentation from figures in lof
+\usepackage{float} %able to use H to force figures to go here
+%\floatstyle{boxed}	%this will place a thin border around my figures
+%\restylefloat{figure}
+\AtBeginEnvironment{figure}{\vspace{10pt}} %spacing before figure
+\AtEndEnvironment{figure}{\vspace{-10pt}} %spacing after figure
+\setlength{\abovecaptionskip}{10pt} %spacing before figure caption
+\setlength{\belowcaptionskip}{5pt} %spacing after figure caption
+\usepackage[justification=centering,font={normalsize, it}]{caption} %control caption text
+%----------------------------tables & lot------------------------------%
+\renewcommand{\cfttabfont}{Table } %list of tables includes "Table"
+\setlength{\cfttabindent}{0pt} %remove indentation from tables in lot
+\usepackage{tabularx} %word wrap in tables
+\usepackage{longtable} %allow tables to go over multiple pages
+\usepackage{multirow} %make cells span multiple rows in tables
+\captionsetup{belowskip=5pt,aboveskip=4pt}
+\newcolumntype{L}{>{\centering\arraybackslash}m{3cm}} %centre and wrap text in tables
+\usepackage{booktabs} %use \toprule, \midrule, \bottomrule and \cmidrule for better spacing in tables
+\usepackage{pbox} %force line break in a table cell
+%---------------------------create own lists---------------------------%
+\newlistof{example}{exp}{List of Examples} %create own lists
+\newcommand{\example}[1]{ %create own lists
+	\refstepcounter{example} %create own lists
+	\par\noindent\textbf{Example \theexample. #1} %create own lists
+	\addcontentsline{exp}{example} %create own lists
+	{\protect\numberline{\thechapter.\theexample}#1}\par} %create own lists
+%---------------------------------font---------------------------------%
+%\sfdefault = calibri-like font, \rmdefault = times new roman-like
+%\renewcommand\UrlFont{\rmfamily}
+%\renewcommand{\familydefault}{\rmdefault}
+%----------------------------------------------------------------------%
+\begin{document}
+\begin{onehalfspace} %single line spacing
+%\counterwithout{figure}{chapter} %makes figures go 1, 2, 3 instead of 1.1, 1.2, 1.3, etc
+%\counterwithout{table}{chapter} %makes tables go 1, 2, 3 instead of 1.1, 1.2, 1.3, etc
+%\counterwithout{section}{chapter} %make sections 1, 2, 3 not 1.1 etc
+\pretolerance=10000 %disable hyphenating at line breaks
+\abovedisplayskip=5pt %remove space before equations
+\belowdisplayskip=5pt %remove space after equations
+\cleanlookdateon %remove current date format to replace with [UKenglish]{isodate}
+%\let\savenumberline\numberline\def\numberline#1{\savenumberline{#1.}} %adds dot after chapter title in toc, comment this out to get appendices to work and not cause spacing errors.
+%\AtEndEnvironment{itemize}{\vspace{-5pt}} %spacing after lists

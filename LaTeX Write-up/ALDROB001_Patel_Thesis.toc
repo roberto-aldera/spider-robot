@@ -1,0 +1,31 @@
+\select@language {english}
+\select@language {english}
+\contentsline {chapter}{Declaration}{i}{section*.1}
+\contentsline {chapter}{Abstract}{ii}{chapter*.2}
+\contentsline {chapter}{Acknowledgements}{iii}{section*.4}
+\contentsline {chapter}{Table of Contents}{iv}{section*.6}
+\contentsline {chapter}{List of Figures}{vi}{section*.8}
+\contentsline {chapter}{List of Tables}{vii}{section*.9}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Background}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Research Objectives}{1}{section.1.2}
+\contentsline {section}{\numberline {1.3}Scope and Limitations}{1}{section.1.3}
+\contentsline {section}{\numberline {1.4}Plan of Development}{2}{section.1.4}
+\contentsline {chapter}{\numberline {2}Literature Review}{4}{chapter.2}
+\contentsline {section}{\numberline {2.1}Introduction}{4}{section.2.1}
+\contentsline {section}{\numberline {2.2}Another few sections}{4}{section.2.2}
+\contentsline {section}{\numberline {2.3}Summary and Conclusions}{4}{section.2.3}
+\contentsline {chapter}{\numberline {3}Theory Development}{7}{chapter.3}
+\contentsline {chapter}{\numberline {4}Methodology}{9}{chapter.4}
+\contentsline {chapter}{\numberline {5}System Modelling and Simulation}{13}{chapter.5}
+\contentsline {chapter}{\numberline {6}Mechanical Design}{14}{chapter.6}
+\contentsline {chapter}{\numberline {7}Controller Design}{16}{chapter.7}
+\contentsline {chapter}{\numberline {8}Model Verification}{20}{chapter.8}
+\contentsline {chapter}{\numberline {9}Testing and Implementation}{24}{chapter.9}
+\contentsline {chapter}{\numberline {10}Discussion}{28}{chapter.10}
+\contentsline {chapter}{\numberline {11}Conclusions and Recommendations}{32}{chapter.11}
+\contentsline {chapter}{References}{33}{chapter.11}
+\contentsline {chapter}{Appendices}{34}{section*.12}
+\contentsline {chapter}{ \numberline {A}Insert Here}{35}{appendix.A}
+\contentsline {section}{\numberline {A.1}Craig}{35}{section.A.1}
+\contentsline {chapter}{ \numberline {B}Another}{36}{appendix.B}

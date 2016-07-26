@@ -1,0 +1,147 @@
+\input{preamble.tex}
+
+\newcommand{\thetitle}	{Jump stabilization using a \\ spider-like drag line}
+\newcommand{\theauthor}	{Roberto Aldera}
+\newcommand{\studentnum}{ALDROB001}
+\newcommand{\thedate}	{\today}
+\newcommand{\coursecode}{EEE4022S}
+\newcommand{\coursename}{Course Name}
+\newcommand{\staffmember}{Dr. Amir Patel}
+
+\pagenumbering{gobble}	%no page number for title page
+\renewcommand\headrulewidth{0pt}	%get rid of stray header underline
+\input{title_page_thesis.tex}
+\clearpage\mbox{}\clearpage
+
+\pagenumbering{roman}	%start the page numbering (and reset it to zero)
+\cleardoublepage
+\phantomsection
+
+\addcontentsline{toc}{chapter}{Declaration}	
+\input{Plagiarism_declaration.tex}
+
+\addcontentsline{toc}{chapter}{Abstract}
+\input{abstract.tex}
+\newpage
+\phantomsection
+
+\addcontentsline{toc}{chapter}{Acknowledgements}	
+\input{acknowledgements.tex}
+\newpage
+\phantomsection
+
+\addcontentsline{toc}{chapter}{Table of Contents}
+\input{table_of_contents.tex}
+\newpage
+\phantomsection
+
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+\newpage
+\phantomsection
+
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+\newpage
+
+\renewcommand\headrulewidth{0.5pt}
+\pagenumbering{arabic}	%start the page numbering (and reset it to zero)
+
+\pagestyle{fancy}
+\fancyhf{}
+%\chead{\leftmark}
+\cfoot{\thepage}
+\fancyhead[LE]{\textit{\leftmark}}
+\fancyhead[RO]{\textit{\leftmark}}
+\setlength{\headheight}{14pt} 
+
+\input{Chapters/1_introduction}
+\pagebreak
+\input{Chapters/2_literature_review}
+\pagebreak
+\input{Chapters/3_theory_development}
+\pagebreak
+\input{Chapters/4_methodology}
+\pagebreak
+\input{Chapters/5_system_modelling_simulation}
+\pagebreak
+
+\input{Chapters/6_mechanical_design}
+\pagebreak
+
+\input{Chapters/7_controller_design}
+\pagebreak
+\input{Chapters/8_model_verification}
+\pagebreak
+\input{Chapters/9_implementation}
+\pagebreak
+\input{Chapters/10_discussion}
+\pagebreak
+\input{Chapters/11_conclusion_future_work}
+\pagebreak
+
+
+\newpage
+\addcontentsline{toc}{chapter}{References}
+\begingroup
+\raggedright
+\renewcommand\bibname{References}
+\bibliography{Aldera_bibliography}
+\bibliographystyle{ieeetran}
+\endgroup
+\input{appendices.tex}	%for use with appendices
+\newpage	%this keeps the header/footer working on the last page. Do not type anything after this.
+\end{onehalfspace}
+\end{document}
+
+%-------------------------------Figures--------------------------------%
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.4\textwidth]{images/%}
+\vskip10pt
+\caption[The caption that appears in the list of figures]{The caption that appears under the figure}
+\label{fig:exam}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\begin{subfigure}[t]{0.49\textwidth}
+\centering
+\includegraphics[width=0.9\linewidth]{images/%}
+\caption{This is figure a}
+\label{fig:figureA}
+\end{subfigure}
+\begin{subfigure}[t]{0.49\textwidth}
+\centering
+\includegraphics[width=0.9\linewidth]{images/%}
+\caption{This is figure b}
+\label{fig:figureB}
+\end{subfigure}
+\caption{Caption}
+\end{figure}
+
+\begin{wrapfigure}{r}{0.5\textwidth}
+\begin{center}
+\includegraphics[width=0.48\textwidth]{images/ %}
+\end{center}
+\caption{A gull}
+\end{wrapfigure}
+
+As can be seen in \cref{fig:exam}\\
+%-------------------------------Headings-------------------------------%
+\chapter{Chapter Title}
+\label{ch:Chapter Title}
+
+\section{Section Title}
+\label{sec:Section Title}
+
+\subsection{Subsection Title}
+\label{subsec:Subsection Title}
+
+\subsubsection{Subsubsection Title}
+\label{bb:Subsubsection Title}
+%-----------------------------Insert Pages-----------------------------%
+\includepdf[pages={1}]{ %filename.pdf}
+%--------------------------------Citing--------------------------------%
+\footnote{\cite{aa}}
+\cite{aa,bb}

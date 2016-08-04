@@ -49,7 +49,7 @@ int main(void) {
 		controlMethod(&acc[0],&mag[0],&gyro[0],&temp);//get the data
 
 		//Toggle PA11 to test loop frequency
-
+		//testing git
 		if (status == 0) {
 			GPIO_SetBits(GPIOA, GPIO_Pin_11);
 			status = 1;

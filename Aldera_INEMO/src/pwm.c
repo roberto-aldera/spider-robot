@@ -6,7 +6,7 @@
  */
 #include "pwm.h"
 
-void pwm()
+void setUpPWM()
 {
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);//tim3 ch1 //PA6
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3,ENABLE);

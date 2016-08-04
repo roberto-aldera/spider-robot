@@ -2799,23 +2799,23 @@ void setUpGPIO(void)
  8001684:	40010c00 	.word	0x40010c00
 
 08001688 <setUpLoopTimer>:
-int proceed=0;
+
+int proceed = 0;
 ///////////////////////////////////////////////////////////////////////////
 ////////////////main loop timer ///////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////
-void setUpLoopTimer(void)
-{
+void setUpLoopTimer(void) {
  8001688:	b580      	push	{r7, lr}
  800168a:	b084      	sub	sp, #16
  800168c:	af00      	add	r7, sp, #0
-	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2,ENABLE);
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
  800168e:	2101      	movs	r1, #1
  8001690:	2001      	movs	r0, #1
  8001692:	f001 fce7 	bl	8003064 <RCC_APB1PeriphClockCmd>
 
 	NVIC_InitTypeDef NVIC_InitStructure;
 	/* Enable the TIM2 global Interrupt */
-	NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn;//set up the interrupt handler for TIM2
+	NVIC_InitStructure.NVIC_IRQChannel = TIM2_IRQn; //set up the interrupt handler for TIM2
  8001696:	231c      	movs	r3, #28
  8001698:	733b      	strb	r3, [r7, #12]
 	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority = 0;
@@ -2833,37 +2833,36 @@ void setUpLoopTimer(void)
  80016aa:	4618      	mov	r0, r3
  80016ac:	f002 f894 	bl	80037d8 <NVIC_Init>
 
-
 	TIM_TimeBaseInitTypeDef TIM_TimeBaseStruct;
 
-	TIM_TimeBaseStruct.TIM_ClockDivision=TIM_CKD_DIV1;
+	TIM_TimeBaseStruct.TIM_ClockDivision = TIM_CKD_DIV1;
  80016b0:	2300      	movs	r3, #0
  80016b2:	80fb      	strh	r3, [r7, #6]
-	TIM_TimeBaseStruct.TIM_CounterMode=TIM_CounterMode_Up;
+	TIM_TimeBaseStruct.TIM_CounterMode = TIM_CounterMode_Up;
  80016b4:	2300      	movs	r3, #0
  80016b6:	807b      	strh	r3, [r7, #2]
-	TIM_TimeBaseStruct.TIM_Period=(3600/4-1);//makes it 100Hz - confirmed on scope.
+	TIM_TimeBaseStruct.TIM_Period = (3600 / 4 - 1); //makes it 100Hz - confirmed on scope.
  80016b8:	f240 3383 	movw	r3, #899	; 0x383
  80016bc:	80bb      	strh	r3, [r7, #4]
-	TIM_TimeBaseStruct.TIM_Prescaler=400-1;
+	TIM_TimeBaseStruct.TIM_Prescaler = 400 - 1;
  80016be:	f240 138f 	movw	r3, #399	; 0x18f
  80016c2:	803b      	strh	r3, [r7, #0]
-	TIM_TimeBaseStruct.TIM_RepetitionCounter=0x0000;
+	TIM_TimeBaseStruct.TIM_RepetitionCounter = 0x0000;
  80016c4:	2300      	movs	r3, #0
  80016c6:	723b      	strb	r3, [r7, #8]
 
-	TIM_TimeBaseInit(TIM2,&TIM_TimeBaseStruct);
+	TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStruct);
  80016c8:	463b      	mov	r3, r7
  80016ca:	4619      	mov	r1, r3
  80016cc:	f04f 4080 	mov.w	r0, #1073741824	; 0x40000000
  80016d0:	f001 f912 	bl	80028f8 <TIM_TimeBaseInit>
 
-	TIM_Cmd(TIM2,ENABLE);
+	TIM_Cmd(TIM2, ENABLE);
  80016d4:	2101      	movs	r1, #1
  80016d6:	f04f 4080 	mov.w	r0, #1073741824	; 0x40000000
  80016da:	f001 fa15 	bl	8002b08 <TIM_Cmd>
 
-	TIM_ITConfig(TIM2,TIM_IT_Update,ENABLE);
+	TIM_ITConfig(TIM2, TIM_IT_Update, ENABLE);
  80016de:	2201      	movs	r2, #1
  80016e0:	2101      	movs	r1, #1
  80016e2:	f04f 4080 	mov.w	r0, #1073741824	; 0x40000000
@@ -2876,39 +2875,36 @@ void setUpLoopTimer(void)
  80016f2:	bf00      	nop
 
 080016f4 <TIM2_IRQHandler>:
-void TIM2_IRQHandler(void)
-{
+void TIM2_IRQHandler(void) {
  80016f4:	b580      	push	{r7, lr}
  80016f6:	af00      	add	r7, sp, #0
-  if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET)
+	if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET) {
  80016f8:	2101      	movs	r1, #1
  80016fa:	f04f 4080 	mov.w	r0, #1073741824	; 0x40000000
  80016fe:	f001 fab7 	bl	8002c70 <TIM_GetITStatus>
  8001702:	4603      	mov	r3, r0
  8001704:	2b00      	cmp	r3, #0
  8001706:	d007      	beq.n	8001718 <TIM2_IRQHandler+0x24>
-  {
-    TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
+		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
  8001708:	2101      	movs	r1, #1
  800170a:	f04f 4080 	mov.w	r0, #1073741824	; 0x40000000
  800170e:	f001 fad9 	bl	8002cc4 <TIM_ClearITPendingBit>
-    proceed=1;
+		proceed = 1;
  8001712:	4b02      	ldr	r3, [pc, #8]	; (800171c <TIM2_IRQHandler+0x28>)
  8001714:	2201      	movs	r2, #1
  8001716:	601a      	str	r2, [r3, #0]
 
-  }
+	}
 }
  8001718:	bf00      	nop
  800171a:	bd80      	pop	{r7, pc}
  800171c:	20000030 	.word	0x20000030
 
 08001720 <wait>:
-void wait(void)
-{
+void wait(void) {
  8001720:	b480      	push	{r7}
  8001722:	af00      	add	r7, sp, #0
-	while(proceed==0)//interrupt will set proceed to 1;
+	while (proceed == 0) //interrupt will set proceed to 1;
  8001724:	bf00      	nop
  8001726:	4b05      	ldr	r3, [pc, #20]	; (800173c <wait+0x1c>)
  8001728:	681b      	ldr	r3, [r3, #0]
@@ -2917,7 +2913,7 @@ void wait(void)
 	{
 
 	}
-	proceed=0;
+	proceed = 0;
  800172e:	4b03      	ldr	r3, [pc, #12]	; (800173c <wait+0x1c>)
  8001730:	2200      	movs	r2, #0
  8001732:	601a      	str	r2, [r3, #0]

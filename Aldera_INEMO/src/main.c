@@ -46,10 +46,9 @@ int main(void) {
 	USART_Cmd(USART2, ENABLE);
 	uint8_t status = 0;
 	while (1) {
-		controlMethod(&acc[0],&mag[0],&gyro[0],&temp);//get the data
+		controlMethod(&acc[0], &mag[0], &gyro[0], &temp); //get the data
 
 		//Toggle PA11 to test loop frequency
-		//testing git still
 		if (status == 0) {
 			GPIO_SetBits(GPIOA, GPIO_Pin_11);
 			status = 1;

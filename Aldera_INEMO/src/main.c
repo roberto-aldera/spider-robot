@@ -29,9 +29,9 @@ int main(void) {
 	//serialTerminal_Init();
 	setUpLoopTimer();
 	setUpGPIO();
-	//setUpEcompass();
-	//setUpGyro();
-	//setUpXbee();
+	setUpEcompass();
+	setUpGyro();
+	setUpXbee();
 	setUpPWM();
 
 	float acc[3];
@@ -46,7 +46,7 @@ int main(void) {
 	USART_Cmd(USART2, ENABLE);
 	uint8_t status = 0;
 	while (1) {
-		//controlMethod(&acc[0],&mag[0],&gyro[0],&temp);//get the data
+		controlMethod(&acc[0],&mag[0],&gyro[0],&temp);//get the data
 
 		//Toggle PA11 to test loop frequency
 

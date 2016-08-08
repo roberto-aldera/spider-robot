@@ -58,6 +58,10 @@ int main(void) {
 		}
 		wait();
 
+
+
+
+
 		/*recVal=0;
 		 recVal=USART_ReceiveData(USART2);
 		 if(recVal==0x7E&&USART_GetFlagStatus(USART2,USART_IT_RXNE))

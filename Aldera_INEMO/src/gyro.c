@@ -46,7 +46,7 @@ void initSPIgyro(void)
 	SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low;
 	SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge;
 	SPI_InitStructure.SPI_NSS = SPI_NSS_Soft;
-	SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_8;
+	SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_2;//TODO THIS CHANGED FROM 8 TO 2
 	SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB;
 	SPI_InitStructure.SPI_CRCPolynomial = 7;
 
@@ -80,7 +80,7 @@ void spiGyroRegisterSetup(void)
 	//11 01=760
 	//11 10=760
 	//11 11=760
-	(void)writeSPIgyro(0b00100000,0b01001111);//reg 0x20-ctrl_Reg1 (first 2 bits are "write" and "no increment"
+	(void)writeSPIgyro(0b00100000,0b11001111);//reg 0x20-ctrl_Reg1 (first 2 bits are "write" and "no increment"
 
 	//interrupt register- disable interrupts so set to 0x00
 	//(void)writeSPIgyro(0b00100010,0b00000000);//reg 0x22-ctrl_Reg3
@@ -89,7 +89,7 @@ void spiGyroRegisterSetup(void)
 	//BLE 0=data LSB at lower address
 	//FS 00=250dps 01=500dps 10=2000dps 11=2000dps
 	//SIM-SPI serial interface 0=4wire 1=3wire
-	(void)writeSPIgyro(0b00100011,0b10000000);//reg 0x23-ctrl_Reg4
+	(void)writeSPIgyro(0b00100011,0b10010000);//reg 0x23-ctrl_Reg4
 	//BOOT FIFO_EN - HPen INT1 INT1 Out Out
 	//BOOT 0=normal
 	//FIFO 0=disable
@@ -98,7 +98,7 @@ void spiGyroRegisterSetup(void)
 	//out out selection configuration default 0
 	(void)writeSPIgyro(0b00100100,0b00000000);//reg 0x24-ctrl_Reg5
 }
-uint16_t writeSPIgyro(uint8_t regAdr, uint8_t data)//also reads the register
+uint8_t writeSPIgyro(uint8_t regAdr, uint8_t data)//also reads the register
 {
 	uint8_t dummyVar;
 	int32_t val;
@@ -131,21 +131,20 @@ uint16_t writeSPIgyro(uint8_t regAdr, uint8_t data)//also reads the register
 
 	/* Pull CS line high */
 	GPIO_SetBits(GPIOB, GPIO_Pin_12);
-	return (u16)val;
+	return (u8)val;
 
 }
-void getGyro(float* out )
+void getGyro(u8* buffer ,float* out)
 {
 	//expressed as 2s compliment
 	u8 crtlB;
-	u16 buffer[6];
 	crtlB=(u8)writeSPIgyro(0b10100011,0x00);
-	u16 gyroXL=writeSPIgyro(0b10101000,0x00);
-	u16 gyroXH=writeSPIgyro(0b10101001,0x00);
-	u16 gyroYL=writeSPIgyro(0b10101010,0x00);
-	u16 gyroYH=writeSPIgyro(0b10101011,0x00);
-	u16 gyroZL=writeSPIgyro(0b10101100,0x00);
-	u16 gyroZH=writeSPIgyro(0b10101101,0x00);
+	u8 gyroXL=writeSPIgyro(0b10101000,0x00);
+	u8 gyroXH=writeSPIgyro(0b10101001,0x00);
+	u8 gyroYL=writeSPIgyro(0b10101010,0x00);
+	u8 gyroYH=writeSPIgyro(0b10101011,0x00);
+	u8 gyroZL=writeSPIgyro(0b10101100,0x00);
+	u8 gyroZH=writeSPIgyro(0b10101101,0x00);
 
 	buffer[1]=gyroXL;
 	buffer[0]=gyroXH;
@@ -193,11 +192,9 @@ void getGyro(float* out )
 	}
 }
 
-void getTemp(s8*temp)
+void getTemp(u8*temp)
 {
-	u8 t=0;
-	t=(u8)writeSPIgyro(0b10100110,0x00);
-	*temp=twosCompToDec8(t);
+	*temp=(u8)writeSPIgyro(0b10100110,0x00);
 }
 s16 twosCompToDec16(u16 val)//for 16 bit
 {

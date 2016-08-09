@@ -13,6 +13,6 @@
 #include "AccMag.h"
 #include "gyro.h"
 
-void controlMethod(float*acc,float*mag,float*gyro,s8*temp);
+void controlMethod(float*acc,float*mag,float*gyro,s8*temp,float*angles,float*PWMval);
 
 #endif /* CONTROL_H_ */

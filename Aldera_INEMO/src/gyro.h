@@ -1,7 +1,7 @@
 /*
  * gyro.h
  *
- *  Created on: Jun 6, 2014
+ *  Created on: Sep 13, 2014
  *      Author: Callen Fisher
  */
 
@@ -14,9 +14,9 @@
 void setUpGyro(void);
 void initSPIgyro(void);
 void spiGyroRegisterSetup(void);
-uint16_t writeSPIgyro(uint8_t regAdr, uint8_t data);
-void getGyro(float* data );
-void getTemp(s8*temp);
+uint8_t writeSPIgyro(uint8_t regAdr, uint8_t data);
+void getGyro(u8* data,float* out );
+void getTemp(u8*temp);
 s16 twosCompToDec16(u16 val);
 s8 twosCompToDec8(u8 val);
 

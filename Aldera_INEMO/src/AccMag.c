@@ -232,9 +232,9 @@ void eCompassWrite(u8 data, u8 address)
 	while(!I2C_CheckEvent(I2C2,I2C_EVENT_MASTER_BYTE_TRANSMITTED));
 	I2C_GenerateSTOP(I2C2,ENABLE);
 }
-void getAcc(float* out)
+void getAcc(u8* buffer,float* out)
 {
-	u8 buffer[6];
+	//u8 buffer[6];
 	u8 crtl4;
 
 	eCompassRead(0x23,1,&crtl4);
@@ -277,15 +277,14 @@ void getAcc(float* out)
 				s16 te=0;
 				t=(u16)(((u16)buffer[2*i+1]<<8)|(u16)buffer[2*i]);
 				te=twosCompToDec(t);
-				out[i]=(float)((te/(16*3.9))*9.81/1000.0);
+				out[i]=(float)(5*(te/(16*3.9))*9.81/1000.0);//
 			}
 			break;
 		}
 	}
 }
-void getMag(float* out)
+void getMag(u8* buffer,float* out)
 {
-	u8 buffer[6];
 	u8 crtlB;
 	int i=0;
 	eCompassRead2(0x01,1,&crtlB);

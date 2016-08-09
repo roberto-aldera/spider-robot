@@ -23,30 +23,70 @@
 
 uint32_t temp = 0;
 uint16_t recVal;
+
+float PWMval;
+
+//uint8_t acc8[12];
+//uint8_t mag8[12];
+//uint8_t gyro8[12];
+
+uint8_t temp8;
+uint8_t acc8[6];		//3 axes, each returning uint16_t, 3x2=6
+uint8_t mag8[6];
+uint8_t gyro8[6];
+uint8_t angles8[12];
+uint8_t PWMval8[4];
+float angles[3];
+
+void convertAnglesToBytes(void);
 void setUpPWM(void);
 
 int main(void) {
-	//serialTerminal_Init();
+	serialTerminal_Init();
 	setUpLoopTimer();
 	setUpGPIO();
 	setUpEcompass();
 	setUpGyro();
 	setUpXbee();
 	setUpPWM();
-
 	float acc[3];
 	float mag[3];
 	float gyro[3];
 	s8 temp;
 
-	uint8_t acc8[12];
-	uint8_t mag8[12];
-	uint8_t gyro8[12];
-	uint8_t temp8;
 	USART_Cmd(USART2, ENABLE);
 	uint8_t status = 0;
+	int p = 0;
+	/*
+	 for (int i = 0; i < 1000; i++){
+	 for (int j = 0; j < 1000; j++){
+	 //do nothing
+	 }
+	 }
+	 */
 	while (1) {
-		controlMethod(&acc[0], &mag[0], &gyro[0], &temp); //get the data
+
+		//get data
+		getAcc(acc8, acc); //send the floats as well
+		getGyro(gyro8, gyro);
+		//getMag(mag8, mag);	//mag is taking too long, loop drops from 100Hz to 85Hz
+		//getTemp(temp);
+
+		//perform control on data
+		controlMethod(acc, mag, gyro, &temp, angles, &PWMval);
+
+		convertAnglesToBytes();
+		for (p = 0; p < sizeof(TxBuff); p++) {
+			TxBuff[p] = 0;
+		}
+		DMA_Cmd(DMA1_Channel7, DISABLE);
+		DMA_SetCurrDataCounter(DMA1_Channel7, sizeof(TxBuff));
+		serialTerminal_packetize(gyro8, acc8, angles8, PWMval8, sizeof(gyro8),
+				sizeof(acc8), sizeof(angles8), sizeof(PWMval8));
+
+		DMA_Cmd(DMA1_Channel7, ENABLE);
+		USART_DMACmd(USART2, USART_DMAReq_Tx, ENABLE);
+		USART_Cmd(USART2, ENABLE);
 
 		//Toggle PA11 to test loop frequency
 		if (status == 0) {
@@ -57,10 +97,6 @@ int main(void) {
 			status = 0;
 		}
 		wait();
-
-
-
-
 
 		/*recVal=0;
 		 recVal=USART_ReceiveData(USART2);
@@ -126,6 +162,29 @@ int main(void) {
 
 		 wait();
 		 }*/
+	}
+}
+
+void convertAnglesToBytes() {
+	union {
+		char temp_char[12];
+		float temp_int_buffer[3];
+	} buffer_to_char_union1;
+	buffer_to_char_union1.temp_int_buffer[0] = angles[0];
+	buffer_to_char_union1.temp_int_buffer[1] = angles[1];
+	buffer_to_char_union1.temp_int_buffer[2] = angles[2];
+	int i;
+	for (i = 0; i < 12; i++) {
+		angles8[i] = buffer_to_char_union1.temp_char[i];
+	}
+
+	union {
+		char temp_char[4];
+		float temp_int_buffer;
+	} buffer_to_char_union2;
+	buffer_to_char_union2.temp_int_buffer = PWMval;
+	for (i = 0; i < 4; i++) {
+		PWMval8[i] = buffer_to_char_union2.temp_char[i];
 	}
 }
 ///////////////////////////////////////////////////////////////////////////

@@ -81,6 +81,7 @@ int main(void) {
 		}
 		DMA_Cmd(DMA1_Channel7, DISABLE);
 		DMA_SetCurrDataCounter(DMA1_Channel7, sizeof(TxBuff));
+		//Four payloads, gyro/acc/angles/PWMval
 		serialTerminal_packetize(gyro8, acc8, angles8, PWMval8, sizeof(gyro8),
 				sizeof(acc8), sizeof(angles8), sizeof(PWMval8));
 

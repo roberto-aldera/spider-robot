@@ -18,60 +18,28 @@ namespace WindowsFormsApplication1
     internal struct IMU_Data_Struct
     {
         public float PLACEHOLDER; // This needs to go here
+
+        //gyro8 is 6
         public UInt16 gyroX1;
         public UInt16 gyroY1;
         public UInt16 gyroZ1;
-        public UInt16 magX1;
-        public UInt16 magY1;
-        public UInt16 magZ1;
+
+        //acc8 is 6
         public UInt16 accX1;
         public UInt16 accY1;
         public UInt16 accZ1;
 
-         
-         public byte IMUtemp1;
-         public char adcTemp1;
-/*
-         public UInt16 gyroX2;
-         public UInt16 gyroY2;
-         public UInt16 gyroZ2;
-         public UInt16 magX2;
-         public UInt16 magY2;
-         public UInt16 magZ2;
-         public UInt16 accX2;
-         public UInt16 accY2;
-         public UInt16 accZ2;
+        //angles8 is 12
+        public UInt16 t1;
+        public UInt16 t2;
+        public UInt16 t3;
+        public UInt16 t4;
+        public UInt16 t5;
+        public UInt16 t6;
 
-         public byte IMUtemp2;
-         public char adcTemp2;
-
-         public UInt16 gyroX3;
-         public UInt16 gyroY3;
-         public UInt16 gyroZ3;
-         public UInt16 magX3;
-         public UInt16 magY3;
-         public UInt16 magZ3;
-         public UInt16 accX3;
-         public UInt16 accY3;
-         public UInt16 accZ3;
-
-         public byte IMUtemp3;
-         public char adcTemp3;
-
-         public UInt16 gyroX4;
-         public UInt16 gyroY4;
-         public UInt16 gyroZ4;
-         public UInt16 magX4;
-         public UInt16 magY4;
-         public UInt16 magZ4;
-         public UInt16 accX4;
-         public UInt16 accY4;
-         public UInt16 accZ4;
-
-         public byte IMUtemp4;
-         public char adcTemp4;
-   */ 
-         public byte success;
+        //PWMval8 is 4
+        public UInt16 t7;
+        public UInt16 t8;
     
     };
 
@@ -80,7 +48,7 @@ namespace WindowsFormsApplication1
         //************************************* VARIABLE DECLARATIONS *************************************
         HDLC txDataFrame;
         HDLC rxDataFrame;
-        int baudR = 230400;         // Baud rate
+        int baudR = 57600;         // Baud rate
         string RXString;
         string pc_logfile_name = "";
         bool pc_logfile_open = false;
@@ -100,6 +68,10 @@ namespace WindowsFormsApplication1
             txDataFrame = new HDLC();
             rxDataFrame = new HDLC();
             InitializeComponent();
+
+            textBoxDebug.AppendText("Application started. \n");
+
+
 
             // Add the KEYDOWN event handler to handle pressed keys
             KeyDown += new KeyEventHandler(Form1_KeyDown);
@@ -160,12 +132,17 @@ namespace WindowsFormsApplication1
 
                     // Open the Serial Port
                     serialPort1.Open();
+                    textBoxDebug.AppendText("Port was opened. \n");
+
 
                     // Change the text
                     openButton.Text = "Close Port";
                     serialComboBox.Enabled = false;
 
                     serialPort1.DataReceived += new SerialDataReceivedEventHandler(serialDataReceivedHandler);
+                    textBoxDebug.AppendText("SerialDataReceivedEventHandler called. \n");
+
+
                 }
 
                 else if (serialPort1.IsOpen)
@@ -252,6 +229,8 @@ namespace WindowsFormsApplication1
                     // Enable the logging
                     if (checkBoxLogging.Checked == true)
                     {
+                        textBoxDebug.AppendText("Logging enabled. \n");
+
                         // Logfile filename is: DIMA_'current date'_'current time'.txt
                         pc_logfile_name = "/Users/rober/Desktop/logdata/" + getFormattedDateTime() + ".dat";
 
@@ -343,48 +322,48 @@ namespace WindowsFormsApplication1
                 String accX1 = (twosComp(IMU_data.accX1)*accScale).ToString();
                 String accY1 = (twosComp(IMU_data.accY1)*accScale).ToString();
                 String accZ1 = (twosComp(IMU_data.accZ1)*accScale).ToString();
-                String magX1 = (twosComp(IMU_data.magX1)*magScale).ToString();
-                String magY1 = (twosComp(IMU_data.magY1)*magScale).ToString();
-                String magZ1 = (twosComp(IMU_data.magZ1)*magScale2).ToString();
-                String IMUTemp1 = (twosCompTemp(IMU_data.IMUtemp1)*tempScale).ToString();
-                String ADCtemp1 = IMU_data.adcTemp1.ToString();
-/*
-                String gyroX2 = (twosComp(IMU_data.gyroX2)*gyroScale).ToString();
-                String gyroY2 = (twosComp(IMU_data.gyroY2)*gyroScale).ToString();
-                String gyroZ2 = (twosComp(IMU_data.gyroZ2)*gyroScale).ToString();
-                String accX2 = (twosComp(IMU_data.accX2)*accScale).ToString();
-                String accY2 = (twosComp(IMU_data.accY2)*accScale).ToString();
-                String accZ2 = (twosComp(IMU_data.accZ2)*accScale).ToString();
-                String magX2 = (twosComp(IMU_data.magX2)*magScale).ToString();
-                String magY2 = (twosComp(IMU_data.magY2)*magScale).ToString();
-                String magZ2 = (twosComp(IMU_data.magZ2)*magScale2).ToString();
-                String IMUTemp2 = (twosCompTemp(IMU_data.IMUtemp2)*tempScale).ToString();//TODO 
-                String ADCtemp2 = IMU_data.adcTemp2.ToString();
+                String magX1 = "1";//(twosComp(IMU_data.magX1)*magScale).ToString();
+                String magY1 = "1";//(twosComp(IMU_data.magY1)*magScale).ToString();
+                String magZ1 = "1";//(twosComp(IMU_data.magZ1)*magScale2).ToString();
+                String IMUTemp1 = "1";//(twosCompTemp(IMU_data.IMUtemp1)*tempScale).ToString();
+                String ADCtemp1 = "1";//IMU_data.adcTemp1.ToString();
 
-                String gyroX3 = (twosComp(IMU_data.gyroX3)*gyroScale).ToString();
-                String gyroY3 = (twosComp(IMU_data.gyroY3)*gyroScale).ToString();
-                String gyroZ3 = (twosComp(IMU_data.gyroZ3)*gyroScale).ToString();
-                String accX3 = (twosComp(IMU_data.accX3)*accScale).ToString();
-                String accY3 = (twosComp(IMU_data.accY3)*accScale).ToString();
-                String accZ3 = (twosComp(IMU_data.accZ3)*accScale).ToString();
-                String magX3 = (twosComp(IMU_data.magX3)*magScale).ToString();
-                String magY3 = (twosComp(IMU_data.magY3)*magScale).ToString();
-                String magZ3 = (twosComp(IMU_data.magZ3)*magScale2).ToString();
-                String IMUTemp3 = (twosCompTemp(IMU_data.IMUtemp3)*tempScale).ToString();
-                String ADCtemp3 = IMU_data.adcTemp3.ToString();
+                String gyroX2 = "1";//(twosComp(IMU_data.gyroX2)*gyroScale).ToString();
+                String gyroY2 = "1";//(twosComp(IMU_data.gyroY2)*gyroScale).ToString();
+                String gyroZ2 = "1";//(twosComp(IMU_data.gyroZ2)*gyroScale).ToString();
+                String accX2 = "1";//(twosComp(IMU_data.accX2)*accScale).ToString();
+                String accY2 = "1";//(twosComp(IMU_data.accY2)*accScale).ToString();
+                String accZ2 = "1";//(twosComp(IMU_data.accZ2)*accScale).ToString();
+                String magX2 = "1";//(twosComp(IMU_data.magX2)*magScale).ToString();
+                String magY2 = "1";//(twosComp(IMU_data.magY2)*magScale).ToString();
+                String magZ2 = "1";//(twosComp(IMU_data.magZ2)*magScale2).ToString();
+                String IMUTemp2 = "1";//(twosCompTemp(IMU_data.IMUtemp2)*tempScale).ToString();//TODO 
+                String ADCtemp2 = "1";//IMU_data.adcTemp2.ToString();
 
-                String gyroX4 = (twosComp(IMU_data.gyroX4)*gyroScale).ToString();
-                String gyroY4 = (twosComp(IMU_data.gyroY4)*gyroScale).ToString();
-                String gyroZ4 = (twosComp(IMU_data.gyroZ4)*gyroScale).ToString();
-                String accX4 = (twosComp(IMU_data.accX4)*accScale).ToString();
-                String accY4 = (twosComp(IMU_data.accY4)*accScale).ToString();
-                String accZ4 = (twosComp(IMU_data.accZ4)*accScale).ToString();
-                String magX4 = (twosComp(IMU_data.magX4)*magScale).ToString();
-                String magY4 = (twosComp(IMU_data.magY4)*magScale).ToString();
-                String magZ4 = (twosComp(IMU_data.magZ4)*magScale2).ToString();
-                String IMUTemp4 = (twosCompTemp(IMU_data.IMUtemp4)*tempScale).ToString();
-                String ADCtemp4 = IMU_data.adcTemp4.ToString();
-                */
+                String gyroX3 = "1";//(twosComp(IMU_data.gyroX3)*gyroScale).ToString();
+                String gyroY3 = "1";//(twosComp(IMU_data.gyroY3)*gyroScale).ToString();
+                String gyroZ3 = "1";//(twosComp(IMU_data.gyroZ3)*gyroScale).ToString();
+                String accX3 = "1";//(twosComp(IMU_data.accX3)*accScale).ToString();
+                String accY3 = "1";//(twosComp(IMU_data.accY3)*accScale).ToString();
+                String accZ3 = "1";//(twosComp(IMU_data.accZ3)*accScale).ToString();
+                String magX3 = "1";//(twosComp(IMU_data.magX3)*magScale).ToString();
+                String magY3 = "1";//(twosComp(IMU_data.magY3)*magScale).ToString();
+                String magZ3 = "1";//(twosComp(IMU_data.magZ3)*magScale2).ToString();
+                String IMUTemp3 = "1";//(twosCompTemp(IMU_data.IMUtemp3)*tempScale).ToString();
+                String ADCtemp3 = "1";//IMU_data.adcTemp3.ToString();
+
+                String gyroX4 = "1";//(twosComp(IMU_data.gyroX4)*gyroScale).ToString();
+                String gyroY4 = "1";//(twosComp(IMU_data.gyroY4)*gyroScale).ToString();
+                String gyroZ4 = "1";//(twosComp(IMU_data.gyroZ4)*gyroScale).ToString();
+                String accX4 = "1";//(twosComp(IMU_data.accX4)*accScale).ToString();
+                String accY4 = "1";//(twosComp(IMU_data.accY4)*accScale).ToString();
+                String accZ4 = "1";//(twosComp(IMU_data.accZ4)*accScale).ToString();
+                String magX4 = "1";//(twosComp(IMU_data.magX4)*magScale).ToString();
+                String magY4 = "1";//(twosComp(IMU_data.magY4)*magScale).ToString();
+                String magZ4 = "1";//(twosComp(IMU_data.magZ4)*magScale2).ToString();
+                String IMUTemp4 = "1";// (twosCompTemp(IMU_data.IMUtemp4)*tempScale).ToString();
+                String ADCtemp4 = "1";//IMU_data.adcTemp4.ToString();
+
                 // Update the information in the GUI
                 labelGyroXVal.Text = gyroX1;
                 labelGyroYVal.Text = gyroY1;
@@ -397,7 +376,7 @@ namespace WindowsFormsApplication1
                 labelMagZVal.Text = magZ1;
                 labelIMUTempVal.Text = IMUTemp1;
                 ADCtempLABEL1.Text = ADCtemp1;
-/*
+
                 labelGyroXVal2.Text = gyroX2;
                 labelGyroYVal2.Text = gyroY2;
                 labelGyroZVal2.Text = gyroZ2;
@@ -433,13 +412,13 @@ namespace WindowsFormsApplication1
                 labelMagZVal4.Text = magZ4;
                 labelIMUTempVal4.Text = IMUTemp4;
                 ADCtempLABEL4.Text = ADCtemp4;
-*/
+
                 // Update CRC and ESC CHAR counters
                 labelCRCFailsVal.Text = rxDataFrame.getNumberOfCRCFails().ToString();
                 labelEscCharFailsVal.Text = rxDataFrame.getNumberOfescapeCharFails().ToString();
 
 
-                successByteLabel.Text = IMU_data.success.ToString();
+                //successByteLabel.Text = IMU_data.success.ToString();
                 //// Construct a string to be printed to the logfile
                 //StringBuilder logString = new StringBuilder(1000);
                 //logString.Append(gyroX1 + ";");

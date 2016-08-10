@@ -128,44 +128,43 @@ void serialTerminal_packetize(uint8_t* payload_to_packS1,uint8_t* payload_to_pac
   t[2]=buffer_to_char_union2.temp_char[0];
   t[3]=buffer_to_char_union2.temp_char[1];
   //calculate CRC
-  crcCalculated = (uint16_t) crcCalc(t, 0,a);////////////////////COULD BE ERROR HERE
+  crcCalculated = (uint16_t) crcCalc(t, 0, a);//(uint16_t) crcCalc(pkt_to_tx.data, 4, packet_data_pointer-4);////////////////////COULD BE ERROR HERE
 
   //put CRC
-  for (raw_data_pointer = 0; raw_data_pointer < 2; raw_data_pointer++, packet_data_pointer++)
-  {
-    char_to_pack = (uint8_t) ((crcCalculated >> 8 * (1 - raw_data_pointer)) & 0x00FF);
-    if (char_to_pack == 0x7E)
-    {
-      pkt_to_tx.data[packet_data_pointer++] = 0x7D;
-      pkt_to_tx.data[packet_data_pointer] = 0x5E;
-    }
-    else if (char_to_pack == 0x7D)
-    {
-      pkt_to_tx.data[packet_data_pointer++] = 0x7D;
-      pkt_to_tx.data[packet_data_pointer] = 0x5D;
-    }
-    else
-    {
-      pkt_to_tx.data[packet_data_pointer] = char_to_pack;
-    }
-  }
+   for (raw_data_pointer = 0; raw_data_pointer < 2; raw_data_pointer++, packet_data_pointer++)
+   {
+     char_to_pack = (uint8_t) ((crcCalculated >> 8 * (1 - raw_data_pointer)) & 0x00FF);
+     if (char_to_pack == 0x7E)
+     {
+       pkt_to_tx.data[packet_data_pointer++] = 0x7D;
+       pkt_to_tx.data[packet_data_pointer] = 0x5E;
+     }
+     else if (char_to_pack == 0x7D)
+     {
+       pkt_to_tx.data[packet_data_pointer++] = 0x7D;
+       pkt_to_tx.data[packet_data_pointer] = 0x5D;
+     }
+     else
+     {
+       pkt_to_tx.data[packet_data_pointer] = char_to_pack;
+     }
+   }
 
-  //set pkt length
-  pkt_to_tx.bytes_to_tx = packet_data_pointer+2;//add 2 for the two 7E's
+   //set pkt length
+    pkt_to_tx.bytes_to_tx = packet_data_pointer+2;
+    //convert this to the TX buffer array
+    TxBuff[0]=0x7E;//start character
 
-  //add 7E
-  TxBuff[0]=0x7E;//start character
-  //add type
+    //add the data (has the CRC,length and opcode in it)
+    int i;
+    for(i=1;i<pkt_to_tx.bytes_to_tx-1;i++)
+    {
+    	TxBuff[i]=pkt_to_tx.data[i-1];
+    }
+    //add the terminating character
+    TxBuff[pkt_to_tx.bytes_to_tx-1]=0x7E;
+    Tx_chars=pkt_to_tx.bytes_to_tx;
 
-  int i;
-  for(i=1;i<pkt_to_tx.bytes_to_tx-1;i++)
-  {
-	  TxBuff[i]=pkt_to_tx.data[i-1];
-  }
-  //add 7E
-  TxBuff[pkt_to_tx.bytes_to_tx-1]=0x7E;
-  //set number of characters to tx
-  Tx_chars=pkt_to_tx.bytes_to_tx;
   int p=0;
 
   for(p=0;p<sizeof(t);p++)

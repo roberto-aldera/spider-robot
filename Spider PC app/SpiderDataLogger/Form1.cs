@@ -55,7 +55,7 @@ namespace WindowsFormsApplication1
         bool log_data_checked_old = false;
 
         int count = 0;
-        int ValUpdate = 60; 
+        int ValUpdate = 3; 
 
         Stopwatch sw = new Stopwatch();
         //StreamWriter log; // For the logfile
@@ -176,6 +176,7 @@ namespace WindowsFormsApplication1
                 {
                     int j = 0;
                     byte[] Data = rxDataFrame.ProcessRxByte((byte)serialPort1.ReadByte(), originalFrame);
+                    //Data = originalFrame; //quick 'fix'
                     int P = 0;
                     if (Data != null)
                     {
@@ -192,7 +193,7 @@ namespace WindowsFormsApplication1
                         if (count == ValUpdate)
                         {
                             UInt16 command = System.BitConverter.ToUInt16(Data, 0);
-                            if (command == 0x0101)
+                            if (command == 0x0101)      //this is opcode
                             {
                                 IMU_data = ByteCaster.GetStructure<IMU_Data_Struct>(Data);
                                 this.Invoke(new EventHandler(updateGUI_Information));
@@ -302,6 +303,7 @@ namespace WindowsFormsApplication1
                 MessageBox.Show("program crashed - please restart");
             }
         }
+
         // Update telemetry data in GUI as well as write the data to the logfile
         private void updateGUI_Information(object sender, EventArgs e)
         {

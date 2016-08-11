@@ -31,7 +31,7 @@ uint8_t TxBuff[TX_BUFFER_SIZE];
 uint16_t lengthS1;
 //uint8_t CommsTask_TxBuffer[TX_BUFFER_SIZE];
 //uint8_t CommsTask_TxBuffer_data[TX_BUFFER_SIZE];
-uint8_t t[TX_BUFFER_SIZE];
+//uint8_t t[TX_BUFFER_SIZE];
 
 void serialTerminal_Init();
 //void serialTerminal_packetize(uint8_t* payload_to_pack, uint16_t length_of_payload);

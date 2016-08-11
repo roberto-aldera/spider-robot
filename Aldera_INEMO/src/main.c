@@ -36,6 +36,10 @@ uint8_t mag8[6];
 uint8_t gyro8[6];
 uint8_t angles8[12];
 uint8_t PWMval8[4];
+uint8_t a8[] = { 65, 66, 67, 68, 69, 70 };			//debugging
+uint8_t b8[] = { 106, 107, 108, 109, 110, 111 };	//debugging
+uint8_t c8[] = { 74, 75, 76, 77, 78, 79 };			//debugging
+uint8_t d8[] = { 97, 98, 99, 100, 101, 102 };		//debugging
 float angles[3];
 
 void convertAnglesToBytes(void);
@@ -84,10 +88,18 @@ int main(void) {
 		//Four payloads, gyro/acc/angles/PWMval
 		serialTerminal_packetize(gyro8, acc8, angles8, PWMval8, sizeof(gyro8),
 				sizeof(acc8), sizeof(angles8), sizeof(PWMval8));
+		//serialTerminal_packetize(a8, b8, c8, d8, sizeof(a8), sizeof(b8),
+		//	sizeof(c8), sizeof(d8));
 
 		DMA_Cmd(DMA1_Channel7, ENABLE);
 		USART_DMACmd(USART2, USART_DMAReq_Tx, ENABLE);
 		USART_Cmd(USART2, ENABLE);
+
+		for (int i = 0; i < 1000; i++) {
+			for (int j = 0; j < 1000; j++) {
+				//do nothing, give Xbees a chance to send packet.
+			}
+		}
 
 		//Toggle PA11 to test loop frequency
 		if (status == 0) {

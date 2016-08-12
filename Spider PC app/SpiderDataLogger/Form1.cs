@@ -29,17 +29,19 @@ namespace WindowsFormsApplication1
         public UInt16 accY1;
         public UInt16 accZ1;
 
-        //angles8 is 12
-        public UInt16 t1;
-        public UInt16 t2;
-        public UInt16 t3;
-        public UInt16 t4;
-        public UInt16 t5;
-        public UInt16 t6;
+        //angles8 is 12 so then
+        //angles floats, 3 of them
+        public float t1;
+        public float t2;
+        public float t3;
+
+        public UInt16 IMUtemp1;     //temperature is 2 bytes
+        public float PWMpercent;       //PWM float
+
 
         //PWMval8 is 4
-        public UInt16 t7;
-        public UInt16 t8;
+        //public UInt16 t7;
+        //public UInt16 t8;
     
     /*  For debugging purposes
         //a8 is 6
@@ -92,6 +94,7 @@ namespace WindowsFormsApplication1
             InitializeComponent();
 
             textBoxDebug.AppendText("Application started. \n");
+
 
 
 
@@ -338,7 +341,7 @@ namespace WindowsFormsApplication1
                 float magScale = 0.0043F;
                 float magScale2 = 0.0049F;
                 float gyroScale = 0.07F;
-		float tempScale=1;
+		        float tempScale=1;
 
                 String gyroX1 = (twosComp(IMU_data.gyroX1)*gyroScale).ToString();
                 String gyroY1 = (twosComp(IMU_data.gyroY1)*gyroScale).ToString();
@@ -346,13 +349,13 @@ namespace WindowsFormsApplication1
                 String accX1 = (twosComp(IMU_data.accX1)*accScale).ToString();
                 String accY1 = (twosComp(IMU_data.accY1)*accScale).ToString();
                 String accZ1 = (twosComp(IMU_data.accZ1)*accScale).ToString();
-                String magX1 = "1";//(twosComp(IMU_data.magX1)*magScale).ToString();
-                String magY1 = "1";//(twosComp(IMU_data.magY1)*magScale).ToString();
-                String magZ1 = "1";//(twosComp(IMU_data.magZ1)*magScale2).ToString();
-                String IMUTemp1 = "1";//(twosCompTemp(IMU_data.IMUtemp1)*tempScale).ToString();
-                String ADCtemp1 = "1";//IMU_data.adcTemp1.ToString();
+                String t1 = IMU_data.t1.ToString();
+                String t2 = (IMU_data.t2).ToString();
+                String t3 = (IMU_data.t3).ToString();
+                String IMUTemp1 = (twosCompTemp(IMU_data.IMUtemp1)*tempScale).ToString();
+                String ADCtemp1 = "N/A";//IMU_data.adcTemp1.ToString();
 
-                String gyroX2 = "1";//(twosComp(IMU_data.gyroX2)*gyroScale).ToString();
+                String PWMpercent = (IMU_data.PWMpercent).ToString();
                 String gyroY2 = "1";//(twosComp(IMU_data.gyroY2)*gyroScale).ToString();
                 String gyroZ2 = "1";//(twosComp(IMU_data.gyroZ2)*gyroScale).ToString();
                 String accX2 = "1";//(twosComp(IMU_data.accX2)*accScale).ToString();
@@ -364,29 +367,6 @@ namespace WindowsFormsApplication1
                 String IMUTemp2 = "1";//(twosCompTemp(IMU_data.IMUtemp2)*tempScale).ToString();//TODO 
                 String ADCtemp2 = "1";//IMU_data.adcTemp2.ToString();
 
-                String gyroX3 = "1";//(twosComp(IMU_data.gyroX3)*gyroScale).ToString();
-                String gyroY3 = "1";//(twosComp(IMU_data.gyroY3)*gyroScale).ToString();
-                String gyroZ3 = "1";//(twosComp(IMU_data.gyroZ3)*gyroScale).ToString();
-                String accX3 = "1";//(twosComp(IMU_data.accX3)*accScale).ToString();
-                String accY3 = "1";//(twosComp(IMU_data.accY3)*accScale).ToString();
-                String accZ3 = "1";//(twosComp(IMU_data.accZ3)*accScale).ToString();
-                String magX3 = "1";//(twosComp(IMU_data.magX3)*magScale).ToString();
-                String magY3 = "1";//(twosComp(IMU_data.magY3)*magScale).ToString();
-                String magZ3 = "1";//(twosComp(IMU_data.magZ3)*magScale2).ToString();
-                String IMUTemp3 = "1";//(twosCompTemp(IMU_data.IMUtemp3)*tempScale).ToString();
-                String ADCtemp3 = "1";//IMU_data.adcTemp3.ToString();
-
-                String gyroX4 = "1";//(twosComp(IMU_data.gyroX4)*gyroScale).ToString();
-                String gyroY4 = "1";//(twosComp(IMU_data.gyroY4)*gyroScale).ToString();
-                String gyroZ4 = "1";//(twosComp(IMU_data.gyroZ4)*gyroScale).ToString();
-                String accX4 = "1";//(twosComp(IMU_data.accX4)*accScale).ToString();
-                String accY4 = "1";//(twosComp(IMU_data.accY4)*accScale).ToString();
-                String accZ4 = "1";//(twosComp(IMU_data.accZ4)*accScale).ToString();
-                String magX4 = "1";//(twosComp(IMU_data.magX4)*magScale).ToString();
-                String magY4 = "1";//(twosComp(IMU_data.magY4)*magScale).ToString();
-                String magZ4 = "1";//(twosComp(IMU_data.magZ4)*magScale2).ToString();
-                String IMUTemp4 = "1";// (twosCompTemp(IMU_data.IMUtemp4)*tempScale).ToString();
-                String ADCtemp4 = "1";//IMU_data.adcTemp4.ToString();
 
                 // Update the information in the GUI
                 labelGyroXVal.Text = gyroX1;
@@ -395,15 +375,15 @@ namespace WindowsFormsApplication1
                 labelAccXVal.Text = accX1;
                 labelAccYVal.Text = accY1;
                 labelAccZVal.Text = accZ1;
-                labelMagXVal.Text = magX1;
-                labelMagYVal.Text = magY1;
-                labelMagZVal.Text = magZ1;
+                labelt1Val.Text = t1;
+                labelt2Val.Text = t2;
+                labelt3Val.Text = t3;
                 labelIMUTempVal.Text = IMUTemp1;
                 ADCtempLABEL1.Text = ADCtemp1;
 
-                labelGyroXVal2.Text = gyroX2;
-                labelGyroYVal2.Text = gyroY2;
-                labelGyroZVal2.Text = gyroZ2;
+                //unused extra text stuff
+                labelPWMVal1.Text = PWMpercent;
+
                 labelAccXVal2.Text = accX2;
                 labelAccYVal2.Text = accY2;
                 labelAccZVal2.Text = accZ2;
@@ -412,30 +392,6 @@ namespace WindowsFormsApplication1
                 labelMagZVal2.Text = magZ2;
                 labelIMUTempVal2.Text = IMUTemp2;
                 ADCtempLABEL2.Text = ADCtemp2;
-
-                labelGyroXVal3.Text = gyroX3;
-                labelGyroYVal3.Text = gyroY3;
-                labelGyroZVal3.Text = gyroZ3;
-                labelAccXVal3.Text = accX3;
-                labelAccYVal3.Text = accY3;
-                labelAccZVal3.Text = accZ3;
-                labelMagXVal3.Text = magX3;
-                labelMagYVal3.Text = magY3;
-                labelMagZVal3.Text = magZ3;
-                labelIMUTempVal3.Text = IMUTemp3;
-                ADCtempLABEL3.Text = ADCtemp3;
-
-                labelGyroXVal4.Text = gyroX4;
-                labelGyroYVal4.Text = gyroY4;
-                labelGyroZVal4.Text = gyroZ4;
-                labelAccXVal4.Text = accX4;
-                labelAccYVal4.Text = accY4;
-                labelAccZVal4.Text = accZ4;
-                labelMagXVal4.Text = magX4;
-                labelMagYVal4.Text = magY4;
-                labelMagZVal4.Text = magZ4;
-                labelIMUTempVal4.Text = IMUTemp4;
-                ADCtempLABEL4.Text = ADCtemp4;
 
                 // Update CRC and ESC CHAR counters
                 labelCRCFailsVal.Text = rxDataFrame.getNumberOfCRCFails().ToString();

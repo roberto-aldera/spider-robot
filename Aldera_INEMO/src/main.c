@@ -20,22 +20,19 @@
 #include "send.h"
 #include "serial_terminal.h"
 #include "CRC.h"
+#include "pwm.h"
 
 uint32_t temp = 0;
 uint16_t recVal;
 
 float PWMval;
 
-//uint8_t acc8[12];
-//uint8_t mag8[12];
-//uint8_t gyro8[12];
-
-uint8_t temp8;
+uint8_t temperature8[2]; //returns 2 bytes for temperature
 uint8_t acc8[6];		//3 axes, each returning uint16_t, 3x2=6
 uint8_t mag8[6];
 uint8_t gyro8[6];
 uint8_t angles8[12];
-uint8_t PWMval8[4];
+uint8_t MiscPayload8[6];	//temperature=2,PWM=4, etc.
 uint8_t a8[] = { 65, 66, 67, 68, 69, 70 };			//debugging
 uint8_t b8[] = { 106, 107, 108, 109, 110, 111 };	//debugging
 uint8_t c8[] = { 74, 75, 76, 77, 78, 79 };			//debugging
@@ -43,7 +40,6 @@ uint8_t d8[] = { 97, 98, 99, 100, 101, 102 };		//debugging
 float angles[3];
 
 void convertAnglesToBytes(void);
-void setUpPWM(void);
 
 int main(void) {
 	serialTerminal_Init();
@@ -74,7 +70,7 @@ int main(void) {
 		getAcc(acc8, acc); //send the floats as well
 		getGyro(gyro8, gyro);
 		//getMag(mag8, mag);	//mag is taking too long, loop drops from 100Hz to 85Hz
-		//getTemp(temp);
+		getTemp(temp);
 
 		//perform control on data
 		controlMethod(acc, mag, gyro, &temp, angles, &PWMval);
@@ -85,9 +81,10 @@ int main(void) {
 		}
 		DMA_Cmd(DMA1_Channel7, DISABLE);
 		DMA_SetCurrDataCounter(DMA1_Channel7, sizeof(TxBuff));
-		//Four payloads, gyro/acc/angles/PWMval
-		serialTerminal_packetize(gyro8, acc8, angles8, PWMval8, sizeof(gyro8),
-				sizeof(acc8), sizeof(angles8), sizeof(PWMval8));
+		//Four payloads, gyro/acc/angles/MiscPayload
+		serialTerminal_packetize(gyro8, acc8, angles8, MiscPayload8,
+				sizeof(gyro8), sizeof(acc8), sizeof(angles8),
+				sizeof(MiscPayload8));
 		//debugging purposes
 //		serialTerminal_packetize(a8, b8, c8, d8, sizeof(a8), sizeof(b8),
 //			sizeof(c8), sizeof(d8));
@@ -168,9 +165,9 @@ int main(void) {
 		 uint8_t temp_unsigned;
 		 }buffer_to_char_union4;
 		 buffer_to_char_union4.temp_signed=temp;
-		 temp8=buffer_to_char_union4.temp_unsigned;
+		 temperature8=buffer_to_char_union4.temp_unsigned;
 
-		 serialTerminal_packetize(gyro8,acc8,mag8,&temp8,12,12,12,1);
+		 serialTerminal_packetize(gyro8,acc8,mag8,&temperature8,12,12,12,1);
 		 USART_Cmd(USART2,ENABLE);
 		 S_DMA();//re init the DMA and then it will send
 
@@ -193,12 +190,14 @@ void convertAnglesToBytes() {
 	}
 
 	union {
-		char temp_char[4];
-		float temp_int_buffer;
+		char temp_char[6];
+		uint16_t temp_int_buffer;
+		float temp_int_buffer2;
 	} buffer_to_char_union2;
-	buffer_to_char_union2.temp_int_buffer = PWMval;
-	for (i = 0; i < 4; i++) {
-		PWMval8[i] = buffer_to_char_union2.temp_char[i];
+	buffer_to_char_union2.temp_int_buffer = temp;
+	buffer_to_char_union2.temp_int_buffer2 = PWMval;
+	for (i = 0; i < 6; i++) {
+		MiscPayload8[i] = buffer_to_char_union2.temp_char[i];
 	}
 }
 ///////////////////////////////////////////////////////////////////////////

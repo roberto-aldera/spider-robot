@@ -9,5 +9,6 @@
 #define PWM_H_
 
 #include "stm32f10x.h"
-
+void setUpPWM(void);
+void setPWM(float* valPercentage);
 #endif /* PWM_H_ */

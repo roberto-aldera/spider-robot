@@ -49,18 +49,23 @@
             this.labelGyroXVal = new System.Windows.Forms.Label();
             this.labelGyroYVal = new System.Windows.Forms.Label();
             this.labelGyroZVal = new System.Windows.Forms.Label();
-            this.labelMagXVal = new System.Windows.Forms.Label();
-            this.labelMagYVal = new System.Windows.Forms.Label();
-            this.labelMagZVal = new System.Windows.Forms.Label();
             this.labelAccXVal = new System.Windows.Forms.Label();
             this.labelAccYVal = new System.Windows.Forms.Label();
             this.labelAccZVal = new System.Windows.Forms.Label();
+            this.labelt1Val = new System.Windows.Forms.Label();
+            this.labelt2Val = new System.Windows.Forms.Label();
+            this.labelt3Val = new System.Windows.Forms.Label();
             this.labelIMUTempVal = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.ADCtempLABEL1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.ADCtempLABEL2 = new System.Windows.Forms.Label();
@@ -75,49 +80,27 @@
             this.labelMagZVal2 = new System.Windows.Forms.Label();
             this.labelMagYVal2 = new System.Windows.Forms.Label();
             this.labelMagXVal2 = new System.Windows.Forms.Label();
-            this.labelGyroZVal2 = new System.Windows.Forms.Label();
-            this.labelGyroYVal2 = new System.Windows.Forms.Label();
-            this.labelGyroXVal2 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.ADCtempLABEL3 = new System.Windows.Forms.Label();
+            this.labelPWMVal1 = new System.Windows.Forms.Label();
+            this.successByteLabel = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.labelIMUTempVal3 = new System.Windows.Forms.Label();
-            this.labelAccZVal3 = new System.Windows.Forms.Label();
-            this.labelAccYVal3 = new System.Windows.Forms.Label();
-            this.labelAccXVal3 = new System.Windows.Forms.Label();
-            this.labelMagZVal3 = new System.Windows.Forms.Label();
-            this.labelMagYVal3 = new System.Windows.Forms.Label();
-            this.labelMagXVal3 = new System.Windows.Forms.Label();
-            this.labelGyroZVal3 = new System.Windows.Forms.Label();
-            this.labelGyroYVal3 = new System.Windows.Forms.Label();
-            this.labelGyroXVal3 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.ADCtempLABEL4 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.labelIMUTempVal4 = new System.Windows.Forms.Label();
-            this.labelAccZVal4 = new System.Windows.Forms.Label();
-            this.labelAccYVal4 = new System.Windows.Forms.Label();
-            this.labelAccXVal4 = new System.Windows.Forms.Label();
-            this.labelMagZVal4 = new System.Windows.Forms.Label();
-            this.labelMagYVal4 = new System.Windows.Forms.Label();
-            this.labelMagXVal4 = new System.Windows.Forms.Label();
-            this.labelGyroZVal4 = new System.Windows.Forms.Label();
-            this.labelGyroYVal4 = new System.Windows.Forms.Label();
-            this.labelGyroXVal4 = new System.Windows.Forms.Label();
-            this.successByteLabel = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
             this.groupBoxWarnings.SuspendLayout();
             this.groupBoxCRC.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // serialComboBox
@@ -140,7 +123,7 @@
             "COM14",
             "COM15",
             "COM16"});
-            this.serialComboBox.Location = new System.Drawing.Point(10, 225);
+            this.serialComboBox.Location = new System.Drawing.Point(10, 259);
             this.serialComboBox.MaxDropDownItems = 16;
             this.serialComboBox.Name = "serialComboBox";
             this.serialComboBox.Size = new System.Drawing.Size(129, 21);
@@ -150,7 +133,7 @@
             // 
             this.labelSerialPort.AutoSize = true;
             this.labelSerialPort.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSerialPort.Location = new System.Drawing.Point(28, 200);
+            this.labelSerialPort.Location = new System.Drawing.Point(28, 234);
             this.labelSerialPort.Name = "labelSerialPort";
             this.labelSerialPort.Size = new System.Drawing.Size(88, 19);
             this.labelSerialPort.TabIndex = 1;
@@ -159,7 +142,7 @@
             // openButton
             // 
             this.openButton.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.openButton.Location = new System.Drawing.Point(10, 253);
+            this.openButton.Location = new System.Drawing.Point(10, 287);
             this.openButton.Name = "openButton";
             this.openButton.Size = new System.Drawing.Size(129, 39);
             this.openButton.TabIndex = 2;
@@ -175,7 +158,7 @@
             // 
             // textBoxDebug
             // 
-            this.textBoxDebug.Location = new System.Drawing.Point(10, 334);
+            this.textBoxDebug.Location = new System.Drawing.Point(10, 368);
             this.textBoxDebug.Multiline = true;
             this.textBoxDebug.Name = "textBoxDebug";
             this.textBoxDebug.ReadOnly = true;
@@ -187,7 +170,7 @@
             // 
             this.labelDebug.AutoSize = true;
             this.labelDebug.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDebug.Location = new System.Drawing.Point(10, 312);
+            this.labelDebug.Location = new System.Drawing.Point(10, 346);
             this.labelDebug.Name = "labelDebug";
             this.labelDebug.Size = new System.Drawing.Size(60, 19);
             this.labelDebug.TabIndex = 13;
@@ -195,7 +178,7 @@
             // 
             // buttonClearDebug
             // 
-            this.buttonClearDebug.Location = new System.Drawing.Point(291, 334);
+            this.buttonClearDebug.Location = new System.Drawing.Point(291, 368);
             this.buttonClearDebug.Name = "buttonClearDebug";
             this.buttonClearDebug.Size = new System.Drawing.Size(42, 22);
             this.buttonClearDebug.TabIndex = 21;
@@ -210,15 +193,15 @@
             this.textBoxWarnings.Name = "textBoxWarnings";
             this.textBoxWarnings.ReadOnly = true;
             this.textBoxWarnings.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxWarnings.Size = new System.Drawing.Size(262, 50);
+            this.textBoxWarnings.Size = new System.Drawing.Size(281, 50);
             this.textBoxWarnings.TabIndex = 32;
             // 
             // groupBoxWarnings
             // 
             this.groupBoxWarnings.Controls.Add(this.textBoxWarnings);
-            this.groupBoxWarnings.Location = new System.Drawing.Point(307, 228);
+            this.groupBoxWarnings.Location = new System.Drawing.Point(307, 262);
             this.groupBoxWarnings.Name = "groupBoxWarnings";
-            this.groupBoxWarnings.Size = new System.Drawing.Size(262, 66);
+            this.groupBoxWarnings.Size = new System.Drawing.Size(287, 66);
             this.groupBoxWarnings.TabIndex = 33;
             this.groupBoxWarnings.TabStop = false;
             this.groupBoxWarnings.Text = "Warnings/Errors";
@@ -230,7 +213,7 @@
             this.groupBoxCRC.Controls.Add(this.labelCRCFailsVal);
             this.groupBoxCRC.Controls.Add(this.labelEscCharFails);
             this.groupBoxCRC.Controls.Add(this.labelCRCFails);
-            this.groupBoxCRC.Location = new System.Drawing.Point(160, 200);
+            this.groupBoxCRC.Location = new System.Drawing.Point(160, 234);
             this.groupBoxCRC.Name = "groupBoxCRC";
             this.groupBoxCRC.Size = new System.Drawing.Size(121, 117);
             this.groupBoxCRC.TabIndex = 36;
@@ -286,7 +269,7 @@
             // checkBoxLogging
             // 
             this.checkBoxLogging.AutoSize = true;
-            this.checkBoxLogging.Location = new System.Drawing.Point(307, 203);
+            this.checkBoxLogging.Location = new System.Drawing.Point(307, 237);
             this.checkBoxLogging.Name = "checkBoxLogging";
             this.checkBoxLogging.Size = new System.Drawing.Size(40, 17);
             this.checkBoxLogging.TabIndex = 37;
@@ -321,64 +304,64 @@
             this.labelGyroZVal.TabIndex = 40;
             this.labelGyroZVal.Text = "0";
             // 
-            // labelMagXVal
-            // 
-            this.labelMagXVal.AutoSize = true;
-            this.labelMagXVal.Location = new System.Drawing.Point(88, 56);
-            this.labelMagXVal.Name = "labelMagXVal";
-            this.labelMagXVal.Size = new System.Drawing.Size(13, 13);
-            this.labelMagXVal.TabIndex = 41;
-            this.labelMagXVal.Text = "0";
-            // 
-            // labelMagYVal
-            // 
-            this.labelMagYVal.AutoSize = true;
-            this.labelMagYVal.Location = new System.Drawing.Point(88, 69);
-            this.labelMagYVal.Name = "labelMagYVal";
-            this.labelMagYVal.Size = new System.Drawing.Size(13, 13);
-            this.labelMagYVal.TabIndex = 42;
-            this.labelMagYVal.Text = "0";
-            // 
-            // labelMagZVal
-            // 
-            this.labelMagZVal.AutoSize = true;
-            this.labelMagZVal.Location = new System.Drawing.Point(88, 82);
-            this.labelMagZVal.Name = "labelMagZVal";
-            this.labelMagZVal.Size = new System.Drawing.Size(13, 13);
-            this.labelMagZVal.TabIndex = 43;
-            this.labelMagZVal.Text = "0";
-            // 
             // labelAccXVal
             // 
             this.labelAccXVal.AutoSize = true;
-            this.labelAccXVal.Location = new System.Drawing.Point(88, 95);
+            this.labelAccXVal.Location = new System.Drawing.Point(88, 62);
             this.labelAccXVal.Name = "labelAccXVal";
             this.labelAccXVal.Size = new System.Drawing.Size(13, 13);
-            this.labelAccXVal.TabIndex = 44;
+            this.labelAccXVal.TabIndex = 41;
             this.labelAccXVal.Text = "0";
             // 
             // labelAccYVal
             // 
             this.labelAccYVal.AutoSize = true;
-            this.labelAccYVal.Location = new System.Drawing.Point(88, 108);
+            this.labelAccYVal.Location = new System.Drawing.Point(88, 75);
             this.labelAccYVal.Name = "labelAccYVal";
             this.labelAccYVal.Size = new System.Drawing.Size(13, 13);
-            this.labelAccYVal.TabIndex = 45;
+            this.labelAccYVal.TabIndex = 42;
             this.labelAccYVal.Text = "0";
             // 
             // labelAccZVal
             // 
             this.labelAccZVal.AutoSize = true;
-            this.labelAccZVal.Location = new System.Drawing.Point(88, 121);
+            this.labelAccZVal.Location = new System.Drawing.Point(88, 88);
             this.labelAccZVal.Name = "labelAccZVal";
             this.labelAccZVal.Size = new System.Drawing.Size(13, 13);
-            this.labelAccZVal.TabIndex = 46;
+            this.labelAccZVal.TabIndex = 43;
             this.labelAccZVal.Text = "0";
+            // 
+            // labelt1Val
+            // 
+            this.labelt1Val.AutoSize = true;
+            this.labelt1Val.Location = new System.Drawing.Point(88, 107);
+            this.labelt1Val.Name = "labelt1Val";
+            this.labelt1Val.Size = new System.Drawing.Size(13, 13);
+            this.labelt1Val.TabIndex = 44;
+            this.labelt1Val.Text = "0";
+            // 
+            // labelt2Val
+            // 
+            this.labelt2Val.AutoSize = true;
+            this.labelt2Val.Location = new System.Drawing.Point(88, 120);
+            this.labelt2Val.Name = "labelt2Val";
+            this.labelt2Val.Size = new System.Drawing.Size(13, 13);
+            this.labelt2Val.TabIndex = 45;
+            this.labelt2Val.Text = "0";
+            // 
+            // labelt3Val
+            // 
+            this.labelt3Val.AutoSize = true;
+            this.labelt3Val.Location = new System.Drawing.Point(88, 133);
+            this.labelt3Val.Name = "labelt3Val";
+            this.labelt3Val.Size = new System.Drawing.Size(13, 13);
+            this.labelt3Val.TabIndex = 46;
+            this.labelt3Val.Text = "0";
             // 
             // labelIMUTempVal
             // 
             this.labelIMUTempVal.AutoSize = true;
-            this.labelIMUTempVal.Location = new System.Drawing.Point(88, 134);
+            this.labelIMUTempVal.Location = new System.Drawing.Point(88, 152);
             this.labelIMUTempVal.Name = "labelIMUTempVal";
             this.labelIMUTempVal.Size = new System.Drawing.Size(13, 13);
             this.labelIMUTempVal.TabIndex = 47;
@@ -387,67 +370,126 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 17);
+            this.label1.Location = new System.Drawing.Point(11, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 13);
+            this.label1.Size = new System.Drawing.Size(36, 13);
             this.label1.TabIndex = 48;
-            this.label1.Text = "Gyro";
+            this.label1.Text = "GyroX";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 56);
+            this.label2.Location = new System.Drawing.Point(11, 62);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(28, 13);
+            this.label2.Size = new System.Drawing.Size(33, 13);
             this.label2.TabIndex = 49;
-            this.label2.Text = "Mag";
+            this.label2.Text = "AccX";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(28, 95);
+            this.label3.Location = new System.Drawing.Point(11, 107);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(26, 13);
+            this.label3.Size = new System.Drawing.Size(39, 13);
             this.label3.TabIndex = 50;
-            this.label3.Text = "Acc";
+            this.label3.Text = "Angles";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(28, 134);
+            this.label4.Location = new System.Drawing.Point(11, 152);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 13);
+            this.label4.Size = new System.Drawing.Size(53, 13);
             this.label4.TabIndex = 51;
-            this.label4.Text = "Temp";
+            this.label4.Text = "IMU temp";
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label24);
+            this.panel1.Controls.Add(this.label23);
+            this.panel1.Controls.Add(this.label22);
+            this.panel1.Controls.Add(this.label21);
+            this.panel1.Controls.Add(this.label20);
+            this.panel1.Controls.Add(this.label19);
+            this.panel1.Controls.Add(this.label18);
+            this.panel1.Controls.Add(this.label17);
+            this.panel1.Controls.Add(this.label16);
+            this.panel1.Controls.Add(this.label14);
+            this.panel1.Controls.Add(this.label13);
+            this.panel1.Controls.Add(this.label12);
+            this.panel1.Controls.Add(this.label11);
+            this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.ADCtempLABEL1);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.labelIMUTempVal);
+            this.panel1.Controls.Add(this.labelt3Val);
+            this.panel1.Controls.Add(this.labelt2Val);
+            this.panel1.Controls.Add(this.labelt1Val);
             this.panel1.Controls.Add(this.labelAccZVal);
             this.panel1.Controls.Add(this.labelAccYVal);
             this.panel1.Controls.Add(this.labelAccXVal);
-            this.panel1.Controls.Add(this.labelMagZVal);
-            this.panel1.Controls.Add(this.labelMagYVal);
-            this.panel1.Controls.Add(this.labelMagXVal);
             this.panel1.Controls.Add(this.labelGyroZVal);
             this.panel1.Controls.Add(this.labelGyroYVal);
             this.panel1.Controls.Add(this.labelGyroXVal);
-            this.panel1.Location = new System.Drawing.Point(14, 12);
+            this.panel1.Location = new System.Drawing.Point(264, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(121, 174);
+            this.panel1.Size = new System.Drawing.Size(206, 206);
             this.panel1.TabIndex = 52;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(11, 165);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(55, 13);
+            this.label14.TabIndex = 57;
+            this.label14.Text = "ADC temp";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(11, 75);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(33, 13);
+            this.label13.TabIndex = 56;
+            this.label13.Text = "AccY";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(11, 88);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(33, 13);
+            this.label12.TabIndex = 55;
+            this.label12.Text = "AccZ";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(11, 43);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(36, 13);
+            this.label11.TabIndex = 54;
+            this.label11.Text = "GyroZ";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(11, 30);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(36, 13);
+            this.label10.TabIndex = 53;
+            this.label10.Text = "GyroY";
             // 
             // ADCtempLABEL1
             // 
             this.ADCtempLABEL1.AutoSize = true;
-            this.ADCtempLABEL1.Location = new System.Drawing.Point(88, 147);
+            this.ADCtempLABEL1.Location = new System.Drawing.Point(88, 165);
             this.ADCtempLABEL1.Name = "ADCtempLABEL1";
             this.ADCtempLABEL1.Size = new System.Drawing.Size(13, 13);
             this.ADCtempLABEL1.TabIndex = 52;
@@ -457,6 +499,7 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.ADCtempLABEL2);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label6);
@@ -469,18 +512,16 @@
             this.panel2.Controls.Add(this.labelMagZVal2);
             this.panel2.Controls.Add(this.labelMagYVal2);
             this.panel2.Controls.Add(this.labelMagXVal2);
-            this.panel2.Controls.Add(this.labelGyroZVal2);
-            this.panel2.Controls.Add(this.labelGyroYVal2);
-            this.panel2.Controls.Add(this.labelGyroXVal2);
-            this.panel2.Location = new System.Drawing.Point(160, 12);
+            this.panel2.Controls.Add(this.labelPWMVal1);
+            this.panel2.Location = new System.Drawing.Point(495, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(121, 174);
+            this.panel2.Size = new System.Drawing.Size(160, 206);
             this.panel2.TabIndex = 53;
             // 
             // ADCtempLABEL2
             // 
             this.ADCtempLABEL2.AutoSize = true;
-            this.ADCtempLABEL2.Location = new System.Drawing.Point(88, 147);
+            this.ADCtempLABEL2.Location = new System.Drawing.Point(74, 147);
             this.ADCtempLABEL2.Name = "ADCtempLABEL2";
             this.ADCtempLABEL2.Size = new System.Drawing.Size(13, 13);
             this.ADCtempLABEL2.TabIndex = 52;
@@ -489,43 +530,43 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(28, 134);
+            this.label5.Location = new System.Drawing.Point(14, 134);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(34, 13);
+            this.label5.Size = new System.Drawing.Size(37, 13);
             this.label5.TabIndex = 51;
-            this.label5.Text = "Temp";
+            this.label5.Text = "Extra4";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(28, 95);
+            this.label6.Location = new System.Drawing.Point(14, 95);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(26, 13);
+            this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 50;
-            this.label6.Text = "Acc";
+            this.label6.Text = "Extra3";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(28, 56);
+            this.label7.Location = new System.Drawing.Point(14, 56);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(28, 13);
+            this.label7.Size = new System.Drawing.Size(37, 13);
             this.label7.TabIndex = 49;
-            this.label7.Text = "Mag";
+            this.label7.Text = "Extra2";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(28, 17);
+            this.label8.Location = new System.Drawing.Point(14, 17);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(29, 13);
+            this.label8.Size = new System.Drawing.Size(34, 13);
             this.label8.TabIndex = 48;
-            this.label8.Text = "Gyro";
+            this.label8.Text = "PWM";
             // 
             // labelIMUTempVal2
             // 
             this.labelIMUTempVal2.AutoSize = true;
-            this.labelIMUTempVal2.Location = new System.Drawing.Point(88, 134);
+            this.labelIMUTempVal2.Location = new System.Drawing.Point(74, 134);
             this.labelIMUTempVal2.Name = "labelIMUTempVal2";
             this.labelIMUTempVal2.Size = new System.Drawing.Size(13, 13);
             this.labelIMUTempVal2.TabIndex = 47;
@@ -534,7 +575,7 @@
             // labelAccZVal2
             // 
             this.labelAccZVal2.AutoSize = true;
-            this.labelAccZVal2.Location = new System.Drawing.Point(88, 121);
+            this.labelAccZVal2.Location = new System.Drawing.Point(74, 121);
             this.labelAccZVal2.Name = "labelAccZVal2";
             this.labelAccZVal2.Size = new System.Drawing.Size(13, 13);
             this.labelAccZVal2.TabIndex = 46;
@@ -543,7 +584,7 @@
             // labelAccYVal2
             // 
             this.labelAccYVal2.AutoSize = true;
-            this.labelAccYVal2.Location = new System.Drawing.Point(88, 108);
+            this.labelAccYVal2.Location = new System.Drawing.Point(74, 108);
             this.labelAccYVal2.Name = "labelAccYVal2";
             this.labelAccYVal2.Size = new System.Drawing.Size(13, 13);
             this.labelAccYVal2.TabIndex = 45;
@@ -552,7 +593,7 @@
             // labelAccXVal2
             // 
             this.labelAccXVal2.AutoSize = true;
-            this.labelAccXVal2.Location = new System.Drawing.Point(88, 95);
+            this.labelAccXVal2.Location = new System.Drawing.Point(74, 95);
             this.labelAccXVal2.Name = "labelAccXVal2";
             this.labelAccXVal2.Size = new System.Drawing.Size(13, 13);
             this.labelAccXVal2.TabIndex = 44;
@@ -561,7 +602,7 @@
             // labelMagZVal2
             // 
             this.labelMagZVal2.AutoSize = true;
-            this.labelMagZVal2.Location = new System.Drawing.Point(88, 82);
+            this.labelMagZVal2.Location = new System.Drawing.Point(74, 82);
             this.labelMagZVal2.Name = "labelMagZVal2";
             this.labelMagZVal2.Size = new System.Drawing.Size(13, 13);
             this.labelMagZVal2.TabIndex = 43;
@@ -570,7 +611,7 @@
             // labelMagYVal2
             // 
             this.labelMagYVal2.AutoSize = true;
-            this.labelMagYVal2.Location = new System.Drawing.Point(88, 69);
+            this.labelMagYVal2.Location = new System.Drawing.Point(74, 69);
             this.labelMagYVal2.Name = "labelMagYVal2";
             this.labelMagYVal2.Size = new System.Drawing.Size(13, 13);
             this.labelMagYVal2.TabIndex = 42;
@@ -579,361 +620,25 @@
             // labelMagXVal2
             // 
             this.labelMagXVal2.AutoSize = true;
-            this.labelMagXVal2.Location = new System.Drawing.Point(88, 56);
+            this.labelMagXVal2.Location = new System.Drawing.Point(74, 56);
             this.labelMagXVal2.Name = "labelMagXVal2";
             this.labelMagXVal2.Size = new System.Drawing.Size(13, 13);
             this.labelMagXVal2.TabIndex = 41;
             this.labelMagXVal2.Text = "0";
             // 
-            // labelGyroZVal2
-            // 
-            this.labelGyroZVal2.AutoSize = true;
-            this.labelGyroZVal2.Location = new System.Drawing.Point(88, 43);
-            this.labelGyroZVal2.Name = "labelGyroZVal2";
-            this.labelGyroZVal2.Size = new System.Drawing.Size(13, 13);
-            this.labelGyroZVal2.TabIndex = 40;
-            this.labelGyroZVal2.Text = "0";
-            // 
-            // labelGyroYVal2
-            // 
-            this.labelGyroYVal2.AutoSize = true;
-            this.labelGyroYVal2.Location = new System.Drawing.Point(88, 30);
-            this.labelGyroYVal2.Name = "labelGyroYVal2";
-            this.labelGyroYVal2.Size = new System.Drawing.Size(13, 13);
-            this.labelGyroYVal2.TabIndex = 39;
-            this.labelGyroYVal2.Text = "0";
-            // 
-            // labelGyroXVal2
-            // 
-            this.labelGyroXVal2.AutoSize = true;
-            this.labelGyroXVal2.Location = new System.Drawing.Point(88, 17);
-            this.labelGyroXVal2.Name = "labelGyroXVal2";
-            this.labelGyroXVal2.Size = new System.Drawing.Size(13, 13);
-            this.labelGyroXVal2.TabIndex = 38;
-            this.labelGyroXVal2.Text = "0";
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.ADCtempLABEL3);
-            this.panel3.Controls.Add(this.label19);
-            this.panel3.Controls.Add(this.label20);
-            this.panel3.Controls.Add(this.label21);
-            this.panel3.Controls.Add(this.label22);
-            this.panel3.Controls.Add(this.labelIMUTempVal3);
-            this.panel3.Controls.Add(this.labelAccZVal3);
-            this.panel3.Controls.Add(this.labelAccYVal3);
-            this.panel3.Controls.Add(this.labelAccXVal3);
-            this.panel3.Controls.Add(this.labelMagZVal3);
-            this.panel3.Controls.Add(this.labelMagYVal3);
-            this.panel3.Controls.Add(this.labelMagXVal3);
-            this.panel3.Controls.Add(this.labelGyroZVal3);
-            this.panel3.Controls.Add(this.labelGyroYVal3);
-            this.panel3.Controls.Add(this.labelGyroXVal3);
-            this.panel3.Location = new System.Drawing.Point(307, 12);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(121, 174);
-            this.panel3.TabIndex = 53;
-            // 
-            // ADCtempLABEL3
-            // 
-            this.ADCtempLABEL3.AutoSize = true;
-            this.ADCtempLABEL3.Location = new System.Drawing.Point(88, 147);
-            this.ADCtempLABEL3.Name = "ADCtempLABEL3";
-            this.ADCtempLABEL3.Size = new System.Drawing.Size(13, 13);
-            this.ADCtempLABEL3.TabIndex = 52;
-            this.ADCtempLABEL3.Text = "0";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(28, 134);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(34, 13);
-            this.label19.TabIndex = 51;
-            this.label19.Text = "Temp";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(28, 95);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(26, 13);
-            this.label20.TabIndex = 50;
-            this.label20.Text = "Acc";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(28, 56);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(28, 13);
-            this.label21.TabIndex = 49;
-            this.label21.Text = "Mag";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(28, 17);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(29, 13);
-            this.label22.TabIndex = 48;
-            this.label22.Text = "Gyro";
-            // 
-            // labelIMUTempVal3
-            // 
-            this.labelIMUTempVal3.AutoSize = true;
-            this.labelIMUTempVal3.Location = new System.Drawing.Point(88, 134);
-            this.labelIMUTempVal3.Name = "labelIMUTempVal3";
-            this.labelIMUTempVal3.Size = new System.Drawing.Size(13, 13);
-            this.labelIMUTempVal3.TabIndex = 47;
-            this.labelIMUTempVal3.Text = "0";
-            // 
-            // labelAccZVal3
-            // 
-            this.labelAccZVal3.AutoSize = true;
-            this.labelAccZVal3.Location = new System.Drawing.Point(88, 121);
-            this.labelAccZVal3.Name = "labelAccZVal3";
-            this.labelAccZVal3.Size = new System.Drawing.Size(13, 13);
-            this.labelAccZVal3.TabIndex = 46;
-            this.labelAccZVal3.Text = "0";
-            // 
-            // labelAccYVal3
-            // 
-            this.labelAccYVal3.AutoSize = true;
-            this.labelAccYVal3.Location = new System.Drawing.Point(88, 108);
-            this.labelAccYVal3.Name = "labelAccYVal3";
-            this.labelAccYVal3.Size = new System.Drawing.Size(13, 13);
-            this.labelAccYVal3.TabIndex = 45;
-            this.labelAccYVal3.Text = "0";
-            // 
-            // labelAccXVal3
-            // 
-            this.labelAccXVal3.AutoSize = true;
-            this.labelAccXVal3.Location = new System.Drawing.Point(88, 95);
-            this.labelAccXVal3.Name = "labelAccXVal3";
-            this.labelAccXVal3.Size = new System.Drawing.Size(13, 13);
-            this.labelAccXVal3.TabIndex = 44;
-            this.labelAccXVal3.Text = "0";
-            // 
-            // labelMagZVal3
-            // 
-            this.labelMagZVal3.AutoSize = true;
-            this.labelMagZVal3.Location = new System.Drawing.Point(88, 82);
-            this.labelMagZVal3.Name = "labelMagZVal3";
-            this.labelMagZVal3.Size = new System.Drawing.Size(13, 13);
-            this.labelMagZVal3.TabIndex = 43;
-            this.labelMagZVal3.Text = "0";
-            // 
-            // labelMagYVal3
-            // 
-            this.labelMagYVal3.AutoSize = true;
-            this.labelMagYVal3.Location = new System.Drawing.Point(88, 69);
-            this.labelMagYVal3.Name = "labelMagYVal3";
-            this.labelMagYVal3.Size = new System.Drawing.Size(13, 13);
-            this.labelMagYVal3.TabIndex = 42;
-            this.labelMagYVal3.Text = "0";
-            // 
-            // labelMagXVal3
-            // 
-            this.labelMagXVal3.AutoSize = true;
-            this.labelMagXVal3.Location = new System.Drawing.Point(88, 56);
-            this.labelMagXVal3.Name = "labelMagXVal3";
-            this.labelMagXVal3.Size = new System.Drawing.Size(13, 13);
-            this.labelMagXVal3.TabIndex = 41;
-            this.labelMagXVal3.Text = "0";
-            // 
-            // labelGyroZVal3
-            // 
-            this.labelGyroZVal3.AutoSize = true;
-            this.labelGyroZVal3.Location = new System.Drawing.Point(88, 43);
-            this.labelGyroZVal3.Name = "labelGyroZVal3";
-            this.labelGyroZVal3.Size = new System.Drawing.Size(13, 13);
-            this.labelGyroZVal3.TabIndex = 40;
-            this.labelGyroZVal3.Text = "0";
-            // 
-            // labelGyroYVal3
-            // 
-            this.labelGyroYVal3.AutoSize = true;
-            this.labelGyroYVal3.Location = new System.Drawing.Point(88, 30);
-            this.labelGyroYVal3.Name = "labelGyroYVal3";
-            this.labelGyroYVal3.Size = new System.Drawing.Size(13, 13);
-            this.labelGyroYVal3.TabIndex = 39;
-            this.labelGyroYVal3.Text = "0";
-            // 
-            // labelGyroXVal3
-            // 
-            this.labelGyroXVal3.AutoSize = true;
-            this.labelGyroXVal3.Location = new System.Drawing.Point(88, 17);
-            this.labelGyroXVal3.Name = "labelGyroXVal3";
-            this.labelGyroXVal3.Size = new System.Drawing.Size(13, 13);
-            this.labelGyroXVal3.TabIndex = 38;
-            this.labelGyroXVal3.Text = "0";
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.ADCtempLABEL4);
-            this.panel4.Controls.Add(this.label33);
-            this.panel4.Controls.Add(this.label34);
-            this.panel4.Controls.Add(this.label35);
-            this.panel4.Controls.Add(this.label36);
-            this.panel4.Controls.Add(this.labelIMUTempVal4);
-            this.panel4.Controls.Add(this.labelAccZVal4);
-            this.panel4.Controls.Add(this.labelAccYVal4);
-            this.panel4.Controls.Add(this.labelAccXVal4);
-            this.panel4.Controls.Add(this.labelMagZVal4);
-            this.panel4.Controls.Add(this.labelMagYVal4);
-            this.panel4.Controls.Add(this.labelMagXVal4);
-            this.panel4.Controls.Add(this.labelGyroZVal4);
-            this.panel4.Controls.Add(this.labelGyroYVal4);
-            this.panel4.Controls.Add(this.labelGyroXVal4);
-            this.panel4.Location = new System.Drawing.Point(448, 12);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(121, 174);
-            this.panel4.TabIndex = 53;
-            // 
-            // ADCtempLABEL4
-            // 
-            this.ADCtempLABEL4.AutoSize = true;
-            this.ADCtempLABEL4.Location = new System.Drawing.Point(88, 147);
-            this.ADCtempLABEL4.Name = "ADCtempLABEL4";
-            this.ADCtempLABEL4.Size = new System.Drawing.Size(13, 13);
-            this.ADCtempLABEL4.TabIndex = 53;
-            this.ADCtempLABEL4.Text = "0";
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(28, 134);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(34, 13);
-            this.label33.TabIndex = 51;
-            this.label33.Text = "Temp";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(28, 95);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(26, 13);
-            this.label34.TabIndex = 50;
-            this.label34.Text = "Acc";
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(28, 56);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(28, 13);
-            this.label35.TabIndex = 49;
-            this.label35.Text = "Mag";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(28, 17);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(29, 13);
-            this.label36.TabIndex = 48;
-            this.label36.Text = "Gyro";
-            // 
-            // labelIMUTempVal4
-            // 
-            this.labelIMUTempVal4.AutoSize = true;
-            this.labelIMUTempVal4.Location = new System.Drawing.Point(88, 134);
-            this.labelIMUTempVal4.Name = "labelIMUTempVal4";
-            this.labelIMUTempVal4.Size = new System.Drawing.Size(13, 13);
-            this.labelIMUTempVal4.TabIndex = 47;
-            this.labelIMUTempVal4.Text = "0";
-            // 
-            // labelAccZVal4
-            // 
-            this.labelAccZVal4.AutoSize = true;
-            this.labelAccZVal4.Location = new System.Drawing.Point(88, 121);
-            this.labelAccZVal4.Name = "labelAccZVal4";
-            this.labelAccZVal4.Size = new System.Drawing.Size(13, 13);
-            this.labelAccZVal4.TabIndex = 46;
-            this.labelAccZVal4.Text = "0";
-            // 
-            // labelAccYVal4
-            // 
-            this.labelAccYVal4.AutoSize = true;
-            this.labelAccYVal4.Location = new System.Drawing.Point(88, 108);
-            this.labelAccYVal4.Name = "labelAccYVal4";
-            this.labelAccYVal4.Size = new System.Drawing.Size(13, 13);
-            this.labelAccYVal4.TabIndex = 45;
-            this.labelAccYVal4.Text = "0";
-            // 
-            // labelAccXVal4
-            // 
-            this.labelAccXVal4.AutoSize = true;
-            this.labelAccXVal4.Location = new System.Drawing.Point(88, 95);
-            this.labelAccXVal4.Name = "labelAccXVal4";
-            this.labelAccXVal4.Size = new System.Drawing.Size(13, 13);
-            this.labelAccXVal4.TabIndex = 44;
-            this.labelAccXVal4.Text = "0";
-            // 
-            // labelMagZVal4
-            // 
-            this.labelMagZVal4.AutoSize = true;
-            this.labelMagZVal4.Location = new System.Drawing.Point(88, 82);
-            this.labelMagZVal4.Name = "labelMagZVal4";
-            this.labelMagZVal4.Size = new System.Drawing.Size(13, 13);
-            this.labelMagZVal4.TabIndex = 43;
-            this.labelMagZVal4.Text = "0";
-            // 
-            // labelMagYVal4
-            // 
-            this.labelMagYVal4.AutoSize = true;
-            this.labelMagYVal4.Location = new System.Drawing.Point(88, 69);
-            this.labelMagYVal4.Name = "labelMagYVal4";
-            this.labelMagYVal4.Size = new System.Drawing.Size(13, 13);
-            this.labelMagYVal4.TabIndex = 42;
-            this.labelMagYVal4.Text = "0";
-            // 
-            // labelMagXVal4
-            // 
-            this.labelMagXVal4.AutoSize = true;
-            this.labelMagXVal4.Location = new System.Drawing.Point(88, 56);
-            this.labelMagXVal4.Name = "labelMagXVal4";
-            this.labelMagXVal4.Size = new System.Drawing.Size(13, 13);
-            this.labelMagXVal4.TabIndex = 41;
-            this.labelMagXVal4.Text = "0";
-            // 
-            // labelGyroZVal4
-            // 
-            this.labelGyroZVal4.AutoSize = true;
-            this.labelGyroZVal4.Location = new System.Drawing.Point(88, 43);
-            this.labelGyroZVal4.Name = "labelGyroZVal4";
-            this.labelGyroZVal4.Size = new System.Drawing.Size(13, 13);
-            this.labelGyroZVal4.TabIndex = 40;
-            this.labelGyroZVal4.Text = "0";
-            // 
-            // labelGyroYVal4
-            // 
-            this.labelGyroYVal4.AutoSize = true;
-            this.labelGyroYVal4.Location = new System.Drawing.Point(88, 30);
-            this.labelGyroYVal4.Name = "labelGyroYVal4";
-            this.labelGyroYVal4.Size = new System.Drawing.Size(13, 13);
-            this.labelGyroYVal4.TabIndex = 39;
-            this.labelGyroYVal4.Text = "0";
-            // 
-            // labelGyroXVal4
-            // 
-            this.labelGyroXVal4.AutoSize = true;
-            this.labelGyroXVal4.Location = new System.Drawing.Point(88, 17);
-            this.labelGyroXVal4.Name = "labelGyroXVal4";
-            this.labelGyroXVal4.Size = new System.Drawing.Size(13, 13);
-            this.labelGyroXVal4.TabIndex = 38;
-            this.labelGyroXVal4.Text = "0";
+            // labelPWMVal1
+            // 
+            this.labelPWMVal1.AutoSize = true;
+            this.labelPWMVal1.Location = new System.Drawing.Point(74, 17);
+            this.labelPWMVal1.Name = "labelPWMVal1";
+            this.labelPWMVal1.Size = new System.Drawing.Size(13, 13);
+            this.labelPWMVal1.TabIndex = 38;
+            this.labelPWMVal1.Text = "0";
             // 
             // successByteLabel
             // 
             this.successByteLabel.AutoSize = true;
-            this.successByteLabel.Location = new System.Drawing.Point(542, 200);
+            this.successByteLabel.Location = new System.Drawing.Point(542, 234);
             this.successByteLabel.Name = "successByteLabel";
             this.successByteLabel.Size = new System.Drawing.Size(13, 13);
             this.successByteLabel.TabIndex = 54;
@@ -942,21 +647,131 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(454, 200);
+            this.label9.Location = new System.Drawing.Point(454, 234);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(82, 13);
             this.label9.TabIndex = 55;
             this.label9.Text = "packet success";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(10, 20);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(239, 161);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 56;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(381, 416);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(289, 56);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 57;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(93, 17);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(15, 13);
+            this.label15.TabIndex = 53;
+            this.label15.Text = "%";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(160, 62);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(28, 13);
+            this.label16.TabIndex = 58;
+            this.label16.Text = "m/s²";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(160, 75);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(28, 13);
+            this.label17.TabIndex = 59;
+            this.label17.Text = "m/s²";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(160, 88);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(28, 13);
+            this.label18.TabIndex = 60;
+            this.label18.Text = "m/s²";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(160, 107);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(29, 13);
+            this.label19.TabIndex = 61;
+            this.label19.Text = "units";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(160, 120);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(29, 13);
+            this.label20.TabIndex = 62;
+            this.label20.Text = "units";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(160, 133);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(29, 13);
+            this.label21.TabIndex = 63;
+            this.label21.Text = "units";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(160, 17);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(29, 13);
+            this.label22.TabIndex = 64;
+            this.label22.Text = "units";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(160, 30);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(29, 13);
+            this.label23.TabIndex = 65;
+            this.label23.Text = "units";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(160, 43);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(29, 13);
+            this.label24.TabIndex = 66;
+            this.label24.Text = "units";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(606, 445);
+            this.ClientSize = new System.Drawing.Size(680, 483);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.successByteLabel);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.checkBoxLogging);
@@ -980,10 +795,8 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1010,12 +823,12 @@
         private System.Windows.Forms.Label labelGyroXVal;
         private System.Windows.Forms.Label labelGyroYVal;
         private System.Windows.Forms.Label labelGyroZVal;
-        private System.Windows.Forms.Label labelMagXVal;
-        private System.Windows.Forms.Label labelMagYVal;
-        private System.Windows.Forms.Label labelMagZVal;
         private System.Windows.Forms.Label labelAccXVal;
         private System.Windows.Forms.Label labelAccYVal;
         private System.Windows.Forms.Label labelAccZVal;
+        private System.Windows.Forms.Label labelt1Val;
+        private System.Windows.Forms.Label labelt2Val;
+        private System.Windows.Forms.Label labelt3Val;
         private System.Windows.Forms.Label labelIMUTempVal;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -1034,45 +847,28 @@
         private System.Windows.Forms.Label labelMagZVal2;
         private System.Windows.Forms.Label labelMagYVal2;
         private System.Windows.Forms.Label labelMagXVal2;
-        private System.Windows.Forms.Label labelGyroZVal2;
-        private System.Windows.Forms.Label labelGyroYVal2;
-        private System.Windows.Forms.Label labelGyroXVal2;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label labelIMUTempVal3;
-        private System.Windows.Forms.Label labelAccZVal3;
-        private System.Windows.Forms.Label labelAccYVal3;
-        private System.Windows.Forms.Label labelAccXVal3;
-        private System.Windows.Forms.Label labelMagZVal3;
-        private System.Windows.Forms.Label labelMagYVal3;
-        private System.Windows.Forms.Label labelMagXVal3;
-        private System.Windows.Forms.Label labelGyroZVal3;
-        private System.Windows.Forms.Label labelGyroYVal3;
-        private System.Windows.Forms.Label labelGyroXVal3;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.Label label36;
-        private System.Windows.Forms.Label labelIMUTempVal4;
-        private System.Windows.Forms.Label labelAccZVal4;
-        private System.Windows.Forms.Label labelAccYVal4;
-        private System.Windows.Forms.Label labelAccXVal4;
-        private System.Windows.Forms.Label labelMagZVal4;
-        private System.Windows.Forms.Label labelMagYVal4;
-        private System.Windows.Forms.Label labelMagXVal4;
-        private System.Windows.Forms.Label labelGyroZVal4;
-        private System.Windows.Forms.Label labelGyroYVal4;
-        private System.Windows.Forms.Label labelGyroXVal4;
         private System.Windows.Forms.Label ADCtempLABEL1;
         private System.Windows.Forms.Label ADCtempLABEL2;
-        private System.Windows.Forms.Label ADCtempLABEL3;
-        private System.Windows.Forms.Label ADCtempLABEL4;
         private System.Windows.Forms.Label successByteLabel;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label labelPWMVal1;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
     }
 }
 

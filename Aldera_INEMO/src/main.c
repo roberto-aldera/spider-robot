@@ -88,8 +88,9 @@ int main(void) {
 		//Four payloads, gyro/acc/angles/PWMval
 		serialTerminal_packetize(gyro8, acc8, angles8, PWMval8, sizeof(gyro8),
 				sizeof(acc8), sizeof(angles8), sizeof(PWMval8));
-		//serialTerminal_packetize(a8, b8, c8, d8, sizeof(a8), sizeof(b8),
-		//	sizeof(c8), sizeof(d8));
+		//debugging purposes
+//		serialTerminal_packetize(a8, b8, c8, d8, sizeof(a8), sizeof(b8),
+//			sizeof(c8), sizeof(d8));
 
 		DMA_Cmd(DMA1_Channel7, ENABLE);
 		USART_DMACmd(USART2, USART_DMAReq_Tx, ENABLE);

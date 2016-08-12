@@ -18,7 +18,7 @@ namespace WindowsFormsApplication1
     internal struct IMU_Data_Struct
     {
         public float PLACEHOLDER; // This needs to go here
-
+        
         //gyro8 is 6
         public UInt16 gyroX1;
         public UInt16 gyroY1;
@@ -41,6 +41,28 @@ namespace WindowsFormsApplication1
         public UInt16 t7;
         public UInt16 t8;
     
+    /*  For debugging purposes
+        //a8 is 6
+        public UInt16 gyroX1;
+        public UInt16 gyroY1;
+        public UInt16 gyroZ1;
+
+        //b8 is 6
+        public UInt16 accX1;
+        public UInt16 accY1;
+        public UInt16 accZ1;
+
+        //c8 is 6
+        public UInt16 t1;
+        public UInt16 t2;
+        public UInt16 t3;
+
+        //d8 is 6
+        public UInt16 t4;
+        public UInt16 t5;
+        public UInt16 t6;
+
+    */
     };
 
     public partial class Form1 : Form

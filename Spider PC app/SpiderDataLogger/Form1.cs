@@ -17,7 +17,7 @@ namespace WindowsFormsApplication1
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal struct IMU_Data_Struct
     {
-        public float PLACEHOLDER; // This needs to go here
+        public float PLACEHOLDER; // This needs to go here, I think this is for the 4 bytes at the start of each packet
         
         //gyro8 is 6
         public UInt16 gyroX1;
@@ -35,36 +35,37 @@ namespace WindowsFormsApplication1
         public float t2;
         public float t3;
 
-        public UInt16 IMUtemp1;     //temperature is 2 bytes
-        public float PWMpercent;       //PWM float
-
+        public byte IMUtemp1;     //temperature is 2 bytes... or 1?
+        public byte adcTemp1;     //this was char for some reason
+        
+        public float PWMpercent;    //PWM float
 
         //PWMval8 is 4
         //public UInt16 t7;
         //public UInt16 t8;
-    
-    /*  For debugging purposes
-        //a8 is 6
-        public UInt16 gyroX1;
-        public UInt16 gyroY1;
-        public UInt16 gyroZ1;
 
-        //b8 is 6
-        public UInt16 accX1;
-        public UInt16 accY1;
-        public UInt16 accZ1;
+        /*  For debugging purposes
+            //a8 is 6
+            public UInt16 gyroX1;
+            public UInt16 gyroY1;
+            public UInt16 gyroZ1;
 
-        //c8 is 6
-        public UInt16 t1;
-        public UInt16 t2;
-        public UInt16 t3;
+            //b8 is 6
+            public UInt16 accX1;
+            public UInt16 accY1;
+            public UInt16 accZ1;
 
-        //d8 is 6
-        public UInt16 t4;
-        public UInt16 t5;
-        public UInt16 t6;
+            //c8 is 6
+            public UInt16 t1;
+            public UInt16 t2;
+            public UInt16 t3;
 
-    */
+            //d8 is 6
+            public UInt16 t4;
+            public UInt16 t5;
+            public UInt16 t6;
+
+        */
     };
 
     public partial class Form1 : Form
@@ -350,8 +351,8 @@ namespace WindowsFormsApplication1
                 String accY1 = (twosComp(IMU_data.accY1)*accScale).ToString();
                 String accZ1 = (twosComp(IMU_data.accZ1)*accScale).ToString();
                 String t1 = IMU_data.t1.ToString();
-                String t2 = (IMU_data.t2).ToString();
-                String t3 = (IMU_data.t3).ToString();
+                String t2 = IMU_data.t2.ToString();
+                String t3 = IMU_data.t3.ToString();
                 String IMUTemp1 = (twosCompTemp(IMU_data.IMUtemp1)*tempScale).ToString();
                 String ADCtemp1 = "N/A";//IMU_data.adcTemp1.ToString();
 

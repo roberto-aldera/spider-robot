@@ -22,12 +22,13 @@
 #include "CRC.h"
 #include "pwm.h"
 
-uint32_t temp = 0;
+//uint32_t temp = 0;
+//uint16_t temperature16 = 24;
 uint16_t recVal;
 
 float PWMval;
 
-uint8_t temperature8[2]; //returns 2 bytes for temperature
+//uint8_t temperatureArray8[2]; //returns 2 bytes for temperature
 uint8_t acc8[6];		//3 axes, each returning uint16_t, 3x2=6
 uint8_t mag8[6];
 uint8_t gyro8[6];
@@ -38,6 +39,7 @@ uint8_t b8[] = { 106, 107, 108, 109, 110, 111 };	//debugging
 uint8_t c8[] = { 74, 75, 76, 77, 78, 79 };			//debugging
 uint8_t d8[] = { 97, 98, 99, 100, 101, 102 };		//debugging
 float angles[3];
+s8 temperatureToPack;
 
 void convertAnglesToBytes(void);
 
@@ -52,7 +54,7 @@ int main(void) {
 	float acc[3];
 	float mag[3];
 	float gyro[3];
-	s8 temp;
+	s8 temperature;
 
 	USART_Cmd(USART2, ENABLE);
 	uint8_t status = 0;
@@ -70,10 +72,11 @@ int main(void) {
 		getAcc(acc8, acc); //send the floats as well
 		getGyro(gyro8, gyro);
 		//getMag(mag8, mag);	//mag is taking too long, loop drops from 100Hz to 85Hz
-		getTemp(temp);
+		getTemp(temperature);
+		temperatureToPack = temperature;
 
 		//perform control on data
-		controlMethod(acc, mag, gyro, &temp, angles, &PWMval);
+		controlMethod(acc, mag, gyro, &temperature, angles, &PWMval);
 
 		convertAnglesToBytes();
 		for (p = 0; p < sizeof(TxBuff); p++) {
@@ -189,15 +192,27 @@ void convertAnglesToBytes() {
 		angles8[i] = buffer_to_char_union1.temp_char[i];
 	}
 
-	union {
-		char temp_char[6];
+	/*union {
+		char temp_char[2];
 		uint16_t temp_int_buffer;
-		float temp_int_buffer2;
 	} buffer_to_char_union2;
-	buffer_to_char_union2.temp_int_buffer = temp;
-	buffer_to_char_union2.temp_int_buffer2 = PWMval;
-	for (i = 0; i < 6; i++) {
+	buffer_to_char_union2.temp_int_buffer = temperature16;
+	for (i = 0; i < 2; i++) {
 		MiscPayload8[i] = buffer_to_char_union2.temp_char[i];
+	}*/
+	union {
+		s8 temp_signed;
+		uint8_t temp_unsigned;
+	} buffer_to_char_union4;
+	buffer_to_char_union4.temp_signed = temperatureToPack;
+	MiscPayload8[0] = buffer_to_char_union4.temp_unsigned;
+	union {
+		char temp_char[4];
+		float temp_int_buffer;
+	} buffer_to_char_union3;
+	buffer_to_char_union3.temp_int_buffer = PWMval;
+	for (i = 2; i < 6; i++) {
+		MiscPayload8[i] = buffer_to_char_union3.temp_char[i - 2];
 	}
 }
 ///////////////////////////////////////////////////////////////////////////

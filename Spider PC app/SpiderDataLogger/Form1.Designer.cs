@@ -61,6 +61,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -91,18 +93,18 @@
             this.labelMagYVal2 = new System.Windows.Forms.Label();
             this.labelMagXVal2 = new System.Windows.Forms.Label();
             this.labelPWMVal1 = new System.Windows.Forms.Label();
-            this.successByteLabel = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
             this.groupBoxWarnings.SuspendLayout();
             this.groupBoxCRC.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // serialComboBox
@@ -125,7 +127,7 @@
             "COM14",
             "COM15",
             "COM16"});
-            this.serialComboBox.Location = new System.Drawing.Point(10, 259);
+            this.serialComboBox.Location = new System.Drawing.Point(15, 279);
             this.serialComboBox.MaxDropDownItems = 16;
             this.serialComboBox.Name = "serialComboBox";
             this.serialComboBox.Size = new System.Drawing.Size(129, 21);
@@ -135,7 +137,7 @@
             // 
             this.labelSerialPort.AutoSize = true;
             this.labelSerialPort.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelSerialPort.Location = new System.Drawing.Point(28, 234);
+            this.labelSerialPort.Location = new System.Drawing.Point(33, 254);
             this.labelSerialPort.Name = "labelSerialPort";
             this.labelSerialPort.Size = new System.Drawing.Size(88, 19);
             this.labelSerialPort.TabIndex = 1;
@@ -144,7 +146,7 @@
             // openButton
             // 
             this.openButton.Font = new System.Drawing.Font("Arial", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.openButton.Location = new System.Drawing.Point(10, 287);
+            this.openButton.Location = new System.Drawing.Point(15, 307);
             this.openButton.Name = "openButton";
             this.openButton.Size = new System.Drawing.Size(129, 39);
             this.openButton.TabIndex = 2;
@@ -160,7 +162,7 @@
             // 
             // textBoxDebug
             // 
-            this.textBoxDebug.Location = new System.Drawing.Point(10, 368);
+            this.textBoxDebug.Location = new System.Drawing.Point(10, 403);
             this.textBoxDebug.Multiline = true;
             this.textBoxDebug.Name = "textBoxDebug";
             this.textBoxDebug.ReadOnly = true;
@@ -172,7 +174,7 @@
             // 
             this.labelDebug.AutoSize = true;
             this.labelDebug.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDebug.Location = new System.Drawing.Point(10, 346);
+            this.labelDebug.Location = new System.Drawing.Point(11, 381);
             this.labelDebug.Name = "labelDebug";
             this.labelDebug.Size = new System.Drawing.Size(60, 19);
             this.labelDebug.TabIndex = 13;
@@ -180,7 +182,7 @@
             // 
             // buttonClearDebug
             // 
-            this.buttonClearDebug.Location = new System.Drawing.Point(324, 368);
+            this.buttonClearDebug.Location = new System.Drawing.Point(324, 482);
             this.buttonClearDebug.Name = "buttonClearDebug";
             this.buttonClearDebug.Size = new System.Drawing.Size(42, 22);
             this.buttonClearDebug.TabIndex = 21;
@@ -201,7 +203,7 @@
             // groupBoxWarnings
             // 
             this.groupBoxWarnings.Controls.Add(this.textBoxWarnings);
-            this.groupBoxWarnings.Location = new System.Drawing.Point(307, 262);
+            this.groupBoxWarnings.Location = new System.Drawing.Point(370, 260);
             this.groupBoxWarnings.Name = "groupBoxWarnings";
             this.groupBoxWarnings.Size = new System.Drawing.Size(348, 66);
             this.groupBoxWarnings.TabIndex = 33;
@@ -215,9 +217,9 @@
             this.groupBoxCRC.Controls.Add(this.labelCRCFailsVal);
             this.groupBoxCRC.Controls.Add(this.labelEscCharFails);
             this.groupBoxCRC.Controls.Add(this.labelCRCFails);
-            this.groupBoxCRC.Location = new System.Drawing.Point(160, 234);
+            this.groupBoxCRC.Location = new System.Drawing.Point(209, 254);
             this.groupBoxCRC.Name = "groupBoxCRC";
-            this.groupBoxCRC.Size = new System.Drawing.Size(121, 117);
+            this.groupBoxCRC.Size = new System.Drawing.Size(109, 117);
             this.groupBoxCRC.TabIndex = 36;
             this.groupBoxCRC.TabStop = false;
             this.groupBoxCRC.Text = "CRC Information";
@@ -271,11 +273,11 @@
             // checkBoxLogging
             // 
             this.checkBoxLogging.AutoSize = true;
-            this.checkBoxLogging.Location = new System.Drawing.Point(307, 237);
+            this.checkBoxLogging.Location = new System.Drawing.Point(15, 352);
             this.checkBoxLogging.Name = "checkBoxLogging";
-            this.checkBoxLogging.Size = new System.Drawing.Size(40, 17);
+            this.checkBoxLogging.Size = new System.Drawing.Size(64, 17);
             this.checkBoxLogging.TabIndex = 37;
-            this.checkBoxLogging.Text = "log";
+            this.checkBoxLogging.Text = "Logging";
             this.checkBoxLogging.UseVisualStyleBackColor = true;
             this.checkBoxLogging.CheckedChanged += new System.EventHandler(this.checkBoxLogging_CheckedChanged);
             // 
@@ -440,10 +442,28 @@
             this.panel1.Controls.Add(this.labelGyroZVal);
             this.panel1.Controls.Add(this.labelGyroYVal);
             this.panel1.Controls.Add(this.labelGyroXVal);
-            this.panel1.Location = new System.Drawing.Point(264, 12);
+            this.panel1.Location = new System.Drawing.Point(344, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(206, 206);
+            this.panel1.Size = new System.Drawing.Size(207, 206);
             this.panel1.TabIndex = 52;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(160, 165);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(29, 13);
+            this.label26.TabIndex = 68;
+            this.label26.Text = "units";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(160, 152);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(29, 13);
+            this.label25.TabIndex = 67;
+            this.label25.Text = "units";
             // 
             // label24
             // 
@@ -598,7 +618,7 @@
             this.panel2.Controls.Add(this.labelMagYVal2);
             this.panel2.Controls.Add(this.labelMagXVal2);
             this.panel2.Controls.Add(this.labelPWMVal1);
-            this.panel2.Location = new System.Drawing.Point(495, 12);
+            this.panel2.Location = new System.Drawing.Point(557, 12);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(160, 206);
             this.panel2.TabIndex = 53;
@@ -729,30 +749,12 @@
             this.labelPWMVal1.TabIndex = 38;
             this.labelPWMVal1.Text = "0";
             // 
-            // successByteLabel
-            // 
-            this.successByteLabel.AutoSize = true;
-            this.successByteLabel.Location = new System.Drawing.Point(542, 234);
-            this.successByteLabel.Name = "successByteLabel";
-            this.successByteLabel.Size = new System.Drawing.Size(13, 13);
-            this.successByteLabel.TabIndex = 54;
-            this.successByteLabel.Text = "0";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(454, 234);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(82, 13);
-            this.label9.TabIndex = 55;
-            this.label9.Text = "packet success";
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(10, 20);
+            this.pictureBox1.Location = new System.Drawing.Point(37, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(239, 161);
+            this.pictureBox1.Size = new System.Drawing.Size(249, 169);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 56;
             this.pictureBox1.TabStop = false;
@@ -760,40 +762,50 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(381, 416);
+            this.pictureBox2.Location = new System.Drawing.Point(444, 451);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(274, 56);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 57;
             this.pictureBox2.TabStop = false;
             // 
-            // label25
+            // groupBox1
             // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(160, 152);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(29, 13);
-            this.label25.TabIndex = 67;
-            this.label25.Text = "units";
+            this.groupBox1.Controls.Add(this.label28);
+            this.groupBox1.Controls.Add(this.label29);
+            this.groupBox1.Location = new System.Drawing.Point(10, 187);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(308, 61);
+            this.groupBox1.TabIndex = 109;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Instructions";
             // 
-            // label26
+            // label28
             // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(160, 165);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(29, 13);
-            this.label26.TabIndex = 68;
-            this.label26.Text = "units";
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(6, 29);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(285, 13);
+            this.label28.TabIndex = 107;
+            this.label28.Text = "2. Check \"Logging\", then click \"Close Port\" when finished.";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(6, 16);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(190, 13);
+            this.label29.TabIndex = 106;
+            this.label29.Text = "1. Select serial port, and open the port.";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(669, 483);
+            this.ClientSize = new System.Drawing.Size(730, 516);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.successByteLabel);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.checkBoxLogging);
@@ -819,6 +831,8 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -871,8 +885,6 @@
         private System.Windows.Forms.Label labelMagXVal2;
         private System.Windows.Forms.Label ADCtempLABEL1;
         private System.Windows.Forms.Label ADCtempLABEL2;
-        private System.Windows.Forms.Label successByteLabel;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label11;
@@ -893,6 +905,9 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
     }
 }
 

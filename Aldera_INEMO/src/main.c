@@ -72,7 +72,7 @@ int main(void) {
 		getAcc(acc8, acc); //send the floats as well
 		getGyro(gyro8, gyro);
 		//getMag(mag8, mag);	//mag is taking too long, loop drops from 100Hz to 85Hz
-		getTemp(temperature);
+		getTemp(temperature);	//fix this, keeps saying temperature is 19 in GUI
 		temperatureToPack = temperature;
 
 		//perform control on data

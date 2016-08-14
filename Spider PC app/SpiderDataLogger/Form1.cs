@@ -17,7 +17,7 @@ namespace WindowsFormsApplication1
     [StructLayout(LayoutKind.Sequential, Pack = 1)]
     internal struct IMU_Data_Struct
     {
-        public float PLACEHOLDER; // This needs to go here, I think this is for the 4 bytes at the start of each packet
+        public float PLACEHOLDER; // This needs to go here, this is for the 4 bytes at the start of each packet?
         
         //gyro8 is 6
         public UInt16 gyroX1;
@@ -39,10 +39,6 @@ namespace WindowsFormsApplication1
         public byte adcTemp1;     //this was char for some reason
         
         public float PWMpercent;    //PWM float
-
-        //PWMval8 is 4
-        //public UInt16 t7;
-        //public UInt16 t8;
 
         /*  For debugging purposes
             //a8 is 6
@@ -80,11 +76,11 @@ namespace WindowsFormsApplication1
         bool log_data_checked_old = false;
 
         int count = 0;
-        int ValUpdate = 3; 
+        int ValUpdate = 2; 
 
         Stopwatch sw = new Stopwatch();
-        //StreamWriter log; // For the logfile
-        BinaryWriter log;
+        StreamWriter log; // For the logfile
+        //BinaryWriter log;
         IMU_Data_Struct IMU_data;
 
         // Constructor for the form
@@ -95,10 +91,7 @@ namespace WindowsFormsApplication1
             InitializeComponent();
 
             textBoxDebug.AppendText("Application started. \n");
-
-
-
-
+            
             // Add the KEYDOWN event handler to handle pressed keys
             KeyDown += new KeyEventHandler(Form1_KeyDown);
             this.KeyPreview = true;
@@ -158,7 +151,7 @@ namespace WindowsFormsApplication1
 
                     // Open the Serial Port
                     serialPort1.Open();
-                    textBoxDebug.AppendText("Port was opened. \n");
+                    textBoxDebug.AppendText("Serial port " + serialPort1.PortName.ToString() + " was opened. \n");
 
 
                     // Change the text
@@ -166,7 +159,7 @@ namespace WindowsFormsApplication1
                     serialComboBox.Enabled = false;
 
                     serialPort1.DataReceived += new SerialDataReceivedEventHandler(serialDataReceivedHandler);
-                    textBoxDebug.AppendText("SerialDataReceivedEventHandler called. \n");
+                    textBoxDebug.AppendText("Serial data started. \n");
 
 
                 }
@@ -179,9 +172,14 @@ namespace WindowsFormsApplication1
                     openButton.Text = "Disabled";
                     // Disable button
                     openButton.Enabled = false;
+                    textBoxDebug.AppendText("Serial port " + serialPort1.PortName.ToString() + " was closed. \n");
+
                     // Close the filestream if it is open
                     if (pc_logfile_open == true)
                         log.Close();
+                        //textBoxDebug.AppendText("Logfile now closed. \n");
+                        checkBoxLogging.Checked = false;
+
                 }
             }
 
@@ -202,7 +200,6 @@ namespace WindowsFormsApplication1
                 {
                     int j = 0;
                     byte[] Data = rxDataFrame.ProcessRxByte((byte)serialPort1.ReadByte(), originalFrame);
-                    //Data = originalFrame; //quick 'fix'
                     int P = 0;
                     if (Data != null)
                     {
@@ -211,8 +208,8 @@ namespace WindowsFormsApplication1
                         {
                             byte[]  result = new byte[200];
                             Array.Copy(originalFrame, 0, result, 0, 200);
-                            log.Write(result);
-                            //log.Write("\r\n");
+                            //log.Write(result);    //this prints System byte x 3 for each line
+                            //log.Write("\r\n");    //adds spaces, but it doesn't look nice
                         }
                         //RUN THIS EVERY X TIMES
                         count = count + 1;
@@ -264,13 +261,14 @@ namespace WindowsFormsApplication1
                         // Create the PC logfile
                         if (!File.Exists(pc_logfile_name))
                         {
-                            log = new BinaryWriter(File.Open(pc_logfile_name, FileMode.Create));
-                            //log = new StreamWriter(pc_logfile_name);
+                            //log = new BinaryWriter(File.Open(pc_logfile_name, FileMode.Create));
+                            log = new StreamWriter(pc_logfile_name);
                             pc_logfile_open = true;
                         }
                         // ADD ANY COLUMNS TO LOG
                         //log.WriteLine("GyroX1,GyroY1,GyroZ1,AccX1,AccY1,AccZ1,MagX1,MagY1,MagZ1,Temp1,GyroX2,GyroY2,GyroZ2,AccX2,AccY2,AccZ2,MagX2,MagY2,MagZ2,Temp2,GyroX3,GyroY3,GyroZ3,AccX3,AccY3,AccZ3,MagX3,MagY3,MagZ3,Temp3,GyroX4,GyroY4,GyroZ4,AccX4,AccY4,AccZ4,MagX4,MagY4,MagZ4,Temp4");
-                        //log.WriteLine("GyroX1,GyroY1,GyroZ1,AccX1,AccY1,AccZ1,MagX1,MagY1,MagZ1,Temp1");
+                        log.WriteLine("GyroX1,GyroY1,GyroZ1,AccX1,AccY1,AccZ1,Angles1,Angles2,Angles3,IMUtemp,ADCtemp,PWM");
+                        textBoxDebug.AppendText("Logging now in: " + pc_logfile_name.ToString() + "\n");
 
 
                         // First byte is NON-ZERO
@@ -313,7 +311,9 @@ namespace WindowsFormsApplication1
                         // Close the PC logfile
                         pc_logfile_open = false;
                         log.Close();
-                        MessageBox.Show("file closed");
+                        textBoxDebug.AppendText("Logfile now closed. \n");
+
+                        MessageBox.Show("Logfile " + pc_logfile_name.ToString() + " has been closed.");
                     }
                 }
                 
@@ -401,17 +401,19 @@ namespace WindowsFormsApplication1
 
                 //successByteLabel.Text = IMU_data.success.ToString();
                 //// Construct a string to be printed to the logfile
-                //StringBuilder logString = new StringBuilder(1000);
-                //logString.Append(gyroX1 + ";");
-                //logString.Append(gyroY1 + ";");
-                //logString.Append(gyroZ1 + ";");
-                //logString.Append(accX1 + ";");
-                //logString.Append(accY1 + ";");
-                //logString.Append(accZ1 + ";");
-                //logString.Append(magX1 + ";");
-                //logString.Append(magY1 + ";");
-                //logString.Append(magZ1 + ";");
-                //logString.Append(IMUTemp1 + ";");
+                StringBuilder logString = new StringBuilder(1000);
+                logString.Append(gyroX1 + ";");
+                logString.Append(gyroY1 + ";");
+                logString.Append(gyroZ1 + ";");
+                logString.Append(accX1 + ";");
+                logString.Append(accY1 + ";");
+                logString.Append(accZ1 + ";");
+                logString.Append(t1 + ";");
+                logString.Append(t2 + ";");
+                logString.Append(t3 + ";");
+                logString.Append(IMUTemp1 + ";");
+                logString.Append(PWMpercent + ";");
+
 
                 //logString.Append(gyroX2 + ";");
                 //logString.Append(gyroY2 + ";");
@@ -445,9 +447,11 @@ namespace WindowsFormsApplication1
                 //logString.Append(magY4 + ";");
                 //logString.Append(magZ4 + ";");
                 //logString.Append(IMUTemp4);
-                //count = 0;
-                //if (pc_logfile_open == true)
-                //    log.WriteLine(logString.ToString());
+                count = 0;
+                if (pc_logfile_open == true)
+                    //log.WriteLine(logString.ToString());
+                    log.WriteLine(logString);
+
             }
         }
         float twosComp(UInt16 v)

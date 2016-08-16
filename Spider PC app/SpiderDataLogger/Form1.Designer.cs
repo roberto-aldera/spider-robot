@@ -197,15 +197,15 @@
             this.textBoxWarnings.Name = "textBoxWarnings";
             this.textBoxWarnings.ReadOnly = true;
             this.textBoxWarnings.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxWarnings.Size = new System.Drawing.Size(348, 50);
+            this.textBoxWarnings.Size = new System.Drawing.Size(373, 50);
             this.textBoxWarnings.TabIndex = 32;
             // 
             // groupBoxWarnings
             // 
             this.groupBoxWarnings.Controls.Add(this.textBoxWarnings);
-            this.groupBoxWarnings.Location = new System.Drawing.Point(370, 260);
+            this.groupBoxWarnings.Location = new System.Drawing.Point(344, 254);
             this.groupBoxWarnings.Name = "groupBoxWarnings";
-            this.groupBoxWarnings.Size = new System.Drawing.Size(348, 66);
+            this.groupBoxWarnings.Size = new System.Drawing.Size(373, 66);
             this.groupBoxWarnings.TabIndex = 33;
             this.groupBoxWarnings.TabStop = false;
             this.groupBoxWarnings.Text = "Warnings/Errors";
@@ -762,9 +762,9 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(444, 451);
+            this.pictureBox2.Location = new System.Drawing.Point(455, 457);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(274, 56);
+            this.pictureBox2.Size = new System.Drawing.Size(263, 50);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 57;
             this.pictureBox2.TabStop = false;

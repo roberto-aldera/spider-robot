@@ -12,6 +12,7 @@
 #include <stddef.h>
 #include "AccMag.h"
 #include "gyro.h"
+#include "pwm.h"
 
 void controlMethod(float*acc,float*mag,float*gyro,s8*temp,float*angles,float*PWMval);
 

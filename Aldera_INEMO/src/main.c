@@ -72,7 +72,7 @@ int main(void) {
 		getAcc(acc8, acc); //send the floats as well
 		getGyro(gyro8, gyro);
 		//getMag(mag8, mag);	//mag is taking too long, loop drops from 100Hz to 85Hz
-		getTemp(temperature);	//fix this, keeps saying temperature is 19 in GUI
+		getTemp(temperature);//fix this, keeps saying temperature is 19 in GUI
 		temperatureToPack = temperature;
 
 		//perform control on data
@@ -193,13 +193,13 @@ void convertAnglesToBytes() {
 	}
 
 	/*union {
-		char temp_char[2];
-		uint16_t temp_int_buffer;
-	} buffer_to_char_union2;
-	buffer_to_char_union2.temp_int_buffer = temperature16;
-	for (i = 0; i < 2; i++) {
-		MiscPayload8[i] = buffer_to_char_union2.temp_char[i];
-	}*/
+	 char temp_char[2];
+	 uint16_t temp_int_buffer;
+	 } buffer_to_char_union2;
+	 buffer_to_char_union2.temp_int_buffer = temperature16;
+	 for (i = 0; i < 2; i++) {
+	 MiscPayload8[i] = buffer_to_char_union2.temp_char[i];
+	 }*/
 	union {
 		s8 temp_signed;
 		uint8_t temp_unsigned;

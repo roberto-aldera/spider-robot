@@ -72,7 +72,7 @@ int main(void) {
 		getAcc(acc8, acc); //send the floats as well
 		getGyro(gyro8, gyro);
 		//getMag(mag8, mag);	//mag is taking too long, loop drops from 100Hz to 85Hz
-		getTemp(temperature);//fix this, keeps saying temperature is 19 in GUI
+		//getTemp(temperature);//fix this, keeps saying temperature is 19 in GUI
 		temperatureToPack = temperature;
 
 		//perform control on data
@@ -95,13 +95,13 @@ int main(void) {
 		DMA_Cmd(DMA1_Channel7, ENABLE);
 		USART_DMACmd(USART2, USART_DMAReq_Tx, ENABLE);
 		USART_Cmd(USART2, ENABLE);
-
+/*
 		for (int i = 0; i < 1000; i++) {
-			for (int j = 0; j < 1000; j++) {
+			for (int j = 0; j < 5; j++) {
 				//do nothing, give Xbees a chance to send packet.
 			}
 		}
-
+*/
 		//Toggle PA11 to test loop frequency
 		if (status == 0) {
 			GPIO_SetBits(GPIOA, GPIO_Pin_11);

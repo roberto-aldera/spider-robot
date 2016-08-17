@@ -470,27 +470,27 @@
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(160, 43);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(29, 13);
+            this.label24.Size = new System.Drawing.Size(35, 13);
             this.label24.TabIndex = 66;
-            this.label24.Text = "units";
+            this.label24.Text = "deg/s";
             // 
             // label23
             // 
             this.label23.AutoSize = true;
             this.label23.Location = new System.Drawing.Point(160, 30);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(29, 13);
+            this.label23.Size = new System.Drawing.Size(35, 13);
             this.label23.TabIndex = 65;
-            this.label23.Text = "units";
+            this.label23.Text = "deg/s";
             // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(160, 17);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(29, 13);
+            this.label22.Size = new System.Drawing.Size(35, 13);
             this.label22.TabIndex = 64;
-            this.label22.Text = "units";
+            this.label22.Text = "deg/s";
             // 
             // label21
             // 

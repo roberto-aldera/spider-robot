@@ -190,6 +190,12 @@ void getGyro(u8* buffer ,float* out)
 	  }
 	  break;
 	}
+	buffer[0]=gyroXL;
+	buffer[1]=gyroXH;
+	buffer[2]=gyroYL;
+	buffer[3]=gyroYH;
+	buffer[4]=gyroZL;
+	buffer[5]=gyroZH;
 }
 
 void getTemp(u8*temp)

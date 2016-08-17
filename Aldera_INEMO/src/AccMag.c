@@ -258,7 +258,7 @@ void getAcc(u8* buffer,float* out)
 				s16 te=0;
 				t=(u16)(((u16)buffer[2*i+1]<<8)|(u16)buffer[2*i]);
 				te=twosCompToDec(t);
-				//out[i]=(float)(((te/16)*9.81/1000.0));
+				//out[i]=(float)(((te/16)*9.81/1000.0));	//go from G to m/s2
 				out[i]=(float)(((te)/16/1000.0));
 			}
 			break;

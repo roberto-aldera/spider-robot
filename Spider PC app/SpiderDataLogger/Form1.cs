@@ -338,11 +338,11 @@ namespace WindowsFormsApplication1
 
                 //TODO twos comp and scaling factor
 
-                float accScale = 0.000786F;
-                float magScale = 0.0043F;
-                float magScale2 = 0.0049F;
-                float gyroScale = 0.07F;
-		        float tempScale=1;
+                float accScale = (float)(9.81 * (1 / (16 * 1.0)) / 1000.0);  //this is now in m/s2, not G anymore;
+                //float magScale = 0.0043F;
+                //float magScale2 = 0.0049F;
+                float gyroScale = (float)((1 * 17.5 / 1000.0)); // 0.07F;
+                float tempScale=1;
 
                 String gyroX1 = (twosComp(IMU_data.gyroX1)*gyroScale).ToString();
                 String gyroY1 = (twosComp(IMU_data.gyroY1)*gyroScale).ToString();

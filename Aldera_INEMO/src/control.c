@@ -7,6 +7,20 @@
 
 #include "control.h"
 
+void getEncoder(float*shaft_angle, float*shaft_revs, uint8_t*last_encoder_state) {
+	//NOTE: not using the second encoder sensor, as direction is only ever one way.
+	uint8_t current_encoder_state = GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_5);
+	if (current_encoder_state != *last_encoder_state) {
+		*shaft_angle += 360 / 10;	//using the 5 tooth encoder wheel
+		*shaft_revs = *shaft_revs + 0.1;	//each increment is one tenth of a revolution
+		*last_encoder_state = current_encoder_state;
+	}
+	if (*shaft_angle >= 360) {
+		//*shaft_revs = *shaft_revs + 1;
+		*shaft_angle = 0;
+	}
+}
+
 void controlMethod(float*acc, float*mag, float*gyro, s8*temp, float*angles,
 		float*PWMval) //perform all control in this method
 {
@@ -33,10 +47,11 @@ void controlMethod(float*acc, float*mag, float*gyro, s8*temp, float*angles,
 	angles[2] = 3.45;
 
 	if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_9) == 0) {
-		*PWMval = 15;
+		*PWMval = 35;
 		setPWM(PWMval);
 	} else {
 		*PWMval = 0;
 		setPWM(PWMval);
 	}
+
 }

@@ -39,6 +39,7 @@ namespace WindowsFormsApplication1
         public byte adcTemp1;     //this was char for some reason
         
         public float PWMpercent;    //PWM float
+        public float shaft_revs;    //encoder revolutions
 
         /*  For debugging purposes
             //a8 is 6
@@ -357,7 +358,7 @@ namespace WindowsFormsApplication1
                 String ADCtemp1 = "N/A";//IMU_data.adcTemp1.ToString();
 
                 String PWMpercent = (IMU_data.PWMpercent).ToString();
-                String gyroY2 = "1";//(twosComp(IMU_data.gyroY2)*gyroScale).ToString();
+                String shaftRevs = (IMU_data.shaft_revs).ToString();
                 String gyroZ2 = "1";//(twosComp(IMU_data.gyroZ2)*gyroScale).ToString();
                 String accX2 = "1";//(twosComp(IMU_data.accX2)*accScale).ToString();
                 String accY2 = "1";//(twosComp(IMU_data.accY2)*accScale).ToString();
@@ -381,16 +382,16 @@ namespace WindowsFormsApplication1
                 labelt3Val.Text = t3;
                 labelIMUTempVal.Text = IMUTemp1;
                 ADCtempLABEL1.Text = ADCtemp1;
+                labelPWMVal1.Text = PWMpercent;
+                labelShaftRevs.Text = shaftRevs;
 
                 //unused extra text stuff
-                labelPWMVal1.Text = PWMpercent;
-
                 labelAccXVal2.Text = accX2;
                 labelAccYVal2.Text = accY2;
                 labelAccZVal2.Text = accZ2;
-                labelMagXVal2.Text = magX2;
-                labelMagYVal2.Text = magY2;
-                labelMagZVal2.Text = magZ2;
+                labelShaftRevs.Text = magX2;
+                //labelMagYVal2.Text = magY2;
+                //labelMagZVal2.Text = magZ2;
                 labelIMUTempVal2.Text = IMUTemp2;
                 ADCtempLABEL2.Text = ADCtemp2;
 

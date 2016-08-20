@@ -39,6 +39,11 @@ uint8_t b8[] = { 106, 107, 108, 109, 110, 111 };	//debugging
 uint8_t c8[] = { 74, 75, 76, 77, 78, 79 };			//debugging
 uint8_t d8[] = { 97, 98, 99, 100, 101, 102 };		//debugging
 float angles[3];
+
+float shaft_angle = 0;
+float shaft_revs = 0;
+uint8_t last_encoder_state = 0;
+
 s8 temperatureToPack;
 
 void convertAnglesToBytes(void);
@@ -75,6 +80,7 @@ int main(void) {
 		//getTemp(temperature);//fix this, keeps saying temperature is 19 in GUI
 		temperatureToPack = temperature;
 
+		getEncoder(&shaft_angle,&shaft_revs,&last_encoder_state);
 		//perform control on data
 		controlMethod(acc, mag, gyro, &temperature, angles, &PWMval);
 

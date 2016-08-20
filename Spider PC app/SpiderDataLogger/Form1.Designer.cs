@@ -89,9 +89,7 @@
             this.labelAccZVal2 = new System.Windows.Forms.Label();
             this.labelAccYVal2 = new System.Windows.Forms.Label();
             this.labelAccXVal2 = new System.Windows.Forms.Label();
-            this.labelMagZVal2 = new System.Windows.Forms.Label();
-            this.labelMagYVal2 = new System.Windows.Forms.Label();
-            this.labelMagXVal2 = new System.Windows.Forms.Label();
+            this.labelShaftRevs = new System.Windows.Forms.Label();
             this.labelPWMVal1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -614,9 +612,7 @@
             this.panel2.Controls.Add(this.labelAccZVal2);
             this.panel2.Controls.Add(this.labelAccYVal2);
             this.panel2.Controls.Add(this.labelAccXVal2);
-            this.panel2.Controls.Add(this.labelMagZVal2);
-            this.panel2.Controls.Add(this.labelMagYVal2);
-            this.panel2.Controls.Add(this.labelMagXVal2);
+            this.panel2.Controls.Add(this.labelShaftRevs);
             this.panel2.Controls.Add(this.labelPWMVal1);
             this.panel2.Location = new System.Drawing.Point(557, 12);
             this.panel2.Name = "panel2";
@@ -664,9 +660,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(14, 56);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(37, 13);
+            this.label7.Size = new System.Drawing.Size(55, 13);
             this.label7.TabIndex = 49;
-            this.label7.Text = "Extra2";
+            this.label7.Text = "Shaft revs";
             // 
             // label8
             // 
@@ -713,32 +709,14 @@
             this.labelAccXVal2.TabIndex = 44;
             this.labelAccXVal2.Text = "0";
             // 
-            // labelMagZVal2
+            // labelShaftRevs
             // 
-            this.labelMagZVal2.AutoSize = true;
-            this.labelMagZVal2.Location = new System.Drawing.Point(74, 82);
-            this.labelMagZVal2.Name = "labelMagZVal2";
-            this.labelMagZVal2.Size = new System.Drawing.Size(13, 13);
-            this.labelMagZVal2.TabIndex = 43;
-            this.labelMagZVal2.Text = "0";
-            // 
-            // labelMagYVal2
-            // 
-            this.labelMagYVal2.AutoSize = true;
-            this.labelMagYVal2.Location = new System.Drawing.Point(74, 69);
-            this.labelMagYVal2.Name = "labelMagYVal2";
-            this.labelMagYVal2.Size = new System.Drawing.Size(13, 13);
-            this.labelMagYVal2.TabIndex = 42;
-            this.labelMagYVal2.Text = "0";
-            // 
-            // labelMagXVal2
-            // 
-            this.labelMagXVal2.AutoSize = true;
-            this.labelMagXVal2.Location = new System.Drawing.Point(74, 56);
-            this.labelMagXVal2.Name = "labelMagXVal2";
-            this.labelMagXVal2.Size = new System.Drawing.Size(13, 13);
-            this.labelMagXVal2.TabIndex = 41;
-            this.labelMagXVal2.Text = "0";
+            this.labelShaftRevs.AutoSize = true;
+            this.labelShaftRevs.Location = new System.Drawing.Point(74, 56);
+            this.labelShaftRevs.Name = "labelShaftRevs";
+            this.labelShaftRevs.Size = new System.Drawing.Size(13, 13);
+            this.labelShaftRevs.TabIndex = 41;
+            this.labelShaftRevs.Text = "0";
             // 
             // labelPWMVal1
             // 
@@ -880,9 +858,7 @@
         private System.Windows.Forms.Label labelAccZVal2;
         private System.Windows.Forms.Label labelAccYVal2;
         private System.Windows.Forms.Label labelAccXVal2;
-        private System.Windows.Forms.Label labelMagZVal2;
-        private System.Windows.Forms.Label labelMagYVal2;
-        private System.Windows.Forms.Label labelMagXVal2;
+        private System.Windows.Forms.Label labelShaftRevs;
         private System.Windows.Forms.Label ADCtempLABEL1;
         private System.Windows.Forms.Label ADCtempLABEL2;
         private System.Windows.Forms.PictureBox pictureBox1;

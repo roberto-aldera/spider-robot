@@ -35,8 +35,8 @@ namespace WindowsFormsApplication1
         public float t2;
         public float t3;
 
-        public byte IMUtemp1;     //temperature is 2 bytes... or 1?
-        public byte adcTemp1;     //this was char for some reason
+//        public byte IMUtemp1;     //temperature is 2 bytes... or 1?
+//        public byte adcTemp1;     //this was char for some reason
         
         public float PWMpercent;    //PWM float
         public float shaft_revs;    //encoder revolutions
@@ -77,7 +77,7 @@ namespace WindowsFormsApplication1
         bool log_data_checked_old = false;
 
         int count = 0;
-        int ValUpdate = 2; 
+        int ValUpdate = 100; 
 
         Stopwatch sw = new Stopwatch();
         StreamWriter log; // For the logfile
@@ -354,11 +354,11 @@ namespace WindowsFormsApplication1
                 String t1 = IMU_data.t1.ToString();
                 String t2 = IMU_data.t2.ToString();
                 String t3 = IMU_data.t3.ToString();
-                String IMUTemp1 = (twosCompTemp(IMU_data.IMUtemp1)*tempScale).ToString();
+                String IMUTemp1 = "N/A";//(twosCompTemp(IMU_data.IMUtemp1)*tempScale).ToString();
                 String ADCtemp1 = "N/A";//IMU_data.adcTemp1.ToString();
 
                 String PWMpercent = (IMU_data.PWMpercent).ToString();
-                String shaftRevs = (IMU_data.shaft_revs).ToString();
+                String shaftRevs = (Math.Round(IMU_data.shaft_revs,2)).ToString();
                 String gyroZ2 = "1";//(twosComp(IMU_data.gyroZ2)*gyroScale).ToString();
                 String accX2 = "1";//(twosComp(IMU_data.accX2)*accScale).ToString();
                 String accY2 = "1";//(twosComp(IMU_data.accY2)*accScale).ToString();
@@ -389,7 +389,7 @@ namespace WindowsFormsApplication1
                 labelAccXVal2.Text = accX2;
                 labelAccYVal2.Text = accY2;
                 labelAccZVal2.Text = accZ2;
-                labelShaftRevs.Text = magX2;
+                //labelShaftRevs.Text = magX2;
                 //labelMagYVal2.Text = magY2;
                 //labelMagZVal2.Text = magZ2;
                 labelIMUTempVal2.Text = IMUTemp2;

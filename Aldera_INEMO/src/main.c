@@ -33,7 +33,7 @@ uint8_t acc8[6];		//3 axes, each returning uint16_t, 3x2=6
 uint8_t mag8[6];
 uint8_t gyro8[6];
 uint8_t angles8[12];
-uint8_t MiscPayload8[6];	//temperature=2,PWM=4, etc.
+uint8_t MiscPayload8[8];	//temperature=2 (excluded for now),PWM=4,Encoder=4
 uint8_t a8[] = { 65, 66, 67, 68, 69, 70 };			//debugging
 uint8_t b8[] = { 106, 107, 108, 109, 110, 111 };	//debugging
 uint8_t c8[] = { 74, 75, 76, 77, 78, 79 };			//debugging
@@ -42,7 +42,8 @@ float angles[3];
 
 float shaft_angle = 0;
 float shaft_revs = 0;
-uint8_t last_encoder_state = 0;
+uint8_t last_encoderA_state = 0;
+uint8_t last_encoderB_state = 0;
 
 s8 temperatureToPack;
 
@@ -80,7 +81,7 @@ int main(void) {
 		//getTemp(temperature);//fix this, keeps saying temperature is 19 in GUI
 		temperatureToPack = temperature;
 
-		getEncoder(&shaft_angle,&shaft_revs,&last_encoder_state);
+		getEncoder(&shaft_angle,&shaft_revs,&last_encoderA_state,&last_encoderB_state);
 		//perform control on data
 		controlMethod(acc, mag, gyro, &temperature, angles, &PWMval);
 
@@ -206,19 +207,28 @@ void convertAnglesToBytes() {
 	 for (i = 0; i < 2; i++) {
 	 MiscPayload8[i] = buffer_to_char_union2.temp_char[i];
 	 }*/
-	union {
+/*	union {
 		s8 temp_signed;
 		uint8_t temp_unsigned;
 	} buffer_to_char_union4;
 	buffer_to_char_union4.temp_signed = temperatureToPack;
 	MiscPayload8[0] = buffer_to_char_union4.temp_unsigned;
+*/
 	union {
 		char temp_char[4];
 		float temp_int_buffer;
 	} buffer_to_char_union3;
 	buffer_to_char_union3.temp_int_buffer = PWMval;
-	for (i = 2; i < 6; i++) {
-		MiscPayload8[i] = buffer_to_char_union3.temp_char[i - 2];
+	for (i = 0; i < 4; i++) {
+		MiscPayload8[i] = buffer_to_char_union3.temp_char[i];
+	}
+	union {
+		char temp_char[4];
+		float temp_int_buffer;
+	} buffer_to_char_union5;
+	buffer_to_char_union5.temp_int_buffer = shaft_revs;
+	for (i = 4; i < 8; i++) {
+		MiscPayload8[i] = buffer_to_char_union5.temp_char[i - 4];
 	}
 }
 ///////////////////////////////////////////////////////////////////////////

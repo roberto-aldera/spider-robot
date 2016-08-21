@@ -2,18 +2,38 @@
  * control.c
  *
  *  Created on: Jun 9, 2014
- *      Author: Callen Fisher
+ *  Template: Callen Fisher
+ *  Author: Roberto Aldera
+ *
  */
 
 #include "control.h"
 
-void getEncoder(float*shaft_angle, float*shaft_revs, uint8_t*last_encoder_state) {
-	//NOTE: not using the second encoder sensor, as direction is only ever one way.
-	uint8_t current_encoder_state = GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_5);
-	if (current_encoder_state != *last_encoder_state) {
-		*shaft_angle += 360 / 10;	//using the 5 tooth encoder wheel
-		*shaft_revs = *shaft_revs + 0.1;	//each increment is one tenth of a revolution
-		*last_encoder_state = current_encoder_state;
+void getEncoder(float*shaft_angle, float*shaft_revs,
+		uint8_t*last_encoderA_state, uint8_t*last_encoderB_state) {
+	uint8_t current_encoderA_state = GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_5);
+	uint8_t current_encoderB_state = GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_4);
+
+	if (current_encoderA_state != *last_encoderA_state) {
+		//transition has occurred
+		//now check if A was going up or down
+		//and check if B was low or high
+		//this will enable determination of direction
+		if (current_encoderA_state != 0 && current_encoderB_state == 0) {
+			//each increment is one tenth of a revolution
+			*shaft_revs = *shaft_revs + 0.1;
+			*last_encoderA_state = current_encoderA_state;
+		} else if (current_encoderA_state == 0 && current_encoderB_state != 0) {
+			*shaft_revs = *shaft_revs + 0.1;
+			*last_encoderA_state = current_encoderA_state;
+		} else if (current_encoderA_state != 0 && current_encoderB_state != 0) {
+			*shaft_revs = *shaft_revs - 0.1;
+			*last_encoderA_state = current_encoderA_state;
+		} else if (current_encoderA_state == 0 && current_encoderB_state == 0) {
+			*shaft_revs = *shaft_revs - 0.1;
+			*last_encoderA_state = current_encoderA_state;
+		}
+
 	}
 	if (*shaft_angle >= 360) {
 		//*shaft_revs = *shaft_revs + 1;

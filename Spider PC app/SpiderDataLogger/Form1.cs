@@ -77,7 +77,7 @@ namespace WindowsFormsApplication1
         bool log_data_checked_old = false;
 
         int count = 0;
-        int ValUpdate = 100; 
+        int ValUpdate = 2; 
 
         Stopwatch sw = new Stopwatch();
         StreamWriter log; // For the logfile
@@ -92,7 +92,7 @@ namespace WindowsFormsApplication1
             InitializeComponent();
 
             textBoxDebug.AppendText("Application started. \n");
-            
+            labelBaudRate.Text = baudR.ToString();
             // Add the KEYDOWN event handler to handle pressed keys
             KeyDown += new KeyEventHandler(Form1_KeyDown);
             this.KeyPreview = true;

@@ -96,6 +96,11 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.labelBaudRate = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.groupBoxWarnings.SuspendLayout();
             this.groupBoxCRC.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -103,6 +108,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // serialComboBox
@@ -201,7 +207,7 @@
             // groupBoxWarnings
             // 
             this.groupBoxWarnings.Controls.Add(this.textBoxWarnings);
-            this.groupBoxWarnings.Location = new System.Drawing.Point(344, 254);
+            this.groupBoxWarnings.Location = new System.Drawing.Point(344, 367);
             this.groupBoxWarnings.Name = "groupBoxWarnings";
             this.groupBoxWarnings.Size = new System.Drawing.Size(373, 66);
             this.groupBoxWarnings.TabIndex = 33;
@@ -622,7 +628,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(93, 17);
+            this.label15.Location = new System.Drawing.Point(131, 17);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(15, 13);
             this.label15.TabIndex = 53;
@@ -631,7 +637,7 @@
             // ADCtempLABEL2
             // 
             this.ADCtempLABEL2.AutoSize = true;
-            this.ADCtempLABEL2.Location = new System.Drawing.Point(74, 147);
+            this.ADCtempLABEL2.Location = new System.Drawing.Point(112, 147);
             this.ADCtempLABEL2.Name = "ADCtempLABEL2";
             this.ADCtempLABEL2.Size = new System.Drawing.Size(13, 13);
             this.ADCtempLABEL2.TabIndex = 52;
@@ -660,9 +666,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(14, 56);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(55, 13);
+            this.label7.Size = new System.Drawing.Size(69, 13);
             this.label7.TabIndex = 49;
-            this.label7.Text = "Shaft revs";
+            this.label7.Text = "Dragline revs";
             // 
             // label8
             // 
@@ -676,7 +682,7 @@
             // labelIMUTempVal2
             // 
             this.labelIMUTempVal2.AutoSize = true;
-            this.labelIMUTempVal2.Location = new System.Drawing.Point(74, 134);
+            this.labelIMUTempVal2.Location = new System.Drawing.Point(112, 134);
             this.labelIMUTempVal2.Name = "labelIMUTempVal2";
             this.labelIMUTempVal2.Size = new System.Drawing.Size(13, 13);
             this.labelIMUTempVal2.TabIndex = 47;
@@ -685,7 +691,7 @@
             // labelAccZVal2
             // 
             this.labelAccZVal2.AutoSize = true;
-            this.labelAccZVal2.Location = new System.Drawing.Point(74, 121);
+            this.labelAccZVal2.Location = new System.Drawing.Point(112, 121);
             this.labelAccZVal2.Name = "labelAccZVal2";
             this.labelAccZVal2.Size = new System.Drawing.Size(13, 13);
             this.labelAccZVal2.TabIndex = 46;
@@ -694,7 +700,7 @@
             // labelAccYVal2
             // 
             this.labelAccYVal2.AutoSize = true;
-            this.labelAccYVal2.Location = new System.Drawing.Point(74, 108);
+            this.labelAccYVal2.Location = new System.Drawing.Point(112, 108);
             this.labelAccYVal2.Name = "labelAccYVal2";
             this.labelAccYVal2.Size = new System.Drawing.Size(13, 13);
             this.labelAccYVal2.TabIndex = 45;
@@ -703,7 +709,7 @@
             // labelAccXVal2
             // 
             this.labelAccXVal2.AutoSize = true;
-            this.labelAccXVal2.Location = new System.Drawing.Point(74, 95);
+            this.labelAccXVal2.Location = new System.Drawing.Point(112, 95);
             this.labelAccXVal2.Name = "labelAccXVal2";
             this.labelAccXVal2.Size = new System.Drawing.Size(13, 13);
             this.labelAccXVal2.TabIndex = 44;
@@ -712,7 +718,7 @@
             // labelShaftRevs
             // 
             this.labelShaftRevs.AutoSize = true;
-            this.labelShaftRevs.Location = new System.Drawing.Point(74, 56);
+            this.labelShaftRevs.Location = new System.Drawing.Point(112, 56);
             this.labelShaftRevs.Name = "labelShaftRevs";
             this.labelShaftRevs.Size = new System.Drawing.Size(13, 13);
             this.labelShaftRevs.TabIndex = 41;
@@ -721,7 +727,7 @@
             // labelPWMVal1
             // 
             this.labelPWMVal1.AutoSize = true;
-            this.labelPWMVal1.Location = new System.Drawing.Point(74, 17);
+            this.labelPWMVal1.Location = new System.Drawing.Point(112, 17);
             this.labelPWMVal1.Name = "labelPWMVal1";
             this.labelPWMVal1.Size = new System.Drawing.Size(13, 13);
             this.labelPWMVal1.TabIndex = 38;
@@ -776,11 +782,61 @@
             this.label29.TabIndex = 106;
             this.label29.Text = "1. Select serial port, and open the port.";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.label30);
+            this.groupBox2.Controls.Add(this.labelBaudRate);
+            this.groupBox2.Controls.Add(this.label9);
+            this.groupBox2.Controls.Add(this.label27);
+            this.groupBox2.Location = new System.Drawing.Point(344, 224);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(373, 61);
+            this.groupBox2.TabIndex = 110;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Additional information";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 29);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(82, 13);
+            this.label9.TabIndex = 107;
+            this.label9.Text = "Something else:";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(6, 16);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(56, 13);
+            this.label27.TabIndex = 106;
+            this.label27.Text = "Baud rate:";
+            // 
+            // labelBaudRate
+            // 
+            this.labelBaudRate.AutoSize = true;
+            this.labelBaudRate.Location = new System.Drawing.Point(161, 16);
+            this.labelBaudRate.Name = "labelBaudRate";
+            this.labelBaudRate.Size = new System.Drawing.Size(13, 13);
+            this.labelBaudRate.TabIndex = 108;
+            this.labelBaudRate.Text = "0";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(161, 29);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(13, 13);
+            this.label30.TabIndex = 109;
+            this.label30.Text = "0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(730, 516);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
@@ -811,6 +867,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -884,6 +942,11 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label labelBaudRate;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.Label label30;
     }
 }
 

@@ -14,6 +14,6 @@
 void setUpXbee(void);
 uint16_t receiveXBEE(void);
 void sendXBEE(float Data);
-void S_DMA();
+void setUpDMA1channel7();
 
 #endif /* XBEE_H_ */

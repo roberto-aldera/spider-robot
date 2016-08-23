@@ -62,9 +62,9 @@ void controlMethod(float*acc, float*mag, float*gyro, s8*temp, float*angles,
 	//end of Stacey's code
 	//debugging code
 	//3 floats sent in angles (12 bytes total)
-	angles[0] = 1.23;
-	angles[1] = -1.23;
-	angles[2] = 3.45;
+	angles[0] = 1.11;
+	angles[1] = 2.22;
+	angles[2] = 3.33;
 
 	if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_9) == 0) {
 		*PWMval = 35;

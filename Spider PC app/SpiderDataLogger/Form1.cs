@@ -411,9 +411,10 @@ namespace WindowsFormsApplication1
                 logString.Append(accZ1 + ";");
                 logString.Append(t1 + ";");
                 logString.Append(t2 + ";");
-                logString.Append(t3 + ";");
+                //logString.Append(t3 + ";");
                 logString.Append(IMUTemp1 + ";");
                 logString.Append(PWMpercent + ";");
+                logString.Append(shaftRevs + ";");
 
 
                 //logString.Append(gyroX2 + ";");

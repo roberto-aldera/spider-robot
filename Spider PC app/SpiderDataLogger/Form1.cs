@@ -35,7 +35,7 @@ namespace WindowsFormsApplication1
         public float t2;
         public float t3;
 
-        public byte IMUtemp1;     //temperature is 2 bytes... or 1?
+        //public byte IMUtemp1;     //temperature is 2 bytes... or 1?
         public byte adcTemp1;     //this was char for some reason
         
         public float PWMpercent;    //PWM float
@@ -355,7 +355,7 @@ namespace WindowsFormsApplication1
                 String t1 = IMU_data.t1.ToString();
                 String t2 = IMU_data.t2.ToString();
                 String t3 = IMU_data.t3.ToString();
-                String IMUTemp1 = (twosCompTemp(IMU_data.IMUtemp1)*tempScale).ToString();
+                //String IMUTemp1 = (twosCompTemp(IMU_data.IMUtemp1)*tempScale).ToString();
                 String ADCtemp1 = (IMU_data.adcTemp1 - 16).ToString();  //offset of 16 for some reason, weird bitshifting?
 
                 String PWMpercent = (IMU_data.PWMpercent).ToString();
@@ -381,7 +381,7 @@ namespace WindowsFormsApplication1
                 labelt1Val.Text = t1;
                 labelt2Val.Text = t2;
                 labelt3Val.Text = t3;
-                labelIMUTempVal.Text = IMUTemp1;
+                //labelIMUTempVal.Text = IMUTemp1;
                 ADCtempLABEL1.Text = ADCtemp1;
                 labelPWMVal1.Text = PWMpercent;
                 labelShaftRevs.Text = shaftRevs;
@@ -393,7 +393,7 @@ namespace WindowsFormsApplication1
                 //labelShaftRevs.Text = magX2;
                 //labelMagYVal2.Text = magY2;
                 //labelMagZVal2.Text = magZ2;
-                labelIMUTempVal2.Text = IMUTemp2;
+                //labelIMUTempVal2.Text = IMUTemp2;
                 ADCtempLABEL2.Text = ADCtemp2;
 
                 // Update CRC and ESC CHAR counters

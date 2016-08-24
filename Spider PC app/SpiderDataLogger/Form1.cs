@@ -35,8 +35,8 @@ namespace WindowsFormsApplication1
         public float t2;
         public float t3;
 
-//        public byte IMUtemp1;     //temperature is 2 bytes... or 1?
-//        public byte adcTemp1;     //this was char for some reason
+        public byte IMUtemp1;     //temperature is 2 bytes... or 1?
+        public byte adcTemp1;     //this was char for some reason
         
         public float PWMpercent;    //PWM float
         public float shaft_revs;    //encoder revolutions
@@ -93,6 +93,7 @@ namespace WindowsFormsApplication1
 
             textBoxDebug.AppendText("Application started. \n");
             labelBaudRate.Text = baudR.ToString();
+            labelRefreshRate.Text = ValUpdate.ToString();
             // Add the KEYDOWN event handler to handle pressed keys
             KeyDown += new KeyEventHandler(Form1_KeyDown);
             this.KeyPreview = true;
@@ -354,8 +355,8 @@ namespace WindowsFormsApplication1
                 String t1 = IMU_data.t1.ToString();
                 String t2 = IMU_data.t2.ToString();
                 String t3 = IMU_data.t3.ToString();
-                String IMUTemp1 = "N/A";//(twosCompTemp(IMU_data.IMUtemp1)*tempScale).ToString();
-                String ADCtemp1 = "N/A";//IMU_data.adcTemp1.ToString();
+                String IMUTemp1 = (twosCompTemp(IMU_data.IMUtemp1)*tempScale).ToString();
+                String ADCtemp1 = (IMU_data.adcTemp1 - 16).ToString();  //offset of 16 for some reason, weird bitshifting?
 
                 String PWMpercent = (IMU_data.PWMpercent).ToString();
                 String shaftRevs = (Math.Round(IMU_data.shaft_revs,2)).ToString();
@@ -411,8 +412,8 @@ namespace WindowsFormsApplication1
                 logString.Append(accZ1 + ";");
                 logString.Append(t1 + ";");
                 logString.Append(t2 + ";");
-                //logString.Append(t3 + ";");
-                logString.Append(IMUTemp1 + ";");
+                logString.Append(t3 + ";");
+                logString.Append(ADCtemp1 + ";");
                 logString.Append(PWMpercent + ";");
                 logString.Append(shaftRevs + ";");
 

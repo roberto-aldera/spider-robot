@@ -97,10 +97,10 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.labelRefreshRate = new System.Windows.Forms.Label();
+            this.labelBaudRate = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.labelBaudRate = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
             this.groupBoxWarnings.SuspendLayout();
             this.groupBoxCRC.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -456,18 +456,18 @@
             this.label26.AutoSize = true;
             this.label26.Location = new System.Drawing.Point(160, 165);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(29, 13);
+            this.label26.Size = new System.Drawing.Size(18, 13);
             this.label26.TabIndex = 68;
-            this.label26.Text = "units";
+            this.label26.Text = "°C";
             // 
             // label25
             // 
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(160, 152);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(29, 13);
+            this.label25.Size = new System.Drawing.Size(27, 13);
             this.label25.TabIndex = 67;
-            this.label25.Text = "units";
+            this.label25.Text = "N/A";
             // 
             // label24
             // 
@@ -784,7 +784,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label30);
+            this.groupBox2.Controls.Add(this.labelRefreshRate);
             this.groupBox2.Controls.Add(this.labelBaudRate);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label27);
@@ -795,23 +795,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Additional information";
             // 
-            // label9
+            // labelRefreshRate
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(6, 29);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(82, 13);
-            this.label9.TabIndex = 107;
-            this.label9.Text = "Something else:";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(6, 16);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(56, 13);
-            this.label27.TabIndex = 106;
-            this.label27.Text = "Baud rate:";
+            this.labelRefreshRate.AutoSize = true;
+            this.labelRefreshRate.Location = new System.Drawing.Point(161, 29);
+            this.labelRefreshRate.Name = "labelRefreshRate";
+            this.labelRefreshRate.Size = new System.Drawing.Size(13, 13);
+            this.labelRefreshRate.TabIndex = 109;
+            this.labelRefreshRate.Text = "0";
             // 
             // labelBaudRate
             // 
@@ -822,14 +813,23 @@
             this.labelBaudRate.TabIndex = 108;
             this.labelBaudRate.Text = "0";
             // 
-            // label30
+            // label9
             // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(161, 29);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(13, 13);
-            this.label30.TabIndex = 109;
-            this.label30.Text = "0";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(6, 29);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(129, 13);
+            this.label9.TabIndex = 107;
+            this.label9.Text = "Frames between updates:";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(6, 16);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(56, 13);
+            this.label27.TabIndex = 106;
+            this.label27.Text = "Baud rate:";
             // 
             // Form1
             // 
@@ -946,7 +946,7 @@
         private System.Windows.Forms.Label labelBaudRate;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label27;
-        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label labelRefreshRate;
     }
 }
 

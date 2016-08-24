@@ -41,7 +41,7 @@ void getEncoder(float*shaft_angle, float*shaft_revs,
 	}
 }
 
-void controlMethod(float*acc, float*mag, float*gyro, s8*temp, float*angles,
+void controlMethod(float*acc, float*mag, float*gyro, uint8_t*temp, float*angles,
 		float*PWMval) //perform all control in this method
 {
 	//read all the data

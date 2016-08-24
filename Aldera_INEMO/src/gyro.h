@@ -15,9 +15,11 @@ void setUpGyro(void);
 void initSPIgyro(void);
 void spiGyroRegisterSetup(void);
 uint8_t writeSPIgyro(uint8_t regAdr, uint8_t data);
-void getGyro(u8* data,float* out );
-void getTemp(u8*temp);
+void getGyro(uint8_t* data,float* out );
+void getTemp(uint8_t*temp);
 s16 twosCompToDec16(u16 val);
-s8 twosCompToDec8(u8 val);
+s8 twosCompToDec8(uint8_t val);
+
+uint8_t readADCtempValue();
 
 #endif /* GYRO_H_ */

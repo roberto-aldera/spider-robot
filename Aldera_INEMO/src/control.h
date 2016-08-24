@@ -15,6 +15,6 @@
 #include "pwm.h"
 
 void getEncoder(float*shaft_angle,float*shaft_revs,uint8_t*last_encoderA_state,uint8_t*last_encoderB_state);
-void controlMethod(float*acc,float*mag,float*gyro,s8*temp,float*angles,float*PWMval);
+void controlMethod(float*acc,float*mag,float*gyro,uint8_t*temp,float*angles,float*PWMval);
 
 #endif /* CONTROL_H_ */

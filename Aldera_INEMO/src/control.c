@@ -9,13 +9,15 @@
 
 #include "control.h"
 
-void getEncoder(float *shaft_revs) {
+void getEncoder(float *shaft_revs, float *shaft_speed) {
 
 	int rawEncoder = TIM_GetCounter(TIM3);
 	if (rawEncoder > 32768) {
 		rawEncoder = -(65536 - rawEncoder);
 	}
 	*shaft_revs = (rawEncoder) * 0.1;
+
+	*shaft_speed = 22;
 
 }
 

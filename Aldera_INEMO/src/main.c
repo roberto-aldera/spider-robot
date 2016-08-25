@@ -27,30 +27,27 @@ uint8_t acc8[6];		//3 axes, each returning uint16_t, 3x2=6
 uint8_t mag8[6];
 uint8_t gyro8[6];
 uint8_t angles8[12];
-uint8_t MiscPayload8[9];	//temperature=1 (just ADCtemp),PWM=4,Encoder=4
-uint8_t a8[] = { 65, 66, 67, 68, 69, 70 };	//debugging
-uint8_t b8[] = { 106, 107, 108, 109, 110, 111 };	//debugging
-uint8_t c8[] = { 74, 75, 76, 77, 78, 79, 74, 75, 76, 77, 78, 79 };	//debugging
-uint8_t d8[] = { 97, 98, 99, 100, 101, 102, 97, 98, 99 };		//debugging
+uint8_t MiscPayload8[13];	//temperature=1 (just ADCtemp),PWM=4,Encoder=4+4
+uint16_t encoderPosition = 0;
+uint8_t temperature[2];
+uint8_t status = 0;
+uint8_t XBee_waiting = 0;
 float acc[3];
 float mag[3];
 float gyro[3];
 float angles[3];
 float PWMval;
-float shaft_angle = 0;
 float shaft_revs = 0;
-uint8_t last_encoderA_state = 0;
-uint8_t last_encoderB_state = 0;
-uint16_t encoderPosition = 0;
-
-uint8_t temperature[2];
-
-uint8_t status = 0;
-uint8_t XBee_waiting = 0;
+float shaft_speed = 0;
 
 void setUpEncoder();
 void convertDataToBytes(void);
 void toggleGPIOpin(uint8_t *status);
+
+uint8_t a8[] = { 65, 66, 67, 68, 69, 70 };	//debugging
+uint8_t b8[] = { 106, 107, 108, 109, 110, 111 };	//debugging
+uint8_t c8[] = { 74, 75, 76, 77, 78, 79, 74, 75, 76, 77, 78, 79 };	//debugging
+uint8_t d8[] = { 97, 98, 99, 100, 101, 102, 103, 102, 101, 100, 99, 98, 97 };//debugging
 
 int main(void) {
 	serialTerminal_Init();
@@ -69,7 +66,7 @@ int main(void) {
 		getGyro(gyro8, gyro);
 		//getMag(mag8, mag);
 		getTempCelsius(temperature);
-		getEncoder(&shaft_revs);
+		getEncoder(&shaft_revs, &shaft_speed);
 
 		controlMethod(acc, mag, gyro, temperature, angles, &PWMval);
 
@@ -89,8 +86,8 @@ int main(void) {
 				sizeof(MiscPayload8));
 
 		//debugging purposes
-		//			serialTerminal_packetize(a8, b8, c8, d8, sizeof(a8), sizeof(b8),
-		//				sizeof(c8), sizeof(d8));
+//		serialTerminal_packetize(a8, b8, c8, d8, sizeof(a8), sizeof(b8),
+//				sizeof(c8), sizeof(d8));
 
 		//SD card data
 		DMA_Cmd(DMA1_Channel4, ENABLE);
@@ -98,7 +95,7 @@ int main(void) {
 		USART_Cmd(USART1, ENABLE);
 
 		//XBee data, slower
-		if (XBee_waiting == 5) {
+		if (XBee_waiting == 10) {
 			DMA_Cmd(DMA1_Channel7, ENABLE);
 			USART_DMACmd(USART2, USART_DMAReq_Tx, ENABLE);
 			USART_Cmd(USART2, ENABLE);
@@ -165,6 +162,15 @@ void convertDataToBytes() {
 	buffer_to_char_union4.temp_int_buffer = shaft_revs;
 	for (int i = 5; i < 9; i++) {
 		MiscPayload8[i] = buffer_to_char_union4.temp_char[i - 5];
+	}
+
+	union {
+		char temp_char[4];
+		float temp_int_buffer;
+	} buffer_to_char_union5;
+	buffer_to_char_union5.temp_int_buffer = shaft_speed;
+	for (int i = 9; i < 13; i++) {
+		MiscPayload8[i] = buffer_to_char_union5.temp_char[i - 9];
 	}
 }
 

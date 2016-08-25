@@ -40,6 +40,7 @@ namespace WindowsFormsApplication1
         
         public float PWMpercent;    //PWM float
         public float shaft_revs;    //encoder revolutions
+        public float shaft_speed;    //encoder revolutions
 
         /*  For debugging purposes
             //a8 is 6
@@ -363,7 +364,7 @@ namespace WindowsFormsApplication1
 
                 String PWMpercent = (IMU_data.PWMpercent).ToString();
                 String shaftRevs = (Math.Round(IMU_data.shaft_revs,2)).ToString();
-                String gyroZ2 = "1";//(twosComp(IMU_data.gyroZ2)*gyroScale).ToString();
+                String shaftSpeed = IMU_data.shaft_speed.ToString();
                 String accX2 = "1";//(twosComp(IMU_data.accX2)*accScale).ToString();
                 String accY2 = "1";//(twosComp(IMU_data.accY2)*accScale).ToString();
                 String accZ2 = "1";//(twosComp(IMU_data.accZ2)*accScale).ToString();
@@ -388,6 +389,7 @@ namespace WindowsFormsApplication1
                 ADCtempLABEL1.Text = ADCtemp1;
                 labelPWMVal1.Text = PWMpercent;
                 labelShaftRevs.Text = shaftRevs;
+                labelShaftSpeed.Text = shaftSpeed;
 
                 labelFramesSent.Text = tally.ToString();
 

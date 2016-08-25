@@ -103,6 +103,8 @@
             this.label27 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.labelFramesSent = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
+            this.labelShaftSpeed = new System.Windows.Forms.Label();
             this.groupBoxWarnings.SuspendLayout();
             this.groupBoxCRC.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -610,6 +612,8 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.labelShaftSpeed);
+            this.panel2.Controls.Add(this.label31);
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.ADCtempLABEL2);
             this.panel2.Controls.Add(this.label5);
@@ -668,9 +672,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(14, 56);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(69, 13);
+            this.label7.Size = new System.Drawing.Size(85, 13);
             this.label7.TabIndex = 49;
-            this.label7.Text = "Dragline revs";
+            this.label7.Text = "Dragline position";
             // 
             // label8
             // 
@@ -853,6 +857,24 @@
             this.labelFramesSent.TabIndex = 111;
             this.labelFramesSent.Text = "0";
             // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(14, 69);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(78, 13);
+            this.label31.TabIndex = 54;
+            this.label31.Text = "Dragline speed";
+            // 
+            // labelShaftSpeed
+            // 
+            this.labelShaftSpeed.AutoSize = true;
+            this.labelShaftSpeed.Location = new System.Drawing.Point(112, 69);
+            this.labelShaftSpeed.Name = "labelShaftSpeed";
+            this.labelShaftSpeed.Size = new System.Drawing.Size(13, 13);
+            this.labelShaftSpeed.TabIndex = 55;
+            this.labelShaftSpeed.Text = "0";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -971,6 +993,8 @@
         private System.Windows.Forms.Label labelRefreshRate;
         private System.Windows.Forms.Label labelFramesSent;
         private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label labelShaftSpeed;
+        private System.Windows.Forms.Label label31;
     }
 }
 

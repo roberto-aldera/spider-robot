@@ -14,7 +14,7 @@
 #include "gyro.h"
 #include "pwm.h"
 
-void getEncoder(float*shaft_angle,float*shaft_revs,uint8_t*last_encoderA_state,uint8_t*last_encoderB_state);
+void getEncoder(float*shaft_revs);
 void controlMethod(float*acc,float*mag,float*gyro,uint8_t*temp,float*angles,float*PWMval);
 
 #endif /* CONTROL_H_ */

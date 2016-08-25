@@ -184,7 +184,7 @@ void getGyro(u8* buffer, float* out) {
 	buffer[5] = gyroZH;
 }
 
-void getTemp(uint8_t*temp) {
+void getTempCelsius(uint8_t*temp) {
 	//*temp = (u8) writeSPIgyro(0b10100110, 0x00);
 	temp[0] = (uint8_t) writeSPIgyro(0b10100110, 0x00);
 	temp[1] = readADCtempValue();

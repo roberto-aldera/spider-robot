@@ -12,7 +12,7 @@
 #include <stddef.h>
 
 void setUpLoopTimer(void);
-void setUpInCapTimer(void);
+void setUpEncoder(void);
 void wait(void);
 
 #endif /* CONTROLLOOPTIMER_H_ */

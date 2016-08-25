@@ -43,10 +43,22 @@ void TIM2_IRQHandler(void) {
 		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
 
 		proceed = 1;
-
 	}
 }
-void setUpInCapTimer(void){
+void setUpEncoder(void) {
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3, ENABLE);
+
+	// set both inputs to rising polarity to let it use both edges
+	TIM_EncoderInterfaceConfig(TIM3, TIM_EncoderMode_TI12,
+	TIM_ICPolarity_Rising,
+	TIM_ICPolarity_Rising);
+	TIM_SetAutoreload(TIM3, 0xffff);
+
+	TIM_Cmd(TIM3, ENABLE);
+
+	__disable_irq();
+	TIM_SetCounter(TIM3, 0);
+	__enable_irq();
 
 }
 

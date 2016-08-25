@@ -27,7 +27,7 @@ uint8_t acc8[6];		//3 axes, each returning uint16_t, 3x2=6
 uint8_t mag8[6];
 uint8_t gyro8[6];
 uint8_t angles8[12];
-uint8_t MiscPayload8[9];	//temperature=2 (excluded for now),PWM=4,Encoder=4
+uint8_t MiscPayload8[9];	//temperature=1 (just ADCtemp),PWM=4,Encoder=4
 uint8_t a8[] = { 65, 66, 67, 68, 69, 70 };	//debugging
 uint8_t b8[] = { 106, 107, 108, 109, 110, 111 };	//debugging
 uint8_t c8[] = { 74, 75, 76, 77, 78, 79, 74, 75, 76, 77, 78, 79 };	//debugging
@@ -41,18 +41,21 @@ float shaft_angle = 0;
 float shaft_revs = 0;
 uint8_t last_encoderA_state = 0;
 uint8_t last_encoderB_state = 0;
+uint16_t encoderPosition = 0;
+
 uint8_t temperature[2];
 
 uint8_t status = 0;
 uint8_t XBee_waiting = 0;
 
+void setUpEncoder();
 void convertDataToBytes(void);
 void toggleGPIOpin(uint8_t *status);
 
 int main(void) {
 	serialTerminal_Init();
 	setUpLoopTimer();
-	setUpInCapTimer();
+	setUpEncoder();
 	setUpGPIO();
 	setUpEcompass();
 	setUpGyro();
@@ -65,10 +68,8 @@ int main(void) {
 		getAcc(acc8, acc);
 		getGyro(gyro8, gyro);
 		//getMag(mag8, mag);
-
-		getTemp(temperature);
-		getEncoder(&shaft_angle, &shaft_revs, &last_encoderA_state,
-				&last_encoderB_state);
+		getTempCelsius(temperature);
+		getEncoder(&shaft_revs);
 
 		controlMethod(acc, mag, gyro, temperature, angles, &PWMval);
 
@@ -106,13 +107,10 @@ int main(void) {
 		XBee_waiting++;
 		//Toggle PA11 to test loop frequency
 		toggleGPIOpin(&status);
-
+		//wait until next run, to maintain 100Hz sync
 		wait();
-
-
 	}
 }
-
 
 void toggleGPIOpin(uint8_t *status) {
 	if (*status == 0) {

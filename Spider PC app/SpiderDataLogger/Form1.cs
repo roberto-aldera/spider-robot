@@ -341,7 +341,6 @@ namespace WindowsFormsApplication1
         {
             if (count == ValUpdate)
             {
-                //tally++;
                 //TODO twos comp and scaling factor
 
                 float accScale = (float)(9.81 * (1 / (16 * 1.0)) / 1000.0);  //this is now in m/s2, not G anymore;

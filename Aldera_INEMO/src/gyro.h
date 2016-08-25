@@ -16,7 +16,7 @@ void initSPIgyro(void);
 void spiGyroRegisterSetup(void);
 uint8_t writeSPIgyro(uint8_t regAdr, uint8_t data);
 void getGyro(uint8_t* data,float* out );
-void getTemp(uint8_t*temp);
+void getTempCelsius(uint8_t*temp);
 s16 twosCompToDec16(u16 val);
 s8 twosCompToDec8(uint8_t val);
 

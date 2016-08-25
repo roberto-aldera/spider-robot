@@ -47,11 +47,12 @@ uint8_t status = 0;
 uint8_t XBee_waiting = 0;
 
 void convertDataToBytes(void);
-void loop100Hz(void);
+void toggleGPIOpin(uint8_t *status);
 
 int main(void) {
 	serialTerminal_Init();
 	setUpLoopTimer();
+	setUpInCapTimer();
 	setUpGPIO();
 	setUpEcompass();
 	setUpGyro();
@@ -61,65 +62,66 @@ int main(void) {
 	setUpPWM();
 
 	while (1) {
-		//get data
 		getAcc(acc8, acc);
 		getGyro(gyro8, gyro);
 		//getMag(mag8, mag);
+
 		getTemp(temperature);
 		getEncoder(&shaft_angle, &shaft_revs, &last_encoderA_state,
 				&last_encoderB_state);
 
-		//without this wait() the app freezes even though data is coming through.
+		controlMethod(acc, mag, gyro, temperature, angles, &PWMval);
+
+		for (int p = 0; p < sizeof(TxBuff); p++) {
+			TxBuff[p] = 0;
+		}
+
+		DMA_Cmd(DMA1_Channel7, DISABLE);
+		DMA_SetCurrDataCounter(DMA1_Channel7, sizeof(TxBuff));
+		DMA_Cmd(DMA1_Channel4, DISABLE);
+		DMA_SetCurrDataCounter(DMA1_Channel4, sizeof(TxBuff));
+
+		//Four payloads, gyro/acc/angles/MiscPayload
+		convertDataToBytes();
+		serialTerminal_packetize(gyro8, acc8, angles8, MiscPayload8,
+				sizeof(gyro8), sizeof(acc8), sizeof(angles8),
+				sizeof(MiscPayload8));
+
+		//debugging purposes
+		//			serialTerminal_packetize(a8, b8, c8, d8, sizeof(a8), sizeof(b8),
+		//				sizeof(c8), sizeof(d8));
+
+		//SD card data
+		DMA_Cmd(DMA1_Channel4, ENABLE);
+		USART_DMACmd(USART1, USART_DMAReq_Tx, ENABLE);
+		USART_Cmd(USART1, ENABLE);
+
+		//XBee data, slower
+		if (XBee_waiting == 5) {
+			DMA_Cmd(DMA1_Channel7, ENABLE);
+			USART_DMACmd(USART2, USART_DMAReq_Tx, ENABLE);
+			USART_Cmd(USART2, ENABLE);
+			XBee_waiting = 0;
+		}
+		XBee_waiting++;
+		//Toggle PA11 to test loop frequency
+		toggleGPIOpin(&status);
+
 		wait();
+
+
 	}
 }
-void loop100Hz() {
 
-	controlMethod(acc, mag, gyro, temperature, angles, &PWMval);
-	convertDataToBytes();
 
-	for (int p = 0; p < sizeof(TxBuff); p++) {
-		TxBuff[p] = 0;
-	}
-
-	DMA_Cmd(DMA1_Channel7, DISABLE);
-	DMA_SetCurrDataCounter(DMA1_Channel7, sizeof(TxBuff));
-	DMA_Cmd(DMA1_Channel4, DISABLE);
-	DMA_SetCurrDataCounter(DMA1_Channel4, sizeof(TxBuff));
-
-	//Four payloads, gyro/acc/angles/MiscPayload
-	serialTerminal_packetize(gyro8, acc8, angles8, MiscPayload8, sizeof(gyro8),
-			sizeof(acc8), sizeof(angles8), sizeof(MiscPayload8));
-
-	//debugging purposes
-//			serialTerminal_packetize(a8, b8, c8, d8, sizeof(a8), sizeof(b8),
-//				sizeof(c8), sizeof(d8));
-
-	//SD card data
-	DMA_Cmd(DMA1_Channel4, ENABLE);
-	USART_DMACmd(USART1, USART_DMAReq_Tx, ENABLE);
-	USART_Cmd(USART1, ENABLE);
-
-	//XBee data, slower
-	if (XBee_waiting == 3) {
-		DMA_Cmd(DMA1_Channel7, ENABLE);
-		USART_DMACmd(USART2, USART_DMAReq_Tx, ENABLE);
-		USART_Cmd(USART2, ENABLE);
-		XBee_waiting = 0;
-	}
-
-	XBee_waiting++;
-
-	//Toggle PA11 to test loop frequency
-	if (status == 0) {
+void toggleGPIOpin(uint8_t *status) {
+	if (*status == 0) {
 		GPIO_SetBits(GPIOA, GPIO_Pin_11);
-		status = 1;
+		*status = 1;
 	} else {
 		GPIO_ResetBits(GPIOA, GPIO_Pin_11);
-		status = 0;
+		*status = 0;
 	}
-
-	//wait();
 }
 
 void convertDataToBytes() {

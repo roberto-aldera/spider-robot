@@ -28,7 +28,7 @@ void setUpLoggerSDcard(void) {
 
 	GPIO_PinRemapConfig(GPIO_Remap_USART1, ENABLE);
 
-	USART_InitStructure.USART_BaudRate = 57600;	//change this to 230400 maybe? was 115200
+	USART_InitStructure.USART_BaudRate = 115200;	//SD card can go faster than Xbee
 	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
 	USART_InitStructure.USART_StopBits = USART_StopBits_1;
 	USART_InitStructure.USART_Parity = USART_Parity_No;

@@ -42,12 +42,14 @@ void TIM2_IRQHandler(void) {
 	if (TIM_GetITStatus(TIM2, TIM_IT_Update) != RESET) {
 		TIM_ClearITPendingBit(TIM2, TIM_IT_Update);
 
-		loop100Hz();
-
 		proceed = 1;
 
 	}
 }
+void setUpInCapTimer(void){
+
+}
+
 void wait(void) {
 	while (proceed == 0) //interrupt will set proceed to 1;
 	{

@@ -12,7 +12,7 @@
 #include <stddef.h>
 
 void setUpLoopTimer(void);
-void loop100Hz();
+void setUpInCapTimer(void);
 void wait(void);
 
 #endif /* CONTROLLOOPTIMER_H_ */

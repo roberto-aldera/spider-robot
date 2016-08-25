@@ -77,7 +77,8 @@ namespace WindowsFormsApplication1
         bool log_data_checked_old = false;
 
         int count = 0;
-        int ValUpdate = 2; 
+        int ValUpdate = 2;
+        int tally = 0;
 
         Stopwatch sw = new Stopwatch();
         StreamWriter log; // For the logfile
@@ -215,11 +216,14 @@ namespace WindowsFormsApplication1
                         }
                         //RUN THIS EVERY X TIMES
                         count = count + 1;
+                        tally++;
                         if (count == ValUpdate)
                         {
                             UInt16 command = System.BitConverter.ToUInt16(Data, 0);
                             if (command == 0x0101)      //this is opcode
                             {
+                                IMU_data = ByteCaster.GetStructure<IMU_Data_Struct>(Data);
+                                IMU_data = ByteCaster.GetStructure<IMU_Data_Struct>(Data);
                                 IMU_data = ByteCaster.GetStructure<IMU_Data_Struct>(Data);
                                 this.Invoke(new EventHandler(updateGUI_Information));
                             }
@@ -337,7 +341,7 @@ namespace WindowsFormsApplication1
         {
             if (count == ValUpdate)
             {
-
+                //tally++;
                 //TODO twos comp and scaling factor
 
                 float accScale = (float)(9.81 * (1 / (16 * 1.0)) / 1000.0);  //this is now in m/s2, not G anymore;
@@ -355,7 +359,7 @@ namespace WindowsFormsApplication1
                 String t1 = IMU_data.t1.ToString();
                 String t2 = IMU_data.t2.ToString();
                 String t3 = IMU_data.t3.ToString();
-                //String IMUTemp1 = (twosCompTemp(IMU_data.IMUtemp1)*tempScale).ToString();
+                String IMUTemp1 = "N/A";// (twosCompTemp(IMU_data.IMUtemp1)*tempScale).ToString();
                 String ADCtemp1 = (IMU_data.adcTemp1 - 16).ToString();  //offset of 16 for some reason, weird bitshifting?
 
                 String PWMpercent = (IMU_data.PWMpercent).ToString();
@@ -381,10 +385,12 @@ namespace WindowsFormsApplication1
                 labelt1Val.Text = t1;
                 labelt2Val.Text = t2;
                 labelt3Val.Text = t3;
-                //labelIMUTempVal.Text = IMUTemp1;
+                labelIMUTempVal.Text = IMUTemp1;
                 ADCtempLABEL1.Text = ADCtemp1;
                 labelPWMVal1.Text = PWMpercent;
                 labelShaftRevs.Text = shaftRevs;
+
+                labelFramesSent.Text = tally.ToString();
 
                 //unused extra text stuff
                 labelAccXVal2.Text = accX2;

@@ -101,6 +101,8 @@
             this.labelBaudRate = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.labelFramesSent = new System.Windows.Forms.Label();
             this.groupBoxWarnings.SuspendLayout();
             this.groupBoxCRC.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -784,6 +786,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.labelFramesSent);
+            this.groupBox2.Controls.Add(this.label30);
             this.groupBox2.Controls.Add(this.labelRefreshRate);
             this.groupBox2.Controls.Add(this.labelBaudRate);
             this.groupBox2.Controls.Add(this.label9);
@@ -830,6 +834,24 @@
             this.label27.Size = new System.Drawing.Size(56, 13);
             this.label27.TabIndex = 106;
             this.label27.Text = "Baud rate:";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(6, 42);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(67, 13);
+            this.label30.TabIndex = 110;
+            this.label30.Text = "Frames sent:";
+            // 
+            // labelFramesSent
+            // 
+            this.labelFramesSent.AutoSize = true;
+            this.labelFramesSent.Location = new System.Drawing.Point(161, 42);
+            this.labelFramesSent.Name = "labelFramesSent";
+            this.labelFramesSent.Size = new System.Drawing.Size(13, 13);
+            this.labelFramesSent.TabIndex = 111;
+            this.labelFramesSent.Text = "0";
             // 
             // Form1
             // 
@@ -947,6 +969,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.Label labelRefreshRate;
+        private System.Windows.Forms.Label labelFramesSent;
+        private System.Windows.Forms.Label label30;
     }
 }
 

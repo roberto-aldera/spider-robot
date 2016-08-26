@@ -12,7 +12,9 @@
 #include <stddef.h>
 
 void setUpLoopTimer(void);
+void setUpDelayTimer(void);
 void setUpEncoder(void);
-void wait(void);
+void waitForEnd100Hz(void);
+void waitForEnd500Hz(void);
 
 #endif /* CONTROLLOOPTIMER_H_ */

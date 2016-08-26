@@ -39,6 +39,8 @@ float angles[3];
 float PWMval;
 float shaft_revs = 0;
 float shaft_speed = 0;
+uint16_t rawEncoderOld = 0;
+uint16_t countSinceEncoderTick = 1;
 
 void setUpEncoder();
 void convertDataToBytes(void);
@@ -52,6 +54,7 @@ uint8_t d8[] = { 97, 98, 99, 100, 101, 102, 103, 102, 101, 100, 99, 98, 97 };//d
 int main(void) {
 	serialTerminal_Init();
 	setUpLoopTimer();
+	setUpDelayTimer();
 	setUpEncoder();
 	setUpGPIO();
 	setUpEcompass();
@@ -66,7 +69,7 @@ int main(void) {
 		getGyro(gyro8, gyro);
 		//getMag(mag8, mag);
 		getTempCelsius(temperature);
-		getEncoder(&shaft_revs, &shaft_speed);
+		getEncoder(&shaft_revs, &shaft_speed, &rawEncoderOld, &countSinceEncoderTick);
 
 		controlMethod(acc, mag, gyro, temperature, angles, &PWMval);
 
@@ -105,7 +108,7 @@ int main(void) {
 		//Toggle PA11 to test loop frequency
 		toggleGPIOpin(&status);
 		//wait until next run, to maintain 100Hz sync
-		wait();
+		waitForEnd100Hz();
 	}
 }
 

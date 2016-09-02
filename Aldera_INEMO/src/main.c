@@ -42,6 +42,17 @@ float shaft_speed = 0;
 uint16_t rawEncoderOld = 0;
 uint16_t countSinceEncoderTick = 1;
 
+//speeds
+volatile int16_t leftCount;
+volatile int16_t rightCount;
+volatile int16_t fwdCount;
+volatile int16_t rotCount;
+//distances
+volatile int32_t leftTotal;
+volatile int32_t rightTotal;
+volatile int32_t fwdTotal;
+volatile int32_t rotTotal;
+
 void setUpEncoder();
 void convertDataToBytes(void);
 void toggleGPIOpin(uint8_t *status);
@@ -54,7 +65,7 @@ uint8_t d8[] = { 97, 98, 99, 100, 101, 102, 103, 102, 101, 100, 99, 98, 97 };//d
 int main(void) {
 	serialTerminal_Init();
 	setUpLoopTimer();
-	setUpDelayTimer();
+	//setUpDelayTimer();
 	setUpEncoder();
 	setUpGPIO();
 	setUpEcompass();
@@ -69,7 +80,10 @@ int main(void) {
 		getGyro(gyro8, gyro);
 		//getMag(mag8, mag);
 		getTempCelsius(temperature);
-		getEncoder(&shaft_revs, &shaft_speed, &rawEncoderOld, &countSinceEncoderTick);
+//		getEncoder(&shaft_revs, &shaft_speed, &rawEncoderOld,
+//				&countSinceEncoderTick);
+		readEncoder(&shaft_revs, &shaft_speed,leftCount, rightCount, fwdCount, rotCount, leftTotal,
+				rightTotal, fwdTotal, rotTotal);
 
 		controlMethod(acc, mag, gyro, temperature, angles, &PWMval);
 

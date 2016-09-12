@@ -364,7 +364,7 @@ namespace WindowsFormsApplication1
 
                 String PWMpercent = (IMU_data.PWMpercent).ToString();
                 String shaftRevs = (Math.Round(IMU_data.shaft_revs,2)).ToString();
-                String shaftSpeed = IMU_data.shaft_speed.ToString();
+                String shaftSpeed = (Math.Round(IMU_data.shaft_speed, 2)).ToString();
                 String accX2 = "1";//(twosComp(IMU_data.accX2)*accScale).ToString();
                 String accY2 = "1";//(twosComp(IMU_data.accY2)*accScale).ToString();
                 String accZ2 = "1";//(twosComp(IMU_data.accZ2)*accScale).ToString();

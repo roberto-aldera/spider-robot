@@ -13,16 +13,18 @@ void readEncoder(float *shaft_revs, float *shaft_speed) {
 
 	static volatile int16_t oldShaftEncoder;
 	static volatile int16_t shaftEncoder;
+	static float position = 0;
 
 	oldShaftEncoder = shaftEncoder;
 	shaftEncoder = TIM_GetCounter(TIM3);
 	*shaft_speed = shaftEncoder - oldShaftEncoder;
-
-	if (shaftEncoder > 32768) {
-		shaftEncoder = -(65536 - shaftEncoder);
-	}
-	*shaft_revs = (shaftEncoder) * 0.16666667; //(1/(3*2));	//3 teeth on encoder wheel
-	*shaft_speed = *shaft_speed * 0.16666667;
+	position += *shaft_speed;
+	*shaft_revs = position;
+//	if (shaftEncoder > 32768) {
+//		shaftEncoder = -(65536 - shaftEncoder);
+//	}
+//	*shaft_revs = (position) ;//(1/(3*2));	//3 teeth on encoder wheel
+	//*shaft_speed = *shaft_speed / 0.01;
 
 }
 

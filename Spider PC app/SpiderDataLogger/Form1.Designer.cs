@@ -79,6 +79,8 @@
             this.label10 = new System.Windows.Forms.Label();
             this.ADCtempLABEL1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.labelShaftSpeed = new System.Windows.Forms.Label();
+            this.label31 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.ADCtempLABEL2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -97,14 +99,16 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.labelFramesSent = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
             this.labelRefreshRate = new System.Windows.Forms.Label();
             this.labelBaudRate = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.labelFramesSent = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.labelShaftSpeed = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
             this.groupBoxWarnings.SuspendLayout();
             this.groupBoxCRC.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -631,6 +635,24 @@
             this.panel2.Size = new System.Drawing.Size(160, 206);
             this.panel2.TabIndex = 53;
             // 
+            // labelShaftSpeed
+            // 
+            this.labelShaftSpeed.AutoSize = true;
+            this.labelShaftSpeed.Location = new System.Drawing.Point(112, 69);
+            this.labelShaftSpeed.Name = "labelShaftSpeed";
+            this.labelShaftSpeed.Size = new System.Drawing.Size(13, 13);
+            this.labelShaftSpeed.TabIndex = 55;
+            this.labelShaftSpeed.Text = "0";
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Location = new System.Drawing.Point(14, 69);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(78, 13);
+            this.label31.TabIndex = 54;
+            this.label31.Text = "Dragline speed";
+            // 
             // label15
             // 
             this.label15.AutoSize = true;
@@ -790,6 +812,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label34);
+            this.groupBox2.Controls.Add(this.label35);
+            this.groupBox2.Controls.Add(this.label32);
+            this.groupBox2.Controls.Add(this.label33);
             this.groupBox2.Controls.Add(this.labelFramesSent);
             this.groupBox2.Controls.Add(this.label30);
             this.groupBox2.Controls.Add(this.labelRefreshRate);
@@ -798,10 +824,28 @@
             this.groupBox2.Controls.Add(this.label27);
             this.groupBox2.Location = new System.Drawing.Point(344, 224);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(373, 61);
+            this.groupBox2.Size = new System.Drawing.Size(373, 91);
             this.groupBox2.TabIndex = 110;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Additional information";
+            // 
+            // labelFramesSent
+            // 
+            this.labelFramesSent.AutoSize = true;
+            this.labelFramesSent.Location = new System.Drawing.Point(161, 42);
+            this.labelFramesSent.Name = "labelFramesSent";
+            this.labelFramesSent.Size = new System.Drawing.Size(13, 13);
+            this.labelFramesSent.TabIndex = 111;
+            this.labelFramesSent.Text = "0";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(6, 42);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(67, 13);
+            this.label30.TabIndex = 110;
+            this.label30.Text = "Frames sent:";
             // 
             // labelRefreshRate
             // 
@@ -839,41 +883,41 @@
             this.label27.TabIndex = 106;
             this.label27.Text = "Baud rate:";
             // 
-            // label30
+            // label32
             // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(6, 42);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(67, 13);
-            this.label30.TabIndex = 110;
-            this.label30.Text = "Frames sent:";
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(161, 55);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(35, 13);
+            this.label32.TabIndex = 113;
+            this.label32.Text = "20 Hz";
             // 
-            // labelFramesSent
+            // label33
             // 
-            this.labelFramesSent.AutoSize = true;
-            this.labelFramesSent.Location = new System.Drawing.Point(161, 42);
-            this.labelFramesSent.Name = "labelFramesSent";
-            this.labelFramesSent.Size = new System.Drawing.Size(13, 13);
-            this.labelFramesSent.TabIndex = 111;
-            this.labelFramesSent.Text = "0";
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(6, 55);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(110, 13);
+            this.label33.TabIndex = 112;
+            this.label33.Text = "XBee data frequency:";
             // 
-            // label31
+            // label34
             // 
-            this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(14, 69);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(78, 13);
-            this.label31.TabIndex = 54;
-            this.label31.Text = "Dragline speed";
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(161, 68);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(41, 13);
+            this.label34.TabIndex = 115;
+            this.label34.Text = "100 Hz";
             // 
-            // labelShaftSpeed
+            // label35
             // 
-            this.labelShaftSpeed.AutoSize = true;
-            this.labelShaftSpeed.Location = new System.Drawing.Point(112, 69);
-            this.labelShaftSpeed.Name = "labelShaftSpeed";
-            this.labelShaftSpeed.Size = new System.Drawing.Size(13, 13);
-            this.labelShaftSpeed.TabIndex = 55;
-            this.labelShaftSpeed.Text = "0";
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(6, 68);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(116, 13);
+            this.label35.TabIndex = 114;
+            this.label35.Text = "Control loop frequency:";
             // 
             // Form1
             // 
@@ -995,6 +1039,10 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label labelShaftSpeed;
         private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.Label label33;
     }
 }
 

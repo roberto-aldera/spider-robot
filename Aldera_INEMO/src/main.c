@@ -27,8 +27,11 @@ uint8_t acc8[6];		//3 axes, each returning uint16_t, 3x2=6
 uint8_t mag8[6];
 uint8_t gyro8[6];
 uint8_t angles8[12];
-uint8_t MiscPayload8[13];	//temperature=1 (just ADCtemp),PWM=4,Encoder=4+4
+uint8_t MiscPayload8[15];	//temperature=1 (just ADCtemp),PWM=4,Encoder=4+4, currentSensor=2
 uint16_t encoderPosition = 0;
+uint16_t adcValDMA[2];	//to store temperature and current sensor readings
+uint16_t motorCurrent;	//ADC reading from motor current sensor
+uint16_t testVar[2];	//debugging purposes
 uint8_t temperature[2];
 uint8_t status = 0;
 uint8_t XBee_waiting = 0;
@@ -56,7 +59,7 @@ int main(void) {
 	setUpGPIO();
 	setUpEcompass();
 	setUpGyro();
-	setUpADC();
+	setUpADC();	//this also sets up DMA...
 	setUpXbee();
 	setUpLoggerSDcard();
 	setUpPWM();
@@ -64,8 +67,13 @@ int main(void) {
 	while (1) {
 		getAcc(acc8, acc);
 		getGyro(gyro8, gyro);
-		//getMag(mag8, mag);
-		getTempCelsius(temperature);
+//		getMag(mag8, mag);
+//		getTempCelsius(temperature);
+		readADCdma(adcValDMA);
+		testVar[0] = ((V25 - adcValDMA[0]) / Avg_Slope + 25);
+		testVar[1] = adcValDMA[1];
+		motorCurrent = adcValDMA[1];
+		temperature[1] = (uint8_t)((V25 - adcValDMA[0]) / Avg_Slope + 25);
 		readEncoder(&shaft_revs, &shaft_speed);
 		controlMethod(acc, mag, gyro, temperature, angles, &PWMval);
 
@@ -170,6 +178,15 @@ void convertDataToBytes() {
 	buffer_to_char_union5.temp_int_buffer = shaft_speed;
 	for (int i = 9; i < 13; i++) {
 		MiscPayload8[i] = buffer_to_char_union5.temp_char[i - 9];
+	}
+
+	union {
+		char temp_char[2];
+		uint16_t temp_int_buffer;
+	} buffer_to_char_union6;
+	buffer_to_char_union6.temp_int_buffer = motorCurrent;
+	for (int i = 13; i < 15; i++) {
+		MiscPayload8[i] = buffer_to_char_union6.temp_char[i - 13];
 	}
 }
 

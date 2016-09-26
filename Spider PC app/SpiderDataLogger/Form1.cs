@@ -42,6 +42,8 @@ namespace WindowsFormsApplication1
         public float shaft_revs;    //encoder revolutions
         public float shaft_speed;    //encoder revolutions
 
+        public UInt16 motorCurrent; //motor current reading
+
         /*  For debugging purposes
             //a8 is 6
             public UInt16 gyroX1;
@@ -361,13 +363,13 @@ namespace WindowsFormsApplication1
                 String t2 = IMU_data.t2.ToString();
                 String t3 = IMU_data.t3.ToString();
                 String IMUTemp1 = "N/A";// (twosCompTemp(IMU_data.IMUtemp1)*tempScale).ToString();
-                //String ADCtemp1 = (IMU_data.adcTemp1 - 16).ToString();  //offset of 16 for some reason, weird bitshifting?
-                String ADCtemp1 = (IMU_data.adcTemp1 - 0).ToString();  //offset of 16 for some reason, weird bitshifting?
+                String ADCtemp1 = (IMU_data.adcTemp1 - 16).ToString();  //offset of 16 for some reason, after chaning DMA mode to circular
+                //String ADCtemp1 = (IMU_data.adcTemp1 - 0).ToString();  //offset of 16 for some reason, weird bitshifting?
 
                 String PWMpercent = (IMU_data.PWMpercent).ToString();
                 String shaftRevs = (Math.Round(IMU_data.shaft_revs,2)).ToString();
                 String shaftSpeed = (Math.Round(IMU_data.shaft_speed, 2)).ToString();
-                String accX2 = "1";//(twosComp(IMU_data.accX2)*accScale).ToString();
+                String motorCurrent = (IMU_data.motorCurrent).ToString();
                 String accY2 = "1";//(twosComp(IMU_data.accY2)*accScale).ToString();
                 String accZ2 = "1";//(twosComp(IMU_data.accZ2)*accScale).ToString();
                 String magX2 = "1";//(twosComp(IMU_data.magX2)*magScale).ToString();
@@ -392,18 +394,19 @@ namespace WindowsFormsApplication1
                 labelPWMVal1.Text = PWMpercent;
                 labelShaftRevs.Text = shaftRevs;
                 labelShaftSpeed.Text = shaftSpeed;
+                labelMotorCurrent.Text = motorCurrent;
 
                 labelFramesSent.Text = tally.ToString();
 
                 //unused extra text stuff
-                labelAccXVal2.Text = accX2;
-                labelAccYVal2.Text = accY2;
-                labelAccZVal2.Text = accZ2;
+                //labelAccXVal2.Text = accX2;
+                //labelAccYVal2.Text = accY2;
+                //labelAccZVal2.Text = accZ2;
                 //labelShaftRevs.Text = magX2;
                 //labelMagYVal2.Text = magY2;
                 //labelMagZVal2.Text = magZ2;
                 //labelIMUTempVal2.Text = IMUTemp2;
-                ADCtempLABEL2.Text = ADCtemp2;
+                //ADCtempLABEL2.Text = ADCtemp2;
 
                 // Update CRC and ESC CHAR counters
                 labelCRCFailsVal.Text = rxDataFrame.getNumberOfCRCFails().ToString();

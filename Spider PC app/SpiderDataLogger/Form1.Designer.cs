@@ -99,16 +99,19 @@
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
             this.labelFramesSent = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.labelRefreshRate = new System.Windows.Forms.Label();
             this.labelBaudRate = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.labelMotorCurrent = new System.Windows.Forms.Label();
             this.groupBoxWarnings.SuspendLayout();
             this.groupBoxCRC.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -204,12 +207,12 @@
             // 
             // textBoxWarnings
             // 
-            this.textBoxWarnings.Location = new System.Drawing.Point(0, 13);
+            this.textBoxWarnings.Location = new System.Drawing.Point(0, 14);
             this.textBoxWarnings.Multiline = true;
             this.textBoxWarnings.Name = "textBoxWarnings";
             this.textBoxWarnings.ReadOnly = true;
             this.textBoxWarnings.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxWarnings.Size = new System.Drawing.Size(373, 50);
+            this.textBoxWarnings.Size = new System.Drawing.Size(403, 49);
             this.textBoxWarnings.TabIndex = 32;
             // 
             // groupBoxWarnings
@@ -217,7 +220,7 @@
             this.groupBoxWarnings.Controls.Add(this.textBoxWarnings);
             this.groupBoxWarnings.Location = new System.Drawing.Point(344, 367);
             this.groupBoxWarnings.Name = "groupBoxWarnings";
-            this.groupBoxWarnings.Size = new System.Drawing.Size(373, 66);
+            this.groupBoxWarnings.Size = new System.Drawing.Size(403, 66);
             this.groupBoxWarnings.TabIndex = 33;
             this.groupBoxWarnings.TabStop = false;
             this.groupBoxWarnings.Text = "Warnings/Errors";
@@ -616,6 +619,9 @@
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.label36);
+            this.panel2.Controls.Add(this.label37);
+            this.panel2.Controls.Add(this.labelMotorCurrent);
             this.panel2.Controls.Add(this.labelShaftSpeed);
             this.panel2.Controls.Add(this.label31);
             this.panel2.Controls.Add(this.label15);
@@ -632,7 +638,7 @@
             this.panel2.Controls.Add(this.labelPWMVal1);
             this.panel2.Location = new System.Drawing.Point(557, 12);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(160, 206);
+            this.panel2.Size = new System.Drawing.Size(190, 206);
             this.panel2.TabIndex = 53;
             // 
             // labelShaftSpeed
@@ -656,7 +662,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(131, 17);
+            this.label15.Location = new System.Drawing.Point(161, 17);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(15, 13);
             this.label15.TabIndex = 53;
@@ -678,7 +684,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(37, 13);
             this.label5.TabIndex = 51;
-            this.label5.Text = "Extra4";
+            this.label5.Text = "Extra2";
             // 
             // label6
             // 
@@ -687,7 +693,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(37, 13);
             this.label6.TabIndex = 50;
-            this.label6.Text = "Extra3";
+            this.label6.Text = "Extra1";
             // 
             // label7
             // 
@@ -774,7 +780,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(455, 457);
+            this.pictureBox2.Location = new System.Drawing.Point(484, 457);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(263, 50);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -824,10 +830,46 @@
             this.groupBox2.Controls.Add(this.label27);
             this.groupBox2.Location = new System.Drawing.Point(344, 224);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(373, 91);
+            this.groupBox2.Size = new System.Drawing.Size(403, 91);
             this.groupBox2.TabIndex = 110;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Additional information";
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(161, 68);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(41, 13);
+            this.label34.TabIndex = 115;
+            this.label34.Text = "100 Hz";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(6, 68);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(116, 13);
+            this.label35.TabIndex = 114;
+            this.label35.Text = "Control loop frequency:";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(161, 55);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(35, 13);
+            this.label32.TabIndex = 113;
+            this.label32.Text = "20 Hz";
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(6, 55);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(110, 13);
+            this.label33.TabIndex = 112;
+            this.label33.Text = "XBee data frequency:";
             // 
             // labelFramesSent
             // 
@@ -883,47 +925,38 @@
             this.label27.TabIndex = 106;
             this.label27.Text = "Baud rate:";
             // 
-            // label32
+            // label36
             // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(161, 55);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(35, 13);
-            this.label32.TabIndex = 113;
-            this.label32.Text = "20 Hz";
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(161, 30);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(22, 13);
+            this.label36.TabIndex = 58;
+            this.label36.Text = "mA";
             // 
-            // label33
+            // label37
             // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(6, 55);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(110, 13);
-            this.label33.TabIndex = 112;
-            this.label33.Text = "XBee data frequency:";
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(14, 30);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(70, 13);
+            this.label37.TabIndex = 57;
+            this.label37.Text = "Motor current";
             // 
-            // label34
+            // labelMotorCurrent
             // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(161, 68);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(41, 13);
-            this.label34.TabIndex = 115;
-            this.label34.Text = "100 Hz";
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(6, 68);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(116, 13);
-            this.label35.TabIndex = 114;
-            this.label35.Text = "Control loop frequency:";
+            this.labelMotorCurrent.AutoSize = true;
+            this.labelMotorCurrent.Location = new System.Drawing.Point(112, 30);
+            this.labelMotorCurrent.Name = "labelMotorCurrent";
+            this.labelMotorCurrent.Size = new System.Drawing.Size(13, 13);
+            this.labelMotorCurrent.TabIndex = 56;
+            this.labelMotorCurrent.Text = "0";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(730, 516);
+            this.ClientSize = new System.Drawing.Size(759, 516);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.pictureBox2);
@@ -1043,6 +1076,9 @@
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label32;
         private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label labelMotorCurrent;
     }
 }
 

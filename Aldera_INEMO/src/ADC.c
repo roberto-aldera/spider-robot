@@ -107,24 +107,22 @@ void readADCdma(u16* out) {
 	/* Enable ADC DMA */
 	//	ADC_DMACmd(ADC1, ENABLE);
 	//	ADC_Cmd(ADC1, ENABLE);
-
 	//	DMA_Cmd(DMA1_Channel1, ENABLE);
 	//	ADC_SoftwareStartConvCmd(ADC1, ENABLE);
-
 	//	while (!(DMA_GetFlagStatus(DMA1_FLAG_TC1)))
 	//		;
 	//	ADC_Cmd(ADC1, DISABLE);
 	//	ADC_SoftwareStartConvCmd(ADC1, DISABLE);
 	//	DMA_ClearFlag(DMA1_FLAG_TC1);
+	float tempMotorCurrent = 0;
+	tempMotorCurrent = -(ADC_GetConversionValue(ADC2)*(10.0/4096.0)*(3.30/5.0)-5.0)*1000.0;
 	ADC_ConvertedValue[0] = ADC_GetConversionValue(ADC1);
-	ADC_ConvertedValue[1] = ADC_GetConversionValue(ADC2);
+	ADC_ConvertedValue[1] = (uint16_t)(tempMotorCurrent);
 
 	for (int i = 0; i < BufferSize; i++) {
 		*out = ADC_ConvertedValue[i];
 		out++;
 	}
-	//	out[0] = (uint8_t)12;// ((V25 - out[0]) / Avg_Slope + 25);
-	//	out[1] = (uint8_t)14;// ((V25 - out[1]) / Avg_Slope + 25);
 }
 
 void DMA1_Channel1_IRQHandler(void)

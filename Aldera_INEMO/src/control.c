@@ -39,7 +39,7 @@ void controlMethod(float*acc, float*mag, float*gyro, uint8_t*temp, float*angles,
 
 //to wind up dragline manually after jumping
 	if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_9) == 0) {
-		*PWMval = 20;
+		*PWMval = *PWMval+0.2;	//was 20
 		setPWM(PWMval);
 	} else {
 		*PWMval = 0;

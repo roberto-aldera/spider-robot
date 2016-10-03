@@ -51,6 +51,9 @@ void setUpPWM() {
 
 void setPWM(float* valPercentage) {
 	//40 000 is 0% and 0 is 100%
+	if (*valPercentage > 70){
+		*valPercentage = 70;	//prevent PWM going past 100% which just saturates
+	}
 	float valPercentage2 = 100.0 - *valPercentage;
 
 	//valPercentage2 = valPercentage2 / 100.0 * 20000;

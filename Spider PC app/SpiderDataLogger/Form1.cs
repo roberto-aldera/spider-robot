@@ -363,8 +363,8 @@ namespace WindowsFormsApplication1
                 String t2 = IMU_data.t2.ToString();
                 String t3 = IMU_data.t3.ToString();
                 String IMUTemp1 = "N/A";// (twosCompTemp(IMU_data.IMUtemp1)*tempScale).ToString();
-                String ADCtemp1 = (IMU_data.adcTemp1 - 16).ToString();  //offset of 16 for some reason, after chaning DMA mode to circular
-                //String ADCtemp1 = (IMU_data.adcTemp1 - 0).ToString();  //offset of 16 for some reason, weird bitshifting?
+                //String ADCtemp1 = (IMU_data.adcTemp1 - 16).ToString();  //offset of 16 for some reason, after chaning DMA mode to circular
+                String ADCtemp1 = (IMU_data.adcTemp1 - 0).ToString();  //offset of 16 for some reason, weird bitshifting?
 
                 String PWMpercent = (IMU_data.PWMpercent).ToString();
                 String shaftRevs = (Math.Round(IMU_data.shaft_revs,2)).ToString();

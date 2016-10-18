@@ -125,6 +125,10 @@ void readADCdma(u16* out) {
 	}
 }
 
+void readADC_motorCurrent(float *output_float) {
+	*output_float = -(ADC_GetConversionValue(ADC2)*(10.0/4096.0)*(3.30/5.0)-5.0);
+}
+
 void DMA1_Channel1_IRQHandler(void)
 {
 	if (DMA_GetITStatus(DMA1_IT_TC1))

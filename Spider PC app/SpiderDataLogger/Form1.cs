@@ -42,7 +42,7 @@ namespace WindowsFormsApplication1
         public float shaft_revs;    //encoder revolutions
         public float shaft_speed;    //encoder revolutions
 
-        public UInt16 motorCurrent; //motor current reading
+        public float motorCurrent; //motor current reading
 
         /*  For debugging purposes
             //a8 is 6
@@ -369,7 +369,7 @@ namespace WindowsFormsApplication1
                 String PWMpercent = (IMU_data.PWMpercent).ToString();
                 String shaftRevs = (Math.Round(IMU_data.shaft_revs,2)).ToString();
                 String shaftSpeed = (Math.Round(IMU_data.shaft_speed, 2)).ToString();
-                String motorCurrent = (IMU_data.motorCurrent).ToString();
+                String motorCurrent = (Math.Round(IMU_data.motorCurrent,2)).ToString();
                 String accY2 = "1";//(twosComp(IMU_data.accY2)*accScale).ToString();
                 String accZ2 = "1";//(twosComp(IMU_data.accZ2)*accScale).ToString();
                 String magX2 = "1";//(twosComp(IMU_data.magX2)*magScale).ToString();

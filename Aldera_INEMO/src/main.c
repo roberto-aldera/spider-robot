@@ -27,10 +27,9 @@ uint8_t acc8[6];		//3 axes, each returning uint16_t, 3x2=6
 uint8_t mag8[6];
 uint8_t gyro8[6];
 uint8_t angles8[12];
-uint8_t MiscPayload8[15];	//temperature=1 (just ADCtemp),PWM=4,Encoder=4+4, currentSensor=2
+uint8_t MiscPayload8[17];	//temperature=1 (just ADCtemp),PWM=4,Encoder=4+4, currentSensor=4
 uint16_t encoderPosition = 0;
 uint16_t adcValDMA[2];	//to store temperature and current sensor readings
-uint16_t motorCurrent;	//ADC reading from motor current sensor
 uint16_t testVar[2];	//debugging purposes
 uint8_t temperature[2];
 uint8_t status = 0;
@@ -42,6 +41,7 @@ float angles[3];
 float PWMval;
 float shaft_revs = 0;
 float shaft_speed = 0;
+float motorCurrent;	//ADC reading from motor current sensor
 
 void setUpEncoder();
 void convertDataToBytes(void);
@@ -70,9 +70,10 @@ int main(void) {
 //		getMag(mag8, mag);
 //		getTempCelsius(temperature);
 		readADCdma(adcValDMA);
-		testVar[0] = ((V25 - adcValDMA[0]) / Avg_Slope + 25);
-		testVar[1] = adcValDMA[1];
-		motorCurrent = adcValDMA[1];
+		readADC_motorCurrent(&motorCurrent);
+//		testVar[0] = ((V25 - adcValDMA[0]) / Avg_Slope + 25);
+//		testVar[1] = adcValDMA[1];
+//		motorCurrent = adcValDMA[1];
 		temperature[1] = (uint8_t)((V25 - adcValDMA[0]) / Avg_Slope + 25);
 		readEncoder(&shaft_revs, &shaft_speed);
 		controlMethod(acc, mag, gyro, temperature, angles, &PWMval);
@@ -181,11 +182,11 @@ void convertDataToBytes() {
 	}
 
 	union {
-		char temp_char[2];
-		uint16_t temp_int_buffer;
+		char temp_char[4];
+		float temp_int_buffer;
 	} buffer_to_char_union6;
 	buffer_to_char_union6.temp_int_buffer = motorCurrent;
-	for (int i = 13; i < 15; i++) {
+	for (int i = 13; i < 17; i++) {
 		MiscPayload8[i] = buffer_to_char_union6.temp_char[i - 13];
 	}
 }

@@ -79,6 +79,9 @@
             this.label10 = new System.Windows.Forms.Label();
             this.ADCtempLABEL1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.labelMotorCurrent = new System.Windows.Forms.Label();
             this.labelShaftSpeed = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -109,9 +112,6 @@
             this.labelBaudRate = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.labelMotorCurrent = new System.Windows.Forms.Label();
             this.groupBoxWarnings.SuspendLayout();
             this.groupBoxCRC.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -641,6 +641,33 @@
             this.panel2.Size = new System.Drawing.Size(190, 206);
             this.panel2.TabIndex = 53;
             // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(161, 30);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(14, 13);
+            this.label36.TabIndex = 58;
+            this.label36.Text = "A";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(14, 30);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(70, 13);
+            this.label37.TabIndex = 57;
+            this.label37.Text = "Motor current";
+            // 
+            // labelMotorCurrent
+            // 
+            this.labelMotorCurrent.AutoSize = true;
+            this.labelMotorCurrent.Location = new System.Drawing.Point(112, 30);
+            this.labelMotorCurrent.Name = "labelMotorCurrent";
+            this.labelMotorCurrent.Size = new System.Drawing.Size(13, 13);
+            this.labelMotorCurrent.TabIndex = 56;
+            this.labelMotorCurrent.Text = "0";
+            // 
             // labelShaftSpeed
             // 
             this.labelShaftSpeed.AutoSize = true;
@@ -924,33 +951,6 @@
             this.label27.Size = new System.Drawing.Size(56, 13);
             this.label27.TabIndex = 106;
             this.label27.Text = "Baud rate:";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(161, 30);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(22, 13);
-            this.label36.TabIndex = 58;
-            this.label36.Text = "mA";
-            // 
-            // label37
-            // 
-            this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(14, 30);
-            this.label37.Name = "label37";
-            this.label37.Size = new System.Drawing.Size(70, 13);
-            this.label37.TabIndex = 57;
-            this.label37.Text = "Motor current";
-            // 
-            // labelMotorCurrent
-            // 
-            this.labelMotorCurrent.AutoSize = true;
-            this.labelMotorCurrent.Location = new System.Drawing.Point(112, 30);
-            this.labelMotorCurrent.Name = "labelMotorCurrent";
-            this.labelMotorCurrent.Size = new System.Drawing.Size(13, 13);
-            this.labelMotorCurrent.TabIndex = 56;
-            this.labelMotorCurrent.Text = "0";
             // 
             // Form1
             // 

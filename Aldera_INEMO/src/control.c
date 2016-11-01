@@ -38,14 +38,23 @@ void calibrateMEMS(float* acc, float* accCalib, float* gyro, float* gyroCalib, u
 	gyroCalib[2] = gyro[2] + (-0.32248*temperature[1] + 11.3496);
 }
 
-void controlMethod(float*accCalib, float*gyroCalib, uint8_t*temp, float*angles,
-		float*PWMval) //perform all control in this method
+void controlMethod(float*accCalib, float*gyroCalib, uint8_t*temp, float*angles, float*velocities,
+		float*positions,float*PWMval) //perform all control in this method
 {
-//debugging code
 //3 floats sent in angles (12 bytes total)
 	angles[0] = angles[0] + gyroCalib[0]*0.01;
 	angles[1] = angles[1] + gyroCalib[1]*0.01;
 	angles[2] = angles[2] + gyroCalib[2]*0.01;
+
+//Velocities from acc data
+	velocities[0] = velocities[0] + 9.81*accCalib[0]*0.01;
+	velocities[1] = velocities[1] + 9.81*accCalib[1]*0.01;
+	velocities[2] = velocities[2] + 9.81*accCalib[2]*0.01;
+
+//Positions from velocity from acc data
+	positions[0] = positions[0] + velocities[0]*0.01;
+	positions[1] = positions[1] + velocities[1]*0.01;
+	positions[2] = positions[2] + velocities[2]*0.01;
 
 //to wind up dragline manually after jumping
 	if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_9) == 0) {

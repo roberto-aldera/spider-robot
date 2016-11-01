@@ -40,6 +40,8 @@ float mag[3];
 float gyro[3];
 float gyroCalib[3];
 float angles[3];
+float velocities[3];
+float positions[3];
 float PWMval;
 float shaft_revs = 0;
 float shaft_speed = 0;
@@ -79,7 +81,7 @@ int main(void) {
 		temperature[1] = (uint8_t)((V25 - adcValDMA[0]) / Avg_Slope + 25);
 		readEncoder(&shaft_revs, &shaft_speed);
 		calibrateMEMS(acc, accCalib, gyro, gyroCalib, temperature);
-		controlMethod(accCalib, gyroCalib, temperature, angles, &PWMval);
+		controlMethod(accCalib, gyroCalib, temperature, angles, velocities, positions, &PWMval);
 
 		for (int p = 0; p < sizeof(TxBuff); p++) {
 			TxBuff[p] = 0;

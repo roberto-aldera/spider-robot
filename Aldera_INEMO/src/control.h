@@ -16,6 +16,6 @@
 
 void readEncoder(float *shaft_revs, float *shaft_speed);
 void calibrateMEMS(float* acc, float* accCalib, float* gyro, float* gyroCalib, u8* temperature);
-void controlMethod(float*acc,float*gyro,uint8_t*temp,float*angles,float*PWMval);
+void controlMethod(float*acc,float*gyro,uint8_t*temp,float*angles,float*velocities,float*positions,float*PWMval);
 
 #endif /* CONTROL_H_ */

@@ -15,6 +15,7 @@
 #include "pwm.h"
 
 void readEncoder(float *shaft_revs, float *shaft_speed);
-void controlMethod(float*acc,float*mag,float*gyro,uint8_t*temp,float*angles,float*PWMval);
+void calibrateMEMS(float* acc, float* accCalib, float* gyro, float* gyroCalib, u8* temperature);
+void controlMethod(float*acc,float*gyro,uint8_t*temp,float*angles,float*PWMval);
 
 #endif /* CONTROL_H_ */

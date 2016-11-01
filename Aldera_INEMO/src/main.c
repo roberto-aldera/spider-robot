@@ -35,8 +35,10 @@ uint8_t temperature[2];
 uint8_t status = 0;
 uint8_t XBee_waiting = 0;
 float acc[3];
+float accCalib[3];
 float mag[3];
 float gyro[3];
+float gyroCalib[3];
 float angles[3];
 float PWMval;
 float shaft_revs = 0;
@@ -76,7 +78,8 @@ int main(void) {
 //		motorCurrent = adcValDMA[1];
 		temperature[1] = (uint8_t)((V25 - adcValDMA[0]) / Avg_Slope + 25);
 		readEncoder(&shaft_revs, &shaft_speed);
-		controlMethod(acc, mag, gyro, temperature, angles, &PWMval);
+		calibrateMEMS(acc, accCalib, gyro, gyroCalib, temperature);
+		controlMethod(accCalib, gyroCalib, temperature, angles, &PWMval);
 
 		for (int p = 0; p < sizeof(TxBuff); p++) {
 			TxBuff[p] = 0;

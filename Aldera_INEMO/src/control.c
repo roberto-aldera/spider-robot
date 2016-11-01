@@ -28,14 +28,24 @@ void readEncoder(float *shaft_revs, float *shaft_speed) {
 
 }
 
-void controlMethod(float*acc, float*mag, float*gyro, uint8_t*temp, float*angles,
+void calibrateMEMS(float* acc, float* accCalib, float* gyro, float* gyroCalib, u8* temperature){
+	accCalib[0] = 0.9922*acc[0] - 0.0247*acc[1] + 0.0225*acc[2] + 0.0468;
+	accCalib[1] = 0.0453*acc[0] + 0.9574*acc[1] + 0.0072*acc[2] + 0.022;
+	accCalib[2] = -0.0141*acc[0] -0.0037*acc[1] + 0.9971*acc[2] + 0.0053;
+
+	gyroCalib[0] = gyro[0] + (0.060394*temperature[1] - 3.0843);
+	gyroCalib[1] = gyro[1] + (0.025522*temperature[1] - 0.40084);
+	gyroCalib[2] = gyro[2] + (-0.32248*temperature[1] + 11.3496);
+}
+
+void controlMethod(float*accCalib, float*gyroCalib, uint8_t*temp, float*angles,
 		float*PWMval) //perform all control in this method
 {
 //debugging code
 //3 floats sent in angles (12 bytes total)
-	angles[0] = 1.11;
-	angles[1] = 2.22;
-	angles[2] = 3.33;
+	angles[0] = angles[0] + gyroCalib[0]*0.01;
+	angles[1] = angles[1] + gyroCalib[1]*0.01;
+	angles[2] = angles[2] + gyroCalib[2]*0.01;
 
 //to wind up dragline manually after jumping
 	if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_9) == 0) {

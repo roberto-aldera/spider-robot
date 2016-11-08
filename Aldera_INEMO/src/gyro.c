@@ -85,7 +85,7 @@ void spiGyroRegisterSetup(void) {
 	//BLE 0=data LSB at lower address
 	//FS 00=250dps 01=500dps 10=2000dps 11=2000dps
 	//SIM-SPI serial interface 0=4wire 1=3wire
-	(void) writeSPIgyro(0b00100011, 0b10010000);	//reg 0x23-ctrl_Reg4
+	(void) writeSPIgyro(0b00100011, 0b10100000);	//reg 0x23-ctrl_Reg4, set to 2000dps, was 500dps (10)
 	//BOOT FIFO_EN - HPen INT1 INT1 Out Out
 	//BOOT 0=normal
 	//FIFO 0=disable
@@ -145,7 +145,7 @@ void getGyro(u8* buffer, float* out) {
 	buffer[4] = gyroZH;
 	u16 t = 0;
 	int i = 0;
-	u8 temp = (u8) (crtlB & 0x30);
+	u8 temp = (u8) (crtlB & 0x20);	//was 0x30
 	switch (temp) {
 	case (u8) 0x00:    //250dps
 		for (i = 0; i < 3; i++) {

@@ -68,6 +68,10 @@ int main(void) {
 	setUpLoggerSDcard();
 	setUpPWM();
 
+	for(int i = 0; i < 999999; i++){
+
+	}
+
 	while (1) {
 		getAcc(acc8, acc);
 		getGyro(gyro8, gyro);

@@ -56,8 +56,12 @@ void controlMethod(float*accCalib, float*gyroCalib, uint8_t*temp, float*angles, 
 	positions[1] = positions[1] + velocities[1]*0.01;
 	positions[2] = positions[2] + velocities[2]*0.01;
 
+	//do PFL
+
+	//turn off motor PWM control after 0.5 s
+
 //to wind up dragline manually after jumping
-	if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_9) == 0) {
+	if (GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_9) != 0) {
 		*PWMval = *PWMval+0.2;	//was 20
 		setPWM(PWMval);
 	} else {

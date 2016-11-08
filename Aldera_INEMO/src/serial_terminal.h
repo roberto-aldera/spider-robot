@@ -13,7 +13,7 @@
 
 #include "stm32f10x.h"
 #include "string.h"
-#define TX_BUFFER_SIZE 50
+#define TX_BUFFER_SIZE 52
 
 
 typedef struct {

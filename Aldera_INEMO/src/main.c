@@ -34,6 +34,7 @@ uint16_t testVar[2];	//debugging purposes
 uint8_t temperature[2];
 uint8_t status = 0;
 uint8_t XBee_waiting = 0;
+uint8_t activateControl = 0;
 float acc[3];
 float accCalib[3];
 float mag[3];
@@ -75,17 +76,18 @@ int main(void) {
 	while (1) {
 		getAcc(acc8, acc);
 		getGyro(gyro8, gyro);
-//		getMag(mag8, mag);
-//		getTempCelsius(temperature);
+		//		getMag(mag8, mag);
+		//		getTempCelsius(temperature);
 		readADCdma(adcValDMA);
 		readADC_motorCurrent(&motorCurrent);
-//		testVar[0] = ((V25 - adcValDMA[0]) / Avg_Slope + 25);
-//		testVar[1] = adcValDMA[1];
-//		motorCurrent = adcValDMA[1];
+		//		testVar[0] = ((V25 - adcValDMA[0]) / Avg_Slope + 25);
+		//		testVar[1] = adcValDMA[1];
+		//		motorCurrent = adcValDMA[1];
 		temperature[1] = (uint8_t)((V25 - adcValDMA[0]) / Avg_Slope + 25);
 		readEncoder(&shaft_revs, &shaft_speed);
 		calibrateMEMS(acc, accCalib, gyro, gyroCalib, temperature);
-		controlMethod(accCalib, gyroCalib, temperature, angles, velocities, positions, &PWMval);
+		controlMethod(accCalib, gyroCalib, temperature, angles, velocities, positions,
+				&PWMval, &shaft_revs, &activateControl);
 
 		for (int p = 0; p < sizeof(TxBuff); p++) {
 			TxBuff[p] = 0;
@@ -103,8 +105,8 @@ int main(void) {
 				sizeof(MiscPayload8));
 
 		//debugging purposes
-//		serialTerminal_packetize(a8, b8, c8, d8, sizeof(a8), sizeof(b8),
-//				sizeof(c8), sizeof(d8));
+		//		serialTerminal_packetize(a8, b8, c8, d8, sizeof(a8), sizeof(b8),
+		//				sizeof(c8), sizeof(d8));
 
 		//SD card data
 		DMA_Cmd(DMA1_Channel4, ENABLE);
@@ -148,18 +150,18 @@ void convertDataToBytes() {
 		angles8[i] = buffer_to_char_union1.temp_char[i];
 	}
 
-//	union {
-//		uint8_t temp_signed[2];
-//		uint8_t temp_unsigned[2];
-//	} buffer_to_char_union2;
-//	//temperatureToPack[1] = 30;
-//	buffer_to_char_union2.temp_signed[0] = temperature[0];
-//	buffer_to_char_union2.temp_signed[1] = temperature[1];
-//	for (int i = 0; i < 2; i++) {
-//		MiscPayload8[i] = buffer_to_char_union2.temp_unsigned[i];
-//	}
+	//	union {
+	//		uint8_t temp_signed[2];
+	//		uint8_t temp_unsigned[2];
+	//	} buffer_to_char_union2;
+	//	//temperatureToPack[1] = 30;
+	//	buffer_to_char_union2.temp_signed[0] = temperature[0];
+	//	buffer_to_char_union2.temp_signed[1] = temperature[1];
+	//	for (int i = 0; i < 2; i++) {
+	//		MiscPayload8[i] = buffer_to_char_union2.temp_unsigned[i];
+	//	}
 	for (int i = 0; i < 1; i++) {
-//		MiscPayload8[i] = temperature[i];
+		//		MiscPayload8[i] = temperature[i];
 		MiscPayload8[0] = temperature[1];
 	}
 

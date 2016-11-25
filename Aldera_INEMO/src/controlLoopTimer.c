@@ -29,6 +29,7 @@ void setUpLoopTimer(void) {
 	TIM_TimeBaseStruct.TIM_CounterMode = TIM_CounterMode_Up;
 	//TIM_TimeBaseStruct.TIM_Period = (7200 / 4 - 1); //makes it 100Hz - confirmed on scope.
 	TIM_TimeBaseStruct.TIM_Period = (3600 / 4 - 1); //experimenting, 200Hz
+	//TIM_TimeBaseStruct.TIM_Period = (2888 / 4 - 1); //experimenting, 250Hz
 	TIM_TimeBaseStruct.TIM_Prescaler = 400 - 1;
 	TIM_TimeBaseStruct.TIM_RepetitionCounter = 0x0000;
 

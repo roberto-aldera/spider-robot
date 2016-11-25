@@ -16,6 +16,9 @@ void setUpLoggerSDcard(void) {
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
 	/* Enable USART1 clock */
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
+	//DMA 1 clock
+	RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);
+
 
 	GPIO_InitTypeDef GPIO_InitStruct;
 	/* Configure USART Rx & Tx as alternate function */
@@ -28,7 +31,7 @@ void setUpLoggerSDcard(void) {
 
 	GPIO_PinRemapConfig(GPIO_Remap_USART1, ENABLE);
 
-	USART_InitStructure.USART_BaudRate = 115200;	//SD card can go faster than Xbee
+	USART_InitStructure.USART_BaudRate = 115200; //115200;	//SD card can go faster than Xbee
 	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
 	USART_InitStructure.USART_StopBits = USART_StopBits_1;
 	USART_InitStructure.USART_Parity = USART_Parity_No;

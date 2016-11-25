@@ -103,7 +103,7 @@ void setUpADC() {
 //}
 
 
-void readADCdma(u16* out) {
+void readADCdma(u16* out, float *motor_current_float) {
 	/* Enable ADC DMA */
 	//	ADC_DMACmd(ADC1, ENABLE);
 	//	ADC_Cmd(ADC1, ENABLE);
@@ -123,6 +123,7 @@ void readADCdma(u16* out) {
 		*out = ADC_ConvertedValue[i];
 		out++;
 	}
+	*motor_current_float = -(ADC_GetConversionValue(ADC2)*(10.0/4096.0)*(3.30/5.0)-5.0);
 }
 
 void readADC_motorCurrent(float *output_float) {

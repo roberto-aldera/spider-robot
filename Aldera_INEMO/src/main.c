@@ -65,13 +65,13 @@ int main(void) {
 	setUpEcompass();
 	setUpGyro();
 	setUpADC();	//this also sets up DMA...
-	setUpXbee();
+	//setUpXbee(); //unused, replaced with SD card logging
 	setUpLoggerSDcard();
 	setUpPWM();
 
-	for(int i = 0; i < 999999; i++){
-
-	}
+//	for(int i = 0; i < 999999; i++){
+//	//ensure the data.txt file starts with the beginning of a packet
+//	}
 
 	while (1) {
 		toggleGPIOpin(&status);
@@ -79,8 +79,8 @@ int main(void) {
 		getGyro(gyro8, gyro);
 		//		getMag(mag8, mag);
 		//		getTempCelsius(temperature);
-		readADCdma(adcValDMA);
-		readADC_motorCurrent(&motorCurrent);
+		readADCdma(adcValDMA,&motorCurrent);	//for getting temperature, a u16 val
+		//readADC_motorCurrent(&motorCurrent);	//for getting current, a float val
 		temperature[1] = (uint8_t)((V25 - adcValDMA[0]) / Avg_Slope + 25);
 		readEncoder(&shaft_revs, &shaft_speed);
 		calibrateMEMS(acc, accCalib, gyro, gyroCalib, temperature);
@@ -112,13 +112,13 @@ int main(void) {
 		USART_Cmd(USART1, ENABLE);
 
 		//XBee data, slower
-		if (XBee_waiting == 10) {
+//		if (XBee_waiting == 10) {
 //			DMA_Cmd(DMA1_Channel7, ENABLE);
 //			USART_DMACmd(USART2, USART_DMAReq_Tx, ENABLE);
 //			USART_Cmd(USART2, ENABLE);
-			XBee_waiting = 0;
-		}
-		XBee_waiting++;
+//			XBee_waiting = 0;
+//		}
+//		XBee_waiting++;
 		//Toggle PA11 to test loop frequency
 		toggleGPIOpin(&status);
 		//wait until next run, to maintain 200Hz sync

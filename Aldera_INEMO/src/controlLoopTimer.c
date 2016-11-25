@@ -27,8 +27,8 @@ void setUpLoopTimer(void) {
 
 	TIM_TimeBaseStruct.TIM_ClockDivision = TIM_CKD_DIV1;
 	TIM_TimeBaseStruct.TIM_CounterMode = TIM_CounterMode_Up;
-	TIM_TimeBaseStruct.TIM_Period = (7200 / 4 - 1); //makes it 100Hz - confirmed on scope.
-	//TIM_TimeBaseStruct.TIM_Period = (3600 / 4 - 1); //experimenting
+	//TIM_TimeBaseStruct.TIM_Period = (7200 / 4 - 1); //makes it 100Hz - confirmed on scope.
+	TIM_TimeBaseStruct.TIM_Period = (3600 / 4 - 1); //experimenting, 200Hz
 	TIM_TimeBaseStruct.TIM_Prescaler = 400 - 1;
 	TIM_TimeBaseStruct.TIM_RepetitionCounter = 0x0000;
 
@@ -67,7 +67,7 @@ void setUpEncoder(void) {
 	TIM_Cmd(TIM3, ENABLE);
 }
 
-void waitForEnd100Hz(void) {
+void waitForEndTimerHz(void) {
 	while (proceed10ms == 0) //interrupt will set proceed to 1;
 	{
 

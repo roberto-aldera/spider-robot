@@ -74,15 +74,13 @@ int main(void) {
 	}
 
 	while (1) {
+		toggleGPIOpin(&status);
 		getAcc(acc8, acc);
 		getGyro(gyro8, gyro);
 		//		getMag(mag8, mag);
 		//		getTempCelsius(temperature);
 		readADCdma(adcValDMA);
 		readADC_motorCurrent(&motorCurrent);
-		//		testVar[0] = ((V25 - adcValDMA[0]) / Avg_Slope + 25);
-		//		testVar[1] = adcValDMA[1];
-		//		motorCurrent = adcValDMA[1];
 		temperature[1] = (uint8_t)((V25 - adcValDMA[0]) / Avg_Slope + 25);
 		readEncoder(&shaft_revs, &shaft_speed);
 		calibrateMEMS(acc, accCalib, gyro, gyroCalib, temperature);
@@ -115,16 +113,16 @@ int main(void) {
 
 		//XBee data, slower
 		if (XBee_waiting == 10) {
-			DMA_Cmd(DMA1_Channel7, ENABLE);
-			USART_DMACmd(USART2, USART_DMAReq_Tx, ENABLE);
-			USART_Cmd(USART2, ENABLE);
+//			DMA_Cmd(DMA1_Channel7, ENABLE);
+//			USART_DMACmd(USART2, USART_DMAReq_Tx, ENABLE);
+//			USART_Cmd(USART2, ENABLE);
 			XBee_waiting = 0;
 		}
 		XBee_waiting++;
 		//Toggle PA11 to test loop frequency
 		toggleGPIOpin(&status);
-		//wait until next run, to maintain 100Hz sync
-		waitForEnd100Hz();
+		//wait until next run, to maintain 200Hz sync
+		waitForEndTimerHz();
 	}
 }
 

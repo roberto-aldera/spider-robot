@@ -13,6 +13,6 @@
 
 void setUpLoopTimer(void);
 void setUpEncoder(void);
-void waitForEnd100Hz(void);
+void waitForEndTimerHz(void);
 
 #endif /* CONTROLLOOPTIMER_H_ */

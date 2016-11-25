@@ -379,8 +379,7 @@ namespace WindowsFormsApplication1
                 String ADCtemp2 = "1";//IMU_data.adcTemp2.ToString();
 
 
-                // Update the information in the GUI
-                labelGyroXVal.Text = gyroX1;
+                // Update the information in the GUI              labelGyroXVal.Text = gyroX1;
                 labelGyroYVal.Text = gyroY1;
                 labelGyroZVal.Text = gyroZ1;
                 labelAccXVal.Text = accX1;

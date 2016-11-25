@@ -512,27 +512,27 @@
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(160, 133);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(29, 13);
+            this.label21.Size = new System.Drawing.Size(25, 13);
             this.label21.TabIndex = 63;
-            this.label21.Text = "units";
+            this.label21.Text = "deg";
             // 
             // label20
             // 
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(160, 120);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(29, 13);
+            this.label20.Size = new System.Drawing.Size(25, 13);
             this.label20.TabIndex = 62;
-            this.label20.Text = "units";
+            this.label20.Text = "deg";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(160, 107);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(29, 13);
+            this.label19.Size = new System.Drawing.Size(25, 13);
             this.label19.TabIndex = 61;
-            this.label19.Text = "units";
+            this.label19.Text = "deg";
             // 
             // label18
             // 

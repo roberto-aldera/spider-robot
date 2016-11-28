@@ -37,7 +37,7 @@ void initI2CEcompass(void)
 	I2C_InitStructure.I2C_OwnAddress1 = 0x00;
 	I2C_InitStructure.I2C_Ack = I2C_Ack_Enable;
 	I2C_InitStructure.I2C_AcknowledgedAddress = I2C_AcknowledgedAddress_7bit;
-	I2C_InitStructure.I2C_ClockSpeed = 100000;
+	I2C_InitStructure.I2C_ClockSpeed = 400000;	//was 100 000
 
 	/* Apply I2C configuration after enabling it */
 	I2C_Init(I2C2, &I2C_InitStructure);

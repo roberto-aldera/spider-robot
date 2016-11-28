@@ -75,7 +75,7 @@ int main(void) {
 
 	while (1) {
 		toggleGPIOpin(&status);
-		getAcc(acc8, acc);
+		getAcc(acc8, acc);		//this takes long
 		getGyro(gyro8, gyro);
 		//		getMag(mag8, mag);
 		//		getTempCelsius(temperature);
